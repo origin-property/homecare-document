@@ -7,5 +7,11 @@ export default {
   },
   website: {
     template: 'carbon-multi-page',
+    staticAssets: path.join(__dirname, 'assets'),
+    options: {
+      // You need to specify the base path of your github pages root
+      // Example: `/magidoc`
+      siteRoot: '/origin-property/demo-magidoc',
+    },
   },
 };
