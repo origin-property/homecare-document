@@ -10,19 +10,16 @@ export default {
     // type: 'url',
     // url: 'https://qaapi.myorigin.net/graphql',
     type: 'sdl',
-    paths: ['./schemas/**/*.graphql'],
-    // paths: [relativePath(`./schemas/**/*.graphql`)],
+    // paths: ['./schemas/**/*.graphql'],
+    paths: [relativePath('./schemas/**/*.graphql')],
   },
   website: {
     template: 'carbon-multi-page',
-    // staticAssets: './assets',
-    // staticAssets: relativePath('./assets'),
-    output: fileURLToPath(new URL('./build', import.meta.url)),
-    staticAssets: fileURLToPath(new URL('./assets', import.meta.url)),
+    staticAssets: relativePath('./assets'),
     options: {
       // You need to specify the base path of your github pages root
       // Example: `/magidoc`
-      // siteRoot: '/demo-magidoc',
+      siteRoot: '/demo-magidoc',
     },
   },
 };
