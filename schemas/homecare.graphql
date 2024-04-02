@@ -1,169 +1,177 @@
 type Query {
-  name: String
-  allHomecareCasePagination(startDate: String, endDate: String, projectIds: [String], status: [String], isInsur: String, search: String, offset: Int, limit: Int): homecareCasePagination
-  allHomecareCase(startDate: String, endDate: String, projectIds: [String], status: [String], isInsur: String): [homecareCase]
-  allHomecareCasePending(status: String, search: String, offset: Int, limit: Int): homecareCasePending
-  allHomecareCaseWaitForApproval(search: String, offset: Int, limit: Int): homecareCasePending
-  allHomecareCaseDetailForward(projectIds: [String], year: String, month: String): [homecareCaseDetail]
-  allHomecareCaseDetailOpen(projectIds: [String], year: String, month: String): [homecareCaseDetail]
-  allHomecareCaseDetailClose(projectIds: [String], year: String, month: String): [homecareCaseDetail]
-  allHomecareCaseDetailRemain(projectIds: [String], year: String, month: String): [homecareCaseDetail]
-  allHomecareCaseNoAuth(startDate: String, endDate: String): [homecareCase]
-  allHomecareCaseExpiredInsuranse(startDate: String, endDate: String, projectId: [String]): [homecareCase]
-  getHomecareStatus: [homecareCaseStatus]
-  getProject(projectId: String): ddlProject
-  myHomecareCheckingCase(projectId: String, status: String): [homecareCaseDetail]
-  myHomecareCheckingCaseById(id: String): homecareCaseDetail
-  allHomeCareEmployee: [employee]
-  myAssignCase(projectId: String, status: String): [homecareAssign]
-  myAssignCaseById(id: String): homecareAssign
-  getHomecarePerformance(sDate: String, eDate: String): [homecareNewPerformance]
-  allHomecareCaseDetailAppr(startDate: String, endDate: String, projectIds: [String]): [testHomecareCaseDetail]
-  allSysMasterProjects: [sysMasterProjects]
-  getProjectsToConnect(projectId: String): [sysMasterProjects]
-  getHomecareCase(projectId: String): [homecareCase]
-  allRoomHomecareCase(units: String, caseNumber: String, projectId: [String]): [homecareCase]
-  rpCaseGroupByUnitProj(projectIds: [String]): [dataCaseGroupByUnitProj]
-  rpOpencase(projectIds: [String]): [dataCaseGroupByUnitProj]
-  getHomecareBacklogUnit(projectIds: [String]): [dataCaseGroupByUnitProj]
-  getHomecareBacklogCsatUnit(projectIds: [String]): [dataCaseGroupByUnitProj]
-  getHomecareEmpSla(empName: [String]): [dataCaseGroupByUnitProj]
-  getHomecareEmpCsat(empName: [String]): [dataCaseGroupByUnitProj]
-  getHomecareBacklog(projectId: String): [dataCaseGroupByUnitProj]
-  getHomecareBacklogByProjectId(projectId: String): [dataCaseGroupByUnitProj]
+  # name: String
+  # allHomecareCasePagination(startDate: String, endDate: String, projectIds: [String], status: [String], isInsur: String, search: String, offset: Int, limit: Int): homecareCasePagination
+  # allHomecareCase(startDate: String, endDate: String, projectIds: [String], status: [String], isInsur: String): [homecareCase]
+  # allHomecareCasePending(status: String, search: String, offset: Int, limit: Int): homecareCasePending
+  # allHomecareCaseWaitForApproval(search: String, offset: Int, limit: Int): homecareCasePending
+  # allHomecareCaseDetailForward(projectIds: [String], year: String, month: String): [homecareCaseDetail]
+  # allHomecareCaseDetailOpen(projectIds: [String], year: String, month: String): [homecareCaseDetail]
+  # allHomecareCaseDetailClose(projectIds: [String], year: String, month: String): [homecareCaseDetail]
+  # allHomecareCaseDetailRemain(projectIds: [String], year: String, month: String): [homecareCaseDetail]
+  # allHomecareCaseNoAuth(startDate: String, endDate: String): [homecareCase]
+  # allHomecareCaseExpiredInsuranse(startDate: String, endDate: String, projectId: [String]): [homecareCase]
+  # getHomecareStatus: [homecareCaseStatus]
+  # getProject(projectId: String): ddlProject
+  # myHomecareCheckingCase(projectId: String, status: String): [homecareCaseDetail]
+  # myHomecareCheckingCaseById(id: String): homecareCaseDetail
+  # allHomeCareEmployee: [employee]
+  # myAssignCase(projectId: String, status: String): [homecareAssign]
+  # myAssignCaseById(id: String): homecareAssign
+  # getHomecarePerformance(sDate: String, eDate: String): [homecareNewPerformance]
+  # allHomecareCaseDetailAppr(startDate: String, endDate: String, projectIds: [String]): [testHomecareCaseDetail]
+  # allSysMasterProjects: [sysMasterProjects]
+  # getProjectsToConnect(projectId: String): [sysMasterProjects]
+  # getHomecareCase(projectId: String): [homecareCase]
+  # allRoomHomecareCase(units: String, caseNumber: String, projectId: [String]): [homecareCase]
+  # rpCaseGroupByUnitProj(projectIds: [String]): [dataCaseGroupByUnitProj]
+  # rpOpencase(projectIds: [String]): [dataCaseGroupByUnitProj]
+  # getHomecareBacklogUnit(projectIds: [String]): [dataCaseGroupByUnitProj]
+  # getHomecareBacklogCsatUnit(projectIds: [String]): [dataCaseGroupByUnitProj]
+  # getHomecareEmpSla(empName: [String]): [dataCaseGroupByUnitProj]
+  # getHomecareEmpCsat(empName: [String]): [dataCaseGroupByUnitProj]
+  # getHomecareBacklog(projectId: String): [dataCaseGroupByUnitProj]
+  # getHomecareBacklogByProjectId(projectId: String): [dataCaseGroupByUnitProj]
 
-  """test"""
-  allConntHomecareCase(
-    """test2"""
-    startDate: String
+  # """test"""
+  # allConntHomecareCase(
+  #   """test2"""
+  #   startDate: String
 
-    """test3"""
-    endDate: String
+  #   """test3"""
+  #   endDate: String
 
-    """test4"""
-    projectIds: [String]
-  ): homecareCount
-  allHomecareCaseInsuring(search: String): [HomecareCaseUnInsuring]
-  allHomecareCaseUnInsuring: [HomecareCaseUnInsuring]
-  allHomecareCaseTest: [homecareCase]
-  getHomecareTransferAndInsurance(input: InputInsurance): insuranceType
-  getHomecareSlaRp(projectIds: [String], slaType: String, mMonth: [String], rPType: String, empId: [String]): [dataSLA]
-  getHomecareCsatRp(projectIds: [String], mMonth: [String], rPType: String, empId: [String]): [dataCsat]
-  allNitiServiceCase(startDate: String, endDate: String, projectId: [String]): [taskService]
-  allNitiServiceCentralCase(startDate: String, endDate: String, projectId: [String]): [taskServiceCentral]
-  allConntServiceCase(startDate: String, endDate: String, projectIds: [String]): serviceCount
-  allConntServiceCentralCase(startDate: String, endDate: String, projectIds: [String]): serviceCentralCount
-  getServiceDetailLog(id: String): [serviceDetailLogs]
-  getServiceCentralDetailLog(id: String): [serviceCentralDetailLogs]
-  rpNitiServiceByUnitProj(projectIds: [String]): [dataNitiServiceByUnitProj]
-  rpNitiServiceCentralByUnitProj(projectIds: [String]): [dataNitiServiceCentralByUnitProj]
-  centerAllNitiServiceCase(search: String, offset: Int, limit: Int): [taskService]
-  centerAllNitiServiceCentralCase(search: String, offset: Int, limit: Int): [taskServiceCentral]
-  allMainArea: [dataMainArea]
-  getMainAreaById(areaId: String): [dataMainArea]
-  allHomeCareEmployeeRespService: [employee]
-  allHomeCareEmployeeRespCentralService: [employee]
-  gethomecareCaseDetailById(mainId: String): [homecareCaseDetail]
-  pushHomecareLineNotify: [homecareCaseDetail]
-  pushHomecareLineNotifySLA3: [homecareCaseDetail]
+  #   """test4"""
+  #   projectIds: [String]
+  # ): homecareCount
+
+  # allHomecareCaseInsuring(search: String): [HomecareCaseUnInsuring]
+  # allHomecareCaseUnInsuring: [HomecareCaseUnInsuring]
+  # allHomecareCaseTest: [homecareCase]
+  # getHomecareTransferAndInsurance(input: InputInsurance): insuranceType
+  # getHomecareSlaRp(projectIds: [String], slaType: String, mMonth: [String], rPType: String, empId: [String]): [dataSLA]
+  # getHomecareCsatRp(projectIds: [String], mMonth: [String], rPType: String, empId: [String]): [dataCsat]
+  # allNitiServiceCase(startDate: String, endDate: String, projectId: [String]): [taskService]
+  # allNitiServiceCentralCase(startDate: String, endDate: String, projectId: [String]): [taskServiceCentral]
+  # allConntServiceCase(startDate: String, endDate: String, projectIds: [String]): serviceCount
+  # allConntServiceCentralCase(startDate: String, endDate: String, projectIds: [String]): serviceCentralCount
+  # getServiceDetailLog(id: String): [serviceDetailLogs]
+  # getServiceCentralDetailLog(id: String): [serviceCentralDetailLogs]
+  # rpNitiServiceByUnitProj(projectIds: [String]): [dataNitiServiceByUnitProj]
+  # rpNitiServiceCentralByUnitProj(projectIds: [String]): [dataNitiServiceCentralByUnitProj]
+  # centerAllNitiServiceCase(search: String, offset: Int, limit: Int): [taskService]
+  # centerAllNitiServiceCentralCase(search: String, offset: Int, limit: Int): [taskServiceCentral]
+  # allMainArea: [dataMainArea]
+  # getMainAreaById(areaId: String): [dataMainArea]
+  # allHomeCareEmployeeRespService: [employee]
+  # allHomeCareEmployeeRespCentralService: [employee]
+  # gethomecareCaseDetailById(mainId: String): [homecareCaseDetail]
+  # pushHomecareLineNotify: [homecareCaseDetail]
+  # pushHomecareLineNotifySLA3: [homecareCaseDetail]
+
+  """รับหัวข้อการตรวจทั้งหมด"""
   allHomecareCategory: [homecareCategory]
+
+  """รับหัวข้อย่อยการตรวจทั้งหมด"""
   allHomecareSubCategory: [homecareSubCategory]
-  allHomecareSubList: [homecareSubList]
-  allHomecareSLACategory: [homecareSlaCategory]
-  allHomecareSLASubCategory(category: String): [homecareSlaSubCategory]
-  getHomecareSubCategory(categoryId: String): [homecareSubCategory]
-  allHomecareNiti: [homecareNiti]
-  allHomecareNitiStatus: [homecareNitiStatus]
-  allHomecareNitiCategory: [homecareNitiCategory]
-  allHomecareNitiSubCategory: [homecareNitiSubCategory]
-  allHomeCareNitiArea: [area]
-  getHomecareCategoryByIds(ids: [String]): [homecareCategory]
-  getHomecareSubCategoryByIds(ids: [String]): [homecareSubCategory]
-  allHomecareCategoryNoAuth: [homecareCategory]
-  allHomecareSubCategoryNoAuth: [homecareSubCategory]
-  allHomecareSubListNoAuth: [homecareSubList]
-  allHomecareCaseCustomer(startDate: String, endDate: String, fullName: String, projectId: String, unitNumber: String): [homecareCase]
-  allHomecareCaseCustomerFinish(startDate: String, endDate: String, fullName: String, projectId: String, unitNumber: String): [homecareCase]
-  allHomecareCasePrimoplus(projectId: String, unitNumber: String): [homecareCase]
-  getHomecareCasePrimoplusNoti(projectId: String, units: String): [homecareCase]
-  getHomecareCasePrimoplus(id: String): homecareCase
-  myHomecareAssign(projectId: String, status: String, offset: String, startDate: String): [homecareCaseDetail]
-  myHomecareAssignFinish(projectId: String): [homecareCaseDetail]
-  myHomecareAssignById(id: ID): homecareCaseDetail
-  myHomecareAssignNew(projectId: String, status: String, startDate: String, unit: String, offset: Int, limit: Int, remark: String): homecareCaseDetailCount
-  myHomecareAssignFinishNew(projectId: String, offset: Int, limit: Int): homecareCaseDetailCount
-  allHomecareCause: [homecareCause]
-  allHomecareCsatQuestion: [homecareCsatQuestion]
-  allHomecareCsat(offset: Int, limit: Int, rangeTime: [String]): homecareCaseDetailCsat
-  allHcPhoneLog: [hcPhoneLogData]
-  getHcPhoneLog(detailCaseId: String!): hcPhoneLogData
-  getHomecarePhoneLogByCaseId(caseId: ID!): [hcPhoneLogData]
-  getHcCaseOpenByProject(projectId: String!): [hcCaseData]
-  getHomecareCalendar: [hcCaseData]
-  allHomecareCaseDetailByUserId: [homecareCaseDetail]
-  allhomecareLineToken: [homecareLineToken]
-  getReportSLA3(projectId: String): reportSLA3
-  allHomecareCaseByCaseNumber(caseNumber: [String]): [homecareCase]
-  allHomecareCaseToContractors: [HomecareCaseToContractor]
-  allHomecareCaseToContractorWithSearch(searchText: String): [HomecareCaseToContractor]
-  getTaskCentralServiceDetailsToFilesByTaskCentralServiceDetailsId(taskCentralServiceDetailsId: String): [TaskCentralServiceDetailsToFiles]
-  getHomecareReportLogsToFilesByIds(ids: [String]): [HomecareAssignReportLogsToFiles]
-  allTotalMyHomecareAssignById: Int
-  allTotalCloseMyHomecareAssignById: Int
-  getHomecareCaseByMeWithLoadMore(projectId: String, status: String, day: Date, units: String, limit: Int, remark: String, after: String): HomecareCaseDetailPagination
-  getHomecareCaseByMeFilterStatusFinishWithLoadMore(projectId: String, limit: Int, after: String): HomecareCaseDetailPagination
+
+  # allHomecareSubList: [homecareSubList]
+  # allHomecareSLACategory: [homecareSlaCategory]
+  # allHomecareSLASubCategory(category: String): [homecareSlaSubCategory]
+  # getHomecareSubCategory(categoryId: String): [homecareSubCategory]
+  # allHomecareNiti: [homecareNiti]
+  # allHomecareNitiStatus: [homecareNitiStatus]
+  # allHomecareNitiCategory: [homecareNitiCategory]
+  # allHomecareNitiSubCategory: [homecareNitiSubCategory]
+  # allHomeCareNitiArea: [area]
+  # getHomecareCategoryByIds(ids: [String]): [homecareCategory]
+  # getHomecareSubCategoryByIds(ids: [String]): [homecareSubCategory]
+  # allHomecareCategoryNoAuth: [homecareCategory]
+  # allHomecareSubCategoryNoAuth: [homecareSubCategory]
+  # allHomecareSubListNoAuth: [homecareSubList]
+  # allHomecareCaseCustomer(startDate: String, endDate: String, fullName: String, projectId: String, unitNumber: String): [homecareCase]
+  # allHomecareCaseCustomerFinish(startDate: String, endDate: String, fullName: String, projectId: String, unitNumber: String): [homecareCase]
+  # allHomecareCasePrimoplus(projectId: String, unitNumber: String): [homecareCase]
+  # getHomecareCasePrimoplusNoti(projectId: String, units: String): [homecareCase]
+  # getHomecareCasePrimoplus(id: String): homecareCase
+  # myHomecareAssign(projectId: String, status: String, offset: String, startDate: String): [homecareCaseDetail]
+  # myHomecareAssignFinish(projectId: String): [homecareCaseDetail]
+  # myHomecareAssignById(id: ID): homecareCaseDetail
+  # myHomecareAssignNew(projectId: String, status: String, startDate: String, unit: String, offset: Int, limit: Int, remark: String): homecareCaseDetailCount
+  # myHomecareAssignFinishNew(projectId: String, offset: Int, limit: Int): homecareCaseDetailCount
+  # allHomecareCause: [homecareCause]
+  # allHomecareCsatQuestion: [homecareCsatQuestion]
+  # allHomecareCsat(offset: Int, limit: Int, rangeTime: [String]): homecareCaseDetailCsat
+  # allHcPhoneLog: [hcPhoneLogData]
+  # getHcPhoneLog(detailCaseId: String!): hcPhoneLogData
+  # getHomecarePhoneLogByCaseId(caseId: ID!): [hcPhoneLogData]
+  # getHcCaseOpenByProject(projectId: String!): [hcCaseData]
+  # getHomecareCalendar: [hcCaseData]
+  # allHomecareCaseDetailByUserId: [homecareCaseDetail]
+  # allhomecareLineToken: [homecareLineToken]
+  # getReportSLA3(projectId: String): reportSLA3
+  # allHomecareCaseByCaseNumber(caseNumber: [String]): [homecareCase]
+  # allHomecareCaseToContractors: [HomecareCaseToContractor]
+  # allHomecareCaseToContractorWithSearch(searchText: String): [HomecareCaseToContractor]
+  # getTaskCentralServiceDetailsToFilesByTaskCentralServiceDetailsId(taskCentralServiceDetailsId: String): [TaskCentralServiceDetailsToFiles]
+  # getHomecareReportLogsToFilesByIds(ids: [String]): [HomecareAssignReportLogsToFiles]
+  # allTotalMyHomecareAssignById: Int
+  # allTotalCloseMyHomecareAssignById: Int
+  # getHomecareCaseByMeWithLoadMore(projectId: String, status: String, day: Date, units: String, limit: Int, remark: String, after: String): HomecareCaseDetailPagination
+  # getHomecareCaseByMeFilterStatusFinishWithLoadMore(projectId: String, limit: Int, after: String): HomecareCaseDetailPagination
 }
 
 type Mutation {
   addName: String
-  createHomecareCase(input: inputEntryHomecareCase): homecareCase
-  updateInsuranceDate(id: ID, insuranceDate: String): homecareCase
-  updateStatusHomecare(id: ID, status: String, type: String): homecareCase
-  updateHomecareCaseDetail(input: inputEntryHomecareCaseDetail): homecareCaseDetail
-  createHomecareAssign(input: inputEntryHomecareAssign): homecareAssign
-  createHomecareReportLogs(input: inputEntryHomecareReportLogs): homecareReportLogs
-  createHomecareAssignReportLogs(input: inputEntryHomecareAssignReportLogs): homecareReportLogs
-  updateHomecareAssign(input: inputEntryHomecareAssign): homecareAssign
-  updateCaseHomecare(input: inputAddCase): homecareCaseDetail
-  updateHomeCasePiority(input: inputPiority): homecareCaseDetail
-  createHomecareNitiService(input: inputEntryServiceCase): onSuccess
-  updateServiceCaseDetail(input: inputEntryServiceCase): onSuccess
-  createHomecareNitiServiceCentral(input: inputEntryServiceCentralCase): onSuccess
-  updateServiceCentralCaseDetail(input: inputEntryServiceCentralCase): taskServiceCentralDetail
-  createCaseUpdateService(input: inputEntryCaseUpdate): caseUpdate
-  createCaseUpdateServiceCentral(input: inputEntryCaseUpdateCentral): caseUpdateCentral
-  singleUpload(file: Upload, input: inputEntryformAttachment): uploadSuccess
-  singleUploadCentral(file: Upload, input: inputEntryformAttachmentCentral): uploadSuccess
-  closeServiceCentral(id: String): onSuccess
-  reProcessServiceCentral(id: String): onSuccess
-  removeFormAttachment(id: String, onMenu: String): Boolean
-  deleteHomecareCustomer(id: ID): homecareCase
-  updateSlaHomecareTel(id: ID): homecareAssign
-  updateSlaHomecareStartWork(id: ID): homecareAssign
-  updateSlaHomecareEndWork(id: ID): homecareAssign
-  createCsat(detailId: ID!, input: [inputHomecareCsat]!, remark: String): [homecareCsat]
-  updateHomecareCsatClose(id: String, status: String, remark: String): homecareCaseDetail
-  updateHomecareCsatCloseAll(id: [String], status: String, remark: String): homecareCaseDetail
-  createHcPhoneLog(dtInput: inputHcPhoneLog): hcPhoneLogData
-  updateHcPhoneLog(dtInput: inputHcPhoneLog): hcPhoneLogData
-  updateStatusHomecareDetailById(id: ID!, status: String!): homecareCaseDetail
-  createHomecareLineToken: String
-  createdHomecareCaseToContractor(input: InputHomecareCaseToContractor): HomecareCaseToContractor
-  updatedHomecareCaseToContractor(input: InputHomecareCaseToContractor): HomecareCaseToContractor
-  deletedHomecareCaseToContractor(id: String): HomecareCaseToContractor
-  createdTaskCentralServiceDetailsToFiles(input: [TaskCentralServiceDetailsToFilesInput]): [TaskCentralServiceDetailsToFiles]
+  # createHomecareCase(input: inputEntryHomecareCase): homecareCase
+  # updateInsuranceDate(id: ID, insuranceDate: String): homecareCase
+  # updateStatusHomecare(id: ID, status: String, type: String): homecareCase
+  # updateHomecareCaseDetail(input: inputEntryHomecareCaseDetail): homecareCaseDetail
+  # createHomecareAssign(input: inputEntryHomecareAssign): homecareAssign
+  # createHomecareReportLogs(input: inputEntryHomecareReportLogs): homecareReportLogs
+  # createHomecareAssignReportLogs(input: inputEntryHomecareAssignReportLogs): homecareReportLogs
+  # updateHomecareAssign(input: inputEntryHomecareAssign): homecareAssign
+  # updateCaseHomecare(input: inputAddCase): homecareCaseDetail
+  # updateHomeCasePiority(input: inputPiority): homecareCaseDetail
+  # createHomecareNitiService(input: inputEntryServiceCase): onSuccess
+  # updateServiceCaseDetail(input: inputEntryServiceCase): onSuccess
+  # createHomecareNitiServiceCentral(input: inputEntryServiceCentralCase): onSuccess
+  # updateServiceCentralCaseDetail(input: inputEntryServiceCentralCase): taskServiceCentralDetail
+  # createCaseUpdateService(input: inputEntryCaseUpdate): caseUpdate
+  # createCaseUpdateServiceCentral(input: inputEntryCaseUpdateCentral): caseUpdateCentral
+  # singleUpload(file: Upload, input: inputEntryformAttachment): uploadSuccess
+  # singleUploadCentral(file: Upload, input: inputEntryformAttachmentCentral): uploadSuccess
+  # closeServiceCentral(id: String): onSuccess
+  # reProcessServiceCentral(id: String): onSuccess
+  # removeFormAttachment(id: String, onMenu: String): Boolean
+  # deleteHomecareCustomer(id: ID): homecareCase
+  # updateSlaHomecareTel(id: ID): homecareAssign
+  # updateSlaHomecareStartWork(id: ID): homecareAssign
+  # updateSlaHomecareEndWork(id: ID): homecareAssign
+  # createCsat(detailId: ID!, input: [inputHomecareCsat]!, remark: String): [homecareCsat]
+  # updateHomecareCsatClose(id: String, status: String, remark: String): homecareCaseDetail
+  # updateHomecareCsatCloseAll(id: [String], status: String, remark: String): homecareCaseDetail
+  # createHcPhoneLog(dtInput: inputHcPhoneLog): hcPhoneLogData
+  # updateHcPhoneLog(dtInput: inputHcPhoneLog): hcPhoneLogData
+  # updateStatusHomecareDetailById(id: ID!, status: String!): homecareCaseDetail
+  # createHomecareLineToken: String
+  # createdHomecareCaseToContractor(input: InputHomecareCaseToContractor): HomecareCaseToContractor
+  # updatedHomecareCaseToContractor(input: InputHomecareCaseToContractor): HomecareCaseToContractor
+  # deletedHomecareCaseToContractor(id: String): HomecareCaseToContractor
+  # createdTaskCentralServiceDetailsToFiles(input: [TaskCentralServiceDetailsToFilesInput]): [TaskCentralServiceDetailsToFiles]
 }
 
-type Subscription {
-  counter: String
-}
+# type Subscription {
+#   counter: String
+# }
 
 scalar Date
 
 scalar Upload
 
+"""ข้อมูลพนักงาน"""
 type employee {
   id: ID
+  """รหัสพนักงาน"""
   employeeId: String
   firstnameThai: String
   lastnameThai: String
@@ -173,6 +181,7 @@ type employee {
   mobilePhone: String
 }
 
+"""ข้อมูลโครงการ"""
 type ddlProject {
   id: String
   projectId: String
@@ -182,1283 +191,1285 @@ type ddlProject {
   ProjectType: String
 }
 
-type homecareCasePagination {
-  count: Int
-  rows: [homecareCase]
-}
-
-type insuranceType {
-  transferDate: Date
-  insuranceDate: Date
-  projectId: String
-  units: String
-}
-
-type uploadSuccess {
-  id: String
-  filePath: String
-}
-
-type serviceDetailLogs {
-  id: ID
-  taskServiceId: String
-  mainCategory: mainCategory
-  subCategory: subCategory
-  status: homecareCaseStatusMain
-  mainStatusId: String
-  taskServiceStatus: String
-  responsiblePerson: employee
-  appointmentDate: String
-  appointmentTime: String
-  appointmentDateRepair: String
-  appointmentTimeRepair: String
-  createdBy: employee
-  createdAt: Date
-}
-
-type serviceCentralDetailLogs {
-  id: ID
-  taskServiceId: String
-  mainCategory: mainCategory
-  subCategory: subCategory
-  status: homecareCaseStatusMain
-  mainStatusId: String
-  taskServiceStatus: String
-  responsiblePerson: employee
-  appointmentDate: String
-  appointmentTime: String
-  appointmentDateRepair: String
-  appointmentTimeRepair: String
-  createdBy: employee
-  createdAt: Date
-}
-
-type File {
-  fileName: String
-  mimeType: String
-  encoding: String
-}
-
-type Image {
-  filename: String
-  width: Int
-  height: Int
-}
-
-input inputFile {
-  file: String
-}
-
-input inputEntryformAttachment {
-  filePath: String
-  taskServiceDetailId: String
-}
-
-input inputEntryformAttachmentCentral {
-  filePath: String
-  taskServiceCenterDetailId: String
-}
-
-input inputEntryCaseUpdate {
-  message: String
-  taskServiceDetailId: String
-}
-
-input inputEntryCaseUpdateCentral {
-  message: String
-  taskServiceCenterDetailId: String
-}
-
-input InputInsurance {
-  projectId: String
-  units: String
-}
-
-input inputEntryServiceCentralCase {
-  username: String
-  project: String
-  area: String
-  building: String
-  floor: String
-  status: String
-  informerName: String
-  informerPhone: String
-  detail: [inputEntryServiceCaseDetail]
-}
-
-input inputEntryServiceCentralCaseDetail {
-  id: ID
-  mainCategoryId: String
-  subCategoryId: String
-  mainStatusId: String
-  detail: String
-  responsiblePerson: String
-  taskServiceStatus: String
-  appointmentDate: String
-  appointmentTime: String
-  appointmentDateRepair: String
-  appointmentTimeRepair: String
-}
-
-type serviceCount {
-  countAll: String
-  countAssign: String
-  countOpen: String
-  countInprocess: String
-  countFinish: String
-  countClose: String
-}
-
-type serviceCentralCount {
-  countAll: String
-  countAssign: String
-  countOpen: String
-  countInprocess: String
-  countReInProcess: String
-  countFinishByProject: String
-  countFinish: String
-  countClose: String
-}
-
-type onSuccess {
-  status: String
-}
-
-type mainArea {
-  id: String
-  name: String
-  areaType: String
-}
-
-type taskServiceCentral {
-  id: ID
-  serviceNumber: String
-  project: ddlProject
-  area: [mainArea]
-  building: [mainArea]
-  floor: [mainArea]
-  informerName: String
-  informerPhone: String
-  status: homecareCaseStatusMain
-  createdBy: employee
-  createdAt: Date
-  detail: [taskServiceCentralDetail]
-}
-
-type caseUpdate {
-  message: String
-  createdBy: employee
-  createdAt: Date
-}
-
-type caseUpdateCentral {
-  message: String
-  createdBy: employee
-  createdAt: Date
-}
-
-type mainFormAttachment {
-  id: String
-  filePath: String
-  createdBy: employee
-  createdAt: Date
-}
-
-type formAttachment {
-  id: String
-  filePath: String
-  createdBy: employee
-  createdAt: Date
-}
-
-type formAttachmentCentral {
-  id: String
-  filePath: String
-  createdBy: employee
-  createdAt: Date
-}
-
-type taskServiceCentralDetail {
-  id: ID
-  juristicPersonNo: String
-  detail: String
-  taskCentralServiceId: String
-  mainCategory: mainCategory
-  subCategory: subCategory
-  status: homecareCaseStatusMain
-  mainStatusId: String
-  responsiblePerson: employee
-  caseUpdate: [caseUpdateCentral]
-  formAttachment: [formAttachmentCentral]
-  mainFormAttachment: [formAttachmentCentral]
-  appointmentDate: String
-  appointmentTime: String
-  appointmentDateRepair: String
-  appointmentTimeRepair: String
-  createdBy: employee
-  createdAt: Date
-  updatedBy: employee
-  updatedAt: Date
-  filesMore: [TaskCentralServiceDetailsToFiles]
-}
-
-type taskService {
-  id: ID
-  serviceNumber: String
-  project: ddlProject
-  unit: String
-  fullName: String
-  phone: String
-  houseNumber: String
-  status: homecareCaseStatusMain
-  lastInsuranceDate: Date
-  insuranceDateDefault: String
-  transferDate: Date
-  createdBy: employee
-  createdAt: Date
-  detail: [taskServiceDetail]
-}
-
-type taskServiceDetail {
-  id: ID
-  juristicPersonNo: String
-  detail: String
-  taskServiceId: String
-  mainCategory: mainCategory
-  subCategory: subCategory
-  status: homecareCaseStatusMain
-  mainStatusId: String
-  taskServiceStatus: String
-  responsiblePerson: employee
-  appointmentDate: String
-  appointmentTime: String
-  appointmentDateRepair: String
-  appointmentTimeRepair: String
-  caseUpdate: [caseUpdate]
-  formAttachment: [formAttachment]
-  mainFormAttachment: [mainFormAttachment]
-  createdBy: employee
-  createdAt: Date
-  updatedBy: employee
-  updatedAt: Date
-}
-
-input inputEntryServiceCase {
-  username: String
-  project: String
-  unit: String
-  fullName: String
-  phone: String
-  houseNumber: String
-  status: String
-  checkInDate: Date
-  checkInRangeTime: String
-  repairDateFromCustomer: String
-  detail: [inputEntryServiceCaseDetail]
-}
-
-input inputEntryServiceCaseDetail {
-  id: ID
-  mainCategoryId: String
-  subCategoryId: String
-  mainStatusId: String
-  detail: String
-  responsiblePerson: String
-  taskServiceStatus: String
-  appointmentDate: String
-  appointmentTime: String
-  appointmentDateRepair: String
-  appointmentTimeRepair: String
-  file: [Upload]
-}
-
-type serviceCentralCase {
-  id: ID
-  serviceNumber: String
-  project: ddlProject
-  area: String
-  building: String
-  floor: String
-  informerName: String
-  informerPhone: String
-  status: homecareCaseStatusMain
-  createdBy: employee
-  createdAt: Date
-  detail: [serviceCaseCentralDetail]
-}
-
-type serviceCaseCentralDetail {
-  id: ID
-  juristicPersonNo: String
-  detail: String
-  responsiblePerson: employee
-  appointmentDate: String
-  appointmentTime: String
-  taskServiceStatus: String
-  mainCategory: mainCategory
-  subCategory: subCategory
-  status: homecareCaseStatusMain
-  createdBy: employee
-  createdAt: Date
-  updatedBy: employee
-  updatedAt: Date
-}
-
-type serviceCase {
-  id: ID
-  serviceNumber: String
-  project: ddlProject
-  unit: String
-  fullName: String
-  phone: String
-  status: homecareCaseStatusMain
-  checkInDate: Date
-  checkInRangeTime: homecareRangeTime
-  firstInDate: Date
-  firstInRangeTime: homecareRangeTime
-  createdBy: employee
-  lastInsuranceDate: Date
-  insuranceDateDefault: String
-  transferDate: Date
-  createdAt: Date
-  detail: [serviceCaseDetail]
-}
-
-type serviceCaseDetail {
-  id: ID
-  juristicPersonNo: String
-  detail: String
-  responsiblePerson: employee
-  appointmentDate: String
-  appointmentTime: homecareRangeTime
-  appointmentDateRepair: String
-  appointmentTimeRepair: homecareRangeTime
-  taskServiceStatus: homecareCaseStatusDetail
-  taskServiceId: String
-  mainCategoryId: mainCategory
-  subCategoryId: subCategory
-  createdBy: employee
-  createdAt: Date
-}
-
-input inputPiority {
-  id: ID
-  casePiority: Int
-  detailNumber: String
-}
-
-type HomecareCaseUnInsuring {
-  id: Int
-  owner: String
-  units: String
-  project: String
-}
-
-"""test5"""
-type homecareCount {
-  countAll: String
-  countPending: String
-  countOpen: String
-  countChecking: String
-  countInprogress: String
-  countFinish: String
-  filterInsuringRoom: String
-  filterUnderInsuringRoom: String
-}
-
-input inputAddCase {
-  caseNumber: String
-  mainId: String
-  id: String
-  textCategory: String
-  textSubCategory: String
-  category: String
-  subcategory: String
-  sublist: String
-  description: String
-  status: String
-  homecareName: String
-  homecareInDate: Date
-  homecareRangeTime: String
-  assignInDate: Date
-  assignRangeTime: String
-  homecareStatus: String
-  reasonStatus: String
-  checkDeatil: String
-  singOwner: String
-  listDefect: String
-  causeId: ID
-  remark: String
-  slaId: ID
-}
-
-input inputEntryHomecareCase {
-  username: String
-  projectId: String
-  units: String
-  owner: String
-  channel: String
-  phoneOwner: String
-  status: String
-  checkInDate: Date
-  checkInRangeTime: String
-  repairDateFromCustomer: String
-  detail: [inputEntryHomecareCaseDetail]
-}
-
-input inputEntryHomecareCaseDetail {
-  id: String
-  textCategory: String
-  textSubCategory: String
-  category: String
-  subcategory: String
-  sublist: String
-  description: String
-  status: String
-  homecareName: String
-  homecareInDate: Date
-  homecareRangeTime: String
-  assignInDate: Date
-  assignRangeTime: String
-  homecareStatus: String
-  reasonStatus: String
-  checkDeatil: String
-  singOwner: String
-  listDefect: String
-  causeId: ID
-  remark: String
-  slaId: ID
-  files: [inputhomecareFiles]
-  contractor: String
-  endOfJobDate: Date
-}
-
-input inputhomecareFiles {
-  id: String
-  idNumber: Int
-  fileName: String
-  fileType: String
-  uri: String
-}
-
-input inputEntryHomecareAssign {
-  id: String
-  assignLogId: String
-  detailId: String
-  staffId: String
-  sublistId: String
-  requestDate: Date
-  requestRangeTime: String
-  sla: Int
-  staffStatus: String
-  caseStatus: String
-  comment: String
-  remark: String
-  reAssignRemark: String
-  finishType: String
-  assetComment: String
-  assetCustomerStatus: String
-  customerName: String
-  reAssignInDate: Date
-  reAssignRangeTime: String
-  files: [inputhomecareFiles]
-}
-
-input inputEntryHomecareReportLogs {
-  callBackDate: Date
-  checkInDate: Date
-  checkInRangeTime: String
-  remark: String
-  detailId: String
-  type: String
-  filesMove: [inputHomecareAssignReportLogsToFiles]
-}
-
-input inputHomecareAssignReportLogsToFiles {
-  fileId: String
-  fileName: String
-  fileFolder: String
-}
-
-input inputEntryHomecareAssignReportLogs {
-  callBackDate: Date
-  checkInDate: Date
-  checkInRangeTime: String
-  remark: String
-  assignId: String
-  type: String
-  filesMove: [inputHomecareAssignReportLogsToFiles]
-}
-
-type homecareCase {
-  id: ID
-  caseNumber: String
-  project: ddlProject
-  units: String
-  owner: String
-  channel: homecareChannel
-  phoneOwner: String
-  status: homecareCaseStatusMain
-  checkInDate: Date
-  checkInDateService: String
-  checkInRangeTime: homecareRangeTime
-  firstInDate: Date
-  firstInRangeTime: homecareRangeTime
-  createdBy: employee
-  lastInsuranceDate: Date
-  insuranceDateDefault: String
-  transferDate: Date
-  createdAt: Date
-  detail: [homecareCaseDetail]
-  insurance: Boolean
-  countDetail: Int
-  detailShowExcell: String
-  detailByDetailNumber(detailNumber: [String]): [homecareCaseDetail]
-}
-
-type homecareCasePending {
-  count: Int
-  rows: [homecareCase]
-}
-
-type testHomecareCaseDetail {
-  id: ID
-  mainId: String
-}
-
-type sysMasterProjects {
-  id: ID
-  name: String
-  nameEng: String
-  companyId: String
-  projectStatus: String
-}
-
-type homecareCaseDetail {
-  id: ID
-  main: homecareCase
-  detailNumber: String
-  dateFinish: Date
-  defaultCategory: homecareCategory
-  defaultSubcategory: homecareCategory
-  category: homecareCategory
-  subcategory: homecareSubCategory
-  sublist: homecareSubList
-  description: String
-  assignList: [homecareAssign]
-  status: homecareCaseStatusDetail
-  homecareName: employee
-  homecareInDate: Date
-  homecareRangeTime: homecareRangeTime
-  homecareStatus: homecareCaseStatusHomecare
-  assignInDate: Date
-  assignRangeTime: homecareRangeTime
-  reasonStatus: String
-  checkDeatil: String
-  singOwner: String
-  listDefect: String
-  remark: String
-  files: detailFile
-  sla: homecareSla
-  slaTelDate: Date
-  cause: homecareCause
-  csat: [homecareCsat]
-  csatStatus: String
-  reportLogs: [homecareReportLogs]
-  assignLogs: [homecareAssignLogs]
-  createdBy: employee
-  createdAt: Date
-  mainId: String
-  FDate: Date
-  SPDate: Date
-  hcPhoneLog: [hcPhoneLogData]
-  sla3: sla3
-}
-
-type piority {
-  id: String
-  name: String
-}
-
-type homecareAssign {
-  id: ID
-  detail: homecareCaseDetail
-  assignNumber: String
-  status: homecareCaseStatusAssign
-  rank: String
-  comment: String
-  remark: String
-  requestDate: Date
-  requestRangeTime: homecareRangeTime
-  sublist: homecareSubList
-  sla: Int
-  staff: employee
-  files: assignFile
-  staffStatus: homecareCaseStatusStaff
-  reAssignRemark: String
-  finishType: String
-  assetComment: String
-  dateFinish: String
-  assetCustomerStatus: String
-  customerNameFinish: String
-  reAssignInDate: Date
-  slaStartDate: Date
-  slaEndDate: Date
-  homecareSlaWork: homecareSlaWork
-  reAssignRangeTime: homecareRangeTime
-  logs: [homecareAssignLogs]
-}
-
-type homecareAssignLogs {
-  id: ID
-  assignId: String
-  detail: homecareCaseDetail
-  status: homecareCaseStatusAssign
-  rank: String
-  comment: String
-  remark: String
-  requestDate: Date
-  requestRangeTime: homecareRangeTime
-  sublist: homecareSubList
-  sla: Int
-  staff: employee
-  files: assignFile
-  staffStatus: homecareCaseStatusStaff
-}
-
-type homecareReportLogs {
-  id: ID
-  createdAt: Date
-  callBackDate: Date
-  checkInDate: Date
-  checkInRangeTime: String
-  remark: String
-  detailId: String
-  type: String
-  filesMore: [HomecareAssignReportLogsToFiles]
-}
-
-type homecareCaseStatusMain {
-  id: String
-  name: String
-  labelThai: String
-  labelEng: String
-  color: String
-  bgColor: String
-}
-
-type homecareCaseStatusDetail {
-  id: String
-  name: String
-  labelThai: String
-  labelEng: String
-  color: String
-  bgColor: String
-}
-
-type homecareCaseStatusHomecare {
-  id: String
-  name: String
-  labelThai: String
-  labelEng: String
-  color: String
-  bgColor: String
-}
-
-type homecareCaseStatusAssign {
-  id: String
-  name: String
-  labelThai: String
-  labelEng: String
-  color: String
-  bgColor: String
-}
-
-type homecareCaseStatusStaff {
-  id: String
-  name: String
-  labelThai: String
-  labelEng: String
-  color: String
-  bgColor: String
-}
-
-type homecareCaseStatus {
-  id: String
-  name: String
-  labelThai: String
-  labelEng: String
-  color: String
-  bgColor: String
-}
-
-type detailFile {
-  id: ID
-  detailId: String
-  owner: [homecareImage]
-  homecare: [homecareImage]
-}
-
-type assignFile {
-  id: ID
-  assignId: String
-  assignBefore: [homecareImage]
-  assignProtect: [homecareImage]
-  assignDoing: [homecareImage]
-  assignFinish: [homecareImage]
-  signature: [homecareImage]
-  assignUploadFinishCustomer: [homecareImage]
-}
-
-type homecareImage {
-  id: String
-  detailId: String
-  assignId: String
-  fileName: String
-  fileType: String
-  fileExtension: String
-  isShow: Boolean
-}
-
-type homecareRangeTime {
-  id: String
-  name: String
-  label: String
-}
-
-type homecareChannel {
-  id: String
-  name: String
-}
-
-type homecareSlaWork {
-  id: String
-  status: String
-  overTime: Float
-}
-
-type homecarePerformance {
-  id: ID
-  homecareId: String
-  homecareName: employee
-  countWork: Float
-  status: homecareCaseStatusDetail
-}
-
-type homecareNewPerformance {
-  id: ID
-  caseNumber: String
-  resPerson: String
-  subHcStatus: String
-}
-
-type dataCaseGroupByUnitProj {
-  id: ID
-  OpenCase: String
-  channelReq: String
-  projectId: String
-  caseNumber: String
-  projectName: String
-  custName: String
-  Phone: String
-  unitNo: String
-  hNo: String
-  subWork: String
-  descr: String
-  caseStatus: String
-  subHcStatus: String
-  HcStatus: String
-  slaHour: String
-  resPerson: String
-  feedBack: String
-  Q1: String
-  Q2: String
-  Q3: String
-  Q4: String
-  createdAt: Date
-  StartProcessDate: Date
-  slaTelDate: Date
-  dateFinish: String
-  SLA1: String
-  SLA2: String
-  SLA1_S: String
-  SLA2_S: String
-  type: String
-  ttype: String
-  remark: String
-  dCurOpen: String
-  hCurOpen: String
-  casePiority: piority
-  isPiority: String
-  total: Int
-}
-
-type dataSLA {
-  id: String
-  pjName: String
-  empName: String
-  cSLA1: String
-  cSLA1_S: String
-  perSLA1: String
-  cSLA2: String
-  cSLA2_S: String
-  perSLA2: String
-  cSLA3: String
-  cSLA3_S: String
-  perSLA3: String
-}
-
-type dataCsat {
-  id: String
-  pjName: String
-  cQ1: String
-  cQ2: String
-  sQ1: String
-  sQ2: String
-  avgQ1: String
-  avgQ2: String
-  cCase: String
-}
-
-type dataNitiServiceByUnitProj {
-  id: ID
-  serviceNumber: String
-  project: String
-  unit: String
-  fullName: String
-  phone: String
-  houseNumber: String
-  status: String
-  transferDate: Date
-  nameThai: String
-  tsdId: String
-  juristicPersonNo: String
-  detail: String
-  responsiblePerson: String
-  responName: String
-  appointmentDate: Date
-  appointmentTime: String
-  appointmentDateRepair: String
-  appointmentTimeRepair: String
-  taskServiceStatus: String
-  mainCategoryId: String
-  mcName: String
-  subCategoryId: String
-  scName: String
-  SLA: String
-  mainStatusId: String
-  msName: String
-  tsdAssignDate: Date
-  tsdInProcessDate: Date
-  tsdFinishDate: Date
-  SLA1: String
-  SLA1_S: String
-  lastestRemark: String
-  dCurOpen: String
-  hCurOpen: String
-  createdAt: Date
-}
-
-type dataNitiServiceCentralByUnitProj {
-  id: ID
-  serviceNumber: String
-  project: String
-  areaType: String
-  name: String
-  seq: String
-  building: String
-  floor: String
-  informerName: String
-  status: String
-  createdBy: String
-  updatedBy: String
-  createdAt: Date
-  juristicPersonNo: String
-  detail: String
-  responsiblePerson: String
-  responName: String
-  appointmentDate: Date
-  appointmentTime: String
-  appointmentDateRepair: String
-  appointmentTimeRepair: String
-  taskCentralServiceId: String
-  mainCategoryId: String
-  mcName: String
-  subCategoryId: String
-  scName: String
-  SLA: String
-  mainStatusId: String
-  msName: String
-  assignDate: Date
-  inProcessDate: Date
-  reProcessDate: Date
-  finishDate: Date
-  closeDate: Date
-  lastestRemark: String
-  dCurOpen: String
-  hCurOpen: String
-  SLA1: String
-  SLA1_S: String
-  SLA2: String
-  SLA2_S: String
-}
-
-type dataMainArea {
-  id: ID
-  name: String
-  areaType: String
-  seq: String
-}
-
-type sla3 {
-  days: String
-  status: String
-  color: String
-}
-
-type area {
-  id: String
-  name: String
-  areaType: String
-}
-
-type homecareNitiSubCategory {
-  id: String
-  name: String
-  SLA: Int
-  mainCategoryId: String
-  mainCategory: homecareNitiCategory
-}
-
-type homecareNitiCategory {
-  id: String
-  name: String
-  mainMenuId: String
-  mainMenu: mainMenu
-}
-
-type mainMenu {
-  id: String
-  name: String
-}
-
-type homecareNitiStatus {
-  id: String
-  name: String
-  mainMenuId: String
-  mainMenu: mainMenu
-}
-
-type mainCategory {
-  id: String
-  name: String
-}
-
-type subCategory {
-  id: String
-  name: String
-  SLA: Int
-}
-
-type homecareNiti {
-  id: String
-  name: String
-  mainMenuId: String
-  mainCategory: mainCategory
-}
-
-type homecareSlaCategory {
-  id: String
-  category: String
-}
-
-type homecareSla {
-  id: ID
-  category: String
-  subCategory: String
-  hours: Float
-  days: Float
-}
-
-type homecareSlaSubCategory {
-  id: ID
-  category: String
-  subCategory: String
-  hours: Float
-  days: Float
-}
-
+# type homecareCasePagination {
+#   count: Int
+#   rows: [homecareCase]
+# }
+
+# type insuranceType {
+#   transferDate: Date
+#   insuranceDate: Date
+#   projectId: String
+#   units: String
+# }
+
+# type uploadSuccess {
+#   id: String
+#   filePath: String
+# }
+
+# type serviceDetailLogs {
+#   id: ID
+#   taskServiceId: String
+#   mainCategory: mainCategory
+#   subCategory: subCategory
+#   status: homecareCaseStatusMain
+#   mainStatusId: String
+#   taskServiceStatus: String
+#   responsiblePerson: employee
+#   appointmentDate: String
+#   appointmentTime: String
+#   appointmentDateRepair: String
+#   appointmentTimeRepair: String
+#   createdBy: employee
+#   createdAt: Date
+# }
+
+# type serviceCentralDetailLogs {
+#   id: ID
+#   taskServiceId: String
+#   mainCategory: mainCategory
+#   subCategory: subCategory
+#   status: homecareCaseStatusMain
+#   mainStatusId: String
+#   taskServiceStatus: String
+#   responsiblePerson: employee
+#   appointmentDate: String
+#   appointmentTime: String
+#   appointmentDateRepair: String
+#   appointmentTimeRepair: String
+#   createdBy: employee
+#   createdAt: Date
+# }
+
+# type File {
+#   fileName: String
+#   mimeType: String
+#   encoding: String
+# }
+
+# type Image {
+#   filename: String
+#   width: Int
+#   height: Int
+# }
+
+# input inputFile {
+#   file: String
+# }
+
+# input inputEntryformAttachment {
+#   filePath: String
+#   taskServiceDetailId: String
+# }
+
+# input inputEntryformAttachmentCentral {
+#   filePath: String
+#   taskServiceCenterDetailId: String
+# }
+
+# input inputEntryCaseUpdate {
+#   message: String
+#   taskServiceDetailId: String
+# }
+
+# input inputEntryCaseUpdateCentral {
+#   message: String
+#   taskServiceCenterDetailId: String
+# }
+
+# input InputInsurance {
+#   projectId: String
+#   units: String
+# }
+
+# input inputEntryServiceCentralCase {
+#   username: String
+#   project: String
+#   area: String
+#   building: String
+#   floor: String
+#   status: String
+#   informerName: String
+#   informerPhone: String
+#   detail: [inputEntryServiceCaseDetail]
+# }
+
+# input inputEntryServiceCentralCaseDetail {
+#   id: ID
+#   mainCategoryId: String
+#   subCategoryId: String
+#   mainStatusId: String
+#   detail: String
+#   responsiblePerson: String
+#   taskServiceStatus: String
+#   appointmentDate: String
+#   appointmentTime: String
+#   appointmentDateRepair: String
+#   appointmentTimeRepair: String
+# }
+
+# type serviceCount {
+#   countAll: String
+#   countAssign: String
+#   countOpen: String
+#   countInprocess: String
+#   countFinish: String
+#   countClose: String
+# }
+
+# type serviceCentralCount {
+#   countAll: String
+#   countAssign: String
+#   countOpen: String
+#   countInprocess: String
+#   countReInProcess: String
+#   countFinishByProject: String
+#   countFinish: String
+#   countClose: String
+# }
+
+# type onSuccess {
+#   status: String
+# }
+
+# type mainArea {
+#   id: String
+#   name: String
+#   areaType: String
+# }
+
+# type taskServiceCentral {
+#   id: ID
+#   serviceNumber: String
+#   project: ddlProject
+#   area: [mainArea]
+#   building: [mainArea]
+#   floor: [mainArea]
+#   informerName: String
+#   informerPhone: String
+#   status: homecareCaseStatusMain
+#   createdBy: employee
+#   createdAt: Date
+#   detail: [taskServiceCentralDetail]
+# }
+
+# type caseUpdate {
+#   message: String
+#   createdBy: employee
+#   createdAt: Date
+# }
+
+# type caseUpdateCentral {
+#   message: String
+#   createdBy: employee
+#   createdAt: Date
+# }
+
+# type mainFormAttachment {
+#   id: String
+#   filePath: String
+#   createdBy: employee
+#   createdAt: Date
+# }
+
+# type formAttachment {
+#   id: String
+#   filePath: String
+#   createdBy: employee
+#   createdAt: Date
+# }
+
+# type formAttachmentCentral {
+#   id: String
+#   filePath: String
+#   createdBy: employee
+#   createdAt: Date
+# }
+
+# type taskServiceCentralDetail {
+#   id: ID
+#   juristicPersonNo: String
+#   detail: String
+#   taskCentralServiceId: String
+#   mainCategory: mainCategory
+#   subCategory: subCategory
+#   status: homecareCaseStatusMain
+#   mainStatusId: String
+#   responsiblePerson: employee
+#   caseUpdate: [caseUpdateCentral]
+#   formAttachment: [formAttachmentCentral]
+#   mainFormAttachment: [formAttachmentCentral]
+#   appointmentDate: String
+#   appointmentTime: String
+#   appointmentDateRepair: String
+#   appointmentTimeRepair: String
+#   createdBy: employee
+#   createdAt: Date
+#   updatedBy: employee
+#   updatedAt: Date
+#   filesMore: [TaskCentralServiceDetailsToFiles]
+# }
+
+# type taskService {
+#   id: ID
+#   serviceNumber: String
+#   project: ddlProject
+#   unit: String
+#   fullName: String
+#   phone: String
+#   houseNumber: String
+#   status: homecareCaseStatusMain
+#   lastInsuranceDate: Date
+#   insuranceDateDefault: String
+#   transferDate: Date
+#   createdBy: employee
+#   createdAt: Date
+#   detail: [taskServiceDetail]
+# }
+
+# type taskServiceDetail {
+#   id: ID
+#   juristicPersonNo: String
+#   detail: String
+#   taskServiceId: String
+#   mainCategory: mainCategory
+#   subCategory: subCategory
+#   status: homecareCaseStatusMain
+#   mainStatusId: String
+#   taskServiceStatus: String
+#   responsiblePerson: employee
+#   appointmentDate: String
+#   appointmentTime: String
+#   appointmentDateRepair: String
+#   appointmentTimeRepair: String
+#   caseUpdate: [caseUpdate]
+#   formAttachment: [formAttachment]
+#   mainFormAttachment: [mainFormAttachment]
+#   createdBy: employee
+#   createdAt: Date
+#   updatedBy: employee
+#   updatedAt: Date
+# }
+
+# input inputEntryServiceCase {
+#   username: String
+#   project: String
+#   unit: String
+#   fullName: String
+#   phone: String
+#   houseNumber: String
+#   status: String
+#   checkInDate: Date
+#   checkInRangeTime: String
+#   repairDateFromCustomer: String
+#   detail: [inputEntryServiceCaseDetail]
+# }
+
+# input inputEntryServiceCaseDetail {
+#   id: ID
+#   mainCategoryId: String
+#   subCategoryId: String
+#   mainStatusId: String
+#   detail: String
+#   responsiblePerson: String
+#   taskServiceStatus: String
+#   appointmentDate: String
+#   appointmentTime: String
+#   appointmentDateRepair: String
+#   appointmentTimeRepair: String
+#   file: [Upload]
+# }
+
+# type serviceCentralCase {
+#   id: ID
+#   serviceNumber: String
+#   project: ddlProject
+#   area: String
+#   building: String
+#   floor: String
+#   informerName: String
+#   informerPhone: String
+#   status: homecareCaseStatusMain
+#   createdBy: employee
+#   createdAt: Date
+#   detail: [serviceCaseCentralDetail]
+# }
+
+# type serviceCaseCentralDetail {
+#   id: ID
+#   juristicPersonNo: String
+#   detail: String
+#   responsiblePerson: employee
+#   appointmentDate: String
+#   appointmentTime: String
+#   taskServiceStatus: String
+#   mainCategory: mainCategory
+#   subCategory: subCategory
+#   status: homecareCaseStatusMain
+#   createdBy: employee
+#   createdAt: Date
+#   updatedBy: employee
+#   updatedAt: Date
+# }
+
+# type serviceCase {
+#   id: ID
+#   serviceNumber: String
+#   project: ddlProject
+#   unit: String
+#   fullName: String
+#   phone: String
+#   status: homecareCaseStatusMain
+#   checkInDate: Date
+#   checkInRangeTime: homecareRangeTime
+#   firstInDate: Date
+#   firstInRangeTime: homecareRangeTime
+#   createdBy: employee
+#   lastInsuranceDate: Date
+#   insuranceDateDefault: String
+#   transferDate: Date
+#   createdAt: Date
+#   detail: [serviceCaseDetail]
+# }
+
+# type serviceCaseDetail {
+#   id: ID
+#   juristicPersonNo: String
+#   detail: String
+#   responsiblePerson: employee
+#   appointmentDate: String
+#   appointmentTime: homecareRangeTime
+#   appointmentDateRepair: String
+#   appointmentTimeRepair: homecareRangeTime
+#   taskServiceStatus: homecareCaseStatusDetail
+#   taskServiceId: String
+#   mainCategoryId: mainCategory
+#   subCategoryId: subCategory
+#   createdBy: employee
+#   createdAt: Date
+# }
+
+# input inputPiority {
+#   id: ID
+#   casePiority: Int
+#   detailNumber: String
+# }
+
+# type HomecareCaseUnInsuring {
+#   id: Int
+#   owner: String
+#   units: String
+#   project: String
+# }
+
+# """test5"""
+# type homecareCount {
+#   countAll: String
+#   countPending: String
+#   countOpen: String
+#   countChecking: String
+#   countInprogress: String
+#   countFinish: String
+#   filterInsuringRoom: String
+#   filterUnderInsuringRoom: String
+# }
+
+# input inputAddCase {
+#   caseNumber: String
+#   mainId: String
+#   id: String
+#   textCategory: String
+#   textSubCategory: String
+#   category: String
+#   subcategory: String
+#   sublist: String
+#   description: String
+#   status: String
+#   homecareName: String
+#   homecareInDate: Date
+#   homecareRangeTime: String
+#   assignInDate: Date
+#   assignRangeTime: String
+#   homecareStatus: String
+#   reasonStatus: String
+#   checkDeatil: String
+#   singOwner: String
+#   listDefect: String
+#   causeId: ID
+#   remark: String
+#   slaId: ID
+# }
+
+# input inputEntryHomecareCase {
+#   username: String
+#   projectId: String
+#   units: String
+#   owner: String
+#   channel: String
+#   phoneOwner: String
+#   status: String
+#   checkInDate: Date
+#   checkInRangeTime: String
+#   repairDateFromCustomer: String
+#   detail: [inputEntryHomecareCaseDetail]
+# }
+
+# input inputEntryHomecareCaseDetail {
+#   id: String
+#   textCategory: String
+#   textSubCategory: String
+#   category: String
+#   subcategory: String
+#   sublist: String
+#   description: String
+#   status: String
+#   homecareName: String
+#   homecareInDate: Date
+#   homecareRangeTime: String
+#   assignInDate: Date
+#   assignRangeTime: String
+#   homecareStatus: String
+#   reasonStatus: String
+#   checkDeatil: String
+#   singOwner: String
+#   listDefect: String
+#   causeId: ID
+#   remark: String
+#   slaId: ID
+#   files: [inputhomecareFiles]
+#   contractor: String
+#   endOfJobDate: Date
+# }
+
+# input inputhomecareFiles {
+#   id: String
+#   idNumber: Int
+#   fileName: String
+#   fileType: String
+#   uri: String
+# }
+
+# input inputEntryHomecareAssign {
+#   id: String
+#   assignLogId: String
+#   detailId: String
+#   staffId: String
+#   sublistId: String
+#   requestDate: Date
+#   requestRangeTime: String
+#   sla: Int
+#   staffStatus: String
+#   caseStatus: String
+#   comment: String
+#   remark: String
+#   reAssignRemark: String
+#   finishType: String
+#   assetComment: String
+#   assetCustomerStatus: String
+#   customerName: String
+#   reAssignInDate: Date
+#   reAssignRangeTime: String
+#   files: [inputhomecareFiles]
+# }
+
+# input inputEntryHomecareReportLogs {
+#   callBackDate: Date
+#   checkInDate: Date
+#   checkInRangeTime: String
+#   remark: String
+#   detailId: String
+#   type: String
+#   filesMove: [inputHomecareAssignReportLogsToFiles]
+# }
+
+# input inputHomecareAssignReportLogsToFiles {
+#   fileId: String
+#   fileName: String
+#   fileFolder: String
+# }
+
+# input inputEntryHomecareAssignReportLogs {
+#   callBackDate: Date
+#   checkInDate: Date
+#   checkInRangeTime: String
+#   remark: String
+#   assignId: String
+#   type: String
+#   filesMove: [inputHomecareAssignReportLogsToFiles]
+# }
+
+# type homecareCase {
+#   id: ID
+#   caseNumber: String
+#   project: ddlProject
+#   units: String
+#   owner: String
+#   channel: homecareChannel
+#   phoneOwner: String
+#   status: homecareCaseStatusMain
+#   checkInDate: Date
+#   checkInDateService: String
+#   checkInRangeTime: homecareRangeTime
+#   firstInDate: Date
+#   firstInRangeTime: homecareRangeTime
+#   createdBy: employee
+#   lastInsuranceDate: Date
+#   insuranceDateDefault: String
+#   transferDate: Date
+#   createdAt: Date
+#   detail: [homecareCaseDetail]
+#   insurance: Boolean
+#   countDetail: Int
+#   detailShowExcell: String
+#   detailByDetailNumber(detailNumber: [String]): [homecareCaseDetail]
+# }
+
+# type homecareCasePending {
+#   count: Int
+#   rows: [homecareCase]
+# }
+
+# type testHomecareCaseDetail {
+#   id: ID
+#   mainId: String
+# }
+
+# type sysMasterProjects {
+#   id: ID
+#   name: String
+#   nameEng: String
+#   companyId: String
+#   projectStatus: String
+# }
+
+# type homecareCaseDetail {
+#   id: ID
+#   main: homecareCase
+#   detailNumber: String
+#   dateFinish: Date
+#   defaultCategory: homecareCategory
+#   defaultSubcategory: homecareCategory
+#   category: homecareCategory
+#   subcategory: homecareSubCategory
+#   # sublist: homecareSubList
+#   description: String
+#   assignList: [homecareAssign]
+#   status: homecareCaseStatusDetail
+#   homecareName: employee
+#   homecareInDate: Date
+#   homecareRangeTime: homecareRangeTime
+#   homecareStatus: homecareCaseStatusHomecare
+#   assignInDate: Date
+#   assignRangeTime: homecareRangeTime
+#   reasonStatus: String
+#   checkDeatil: String
+#   singOwner: String
+#   listDefect: String
+#   remark: String
+#   files: detailFile
+#   sla: homecareSla
+#   slaTelDate: Date
+#   cause: homecareCause
+#   csat: [homecareCsat]
+#   csatStatus: String
+#   reportLogs: [homecareReportLogs]
+#   assignLogs: [homecareAssignLogs]
+#   createdBy: employee
+#   createdAt: Date
+#   mainId: String
+#   FDate: Date
+#   SPDate: Date
+#   hcPhoneLog: [hcPhoneLogData]
+#   sla3: sla3
+# }
+
+# type piority {
+#   id: String
+#   name: String
+# }
+
+# type homecareAssign {
+#   id: ID
+#   detail: homecareCaseDetail
+#   assignNumber: String
+#   status: homecareCaseStatusAssign
+#   rank: String
+#   comment: String
+#   remark: String
+#   requestDate: Date
+#   requestRangeTime: homecareRangeTime
+#   # sublist: homecareSubList
+#   sla: Int
+#   staff: employee
+#   files: assignFile
+#   staffStatus: homecareCaseStatusStaff
+#   reAssignRemark: String
+#   finishType: String
+#   assetComment: String
+#   dateFinish: String
+#   assetCustomerStatus: String
+#   customerNameFinish: String
+#   reAssignInDate: Date
+#   slaStartDate: Date
+#   slaEndDate: Date
+#   homecareSlaWork: homecareSlaWork
+#   reAssignRangeTime: homecareRangeTime
+#   logs: [homecareAssignLogs]
+# }
+
+# type homecareAssignLogs {
+#   id: ID
+#   assignId: String
+#   detail: homecareCaseDetail
+#   status: homecareCaseStatusAssign
+#   rank: String
+#   comment: String
+#   remark: String
+#   requestDate: Date
+#   requestRangeTime: homecareRangeTime
+#   # sublist: homecareSubList
+#   sla: Int
+#   staff: employee
+#   files: assignFile
+#   staffStatus: homecareCaseStatusStaff
+# }
+
+# type homecareReportLogs {
+#   id: ID
+#   createdAt: Date
+#   callBackDate: Date
+#   checkInDate: Date
+#   checkInRangeTime: String
+#   remark: String
+#   detailId: String
+#   type: String
+#   filesMore: [HomecareAssignReportLogsToFiles]
+# }
+
+# type homecareCaseStatusMain {
+#   id: String
+#   name: String
+#   labelThai: String
+#   labelEng: String
+#   color: String
+#   bgColor: String
+# }
+
+# type homecareCaseStatusDetail {
+#   id: String
+#   name: String
+#   labelThai: String
+#   labelEng: String
+#   color: String
+#   bgColor: String
+# }
+
+# type homecareCaseStatusHomecare {
+#   id: String
+#   name: String
+#   labelThai: String
+#   labelEng: String
+#   color: String
+#   bgColor: String
+# }
+
+# type homecareCaseStatusAssign {
+#   id: String
+#   name: String
+#   labelThai: String
+#   labelEng: String
+#   color: String
+#   bgColor: String
+# }
+
+# type homecareCaseStatusStaff {
+#   id: String
+#   name: String
+#   labelThai: String
+#   labelEng: String
+#   color: String
+#   bgColor: String
+# }
+
+# type homecareCaseStatus {
+#   id: String
+#   name: String
+#   labelThai: String
+#   labelEng: String
+#   color: String
+#   bgColor: String
+# }
+
+# type detailFile {
+#   id: ID
+#   detailId: String
+#   owner: [homecareImage]
+#   homecare: [homecareImage]
+# }
+
+# type assignFile {
+#   id: ID
+#   assignId: String
+#   assignBefore: [homecareImage]
+#   assignProtect: [homecareImage]
+#   assignDoing: [homecareImage]
+#   assignFinish: [homecareImage]
+#   signature: [homecareImage]
+#   assignUploadFinishCustomer: [homecareImage]
+# }
+
+# type homecareImage {
+#   id: String
+#   detailId: String
+#   assignId: String
+#   fileName: String
+#   fileType: String
+#   fileExtension: String
+#   isShow: Boolean
+# }
+
+# type homecareRangeTime {
+#   id: String
+#   name: String
+#   label: String
+# }
+
+# type homecareChannel {
+#   id: String
+#   name: String
+# }
+
+# type homecareSlaWork {
+#   id: String
+#   status: String
+#   overTime: Float
+# }
+
+# type homecarePerformance {
+#   id: ID
+#   homecareId: String
+#   homecareName: employee
+#   countWork: Float
+#   status: homecareCaseStatusDetail
+# }
+
+# type homecareNewPerformance {
+#   id: ID
+#   caseNumber: String
+#   resPerson: String
+#   subHcStatus: String
+# }
+
+# type dataCaseGroupByUnitProj {
+#   id: ID
+#   OpenCase: String
+#   channelReq: String
+#   projectId: String
+#   caseNumber: String
+#   projectName: String
+#   custName: String
+#   Phone: String
+#   unitNo: String
+#   hNo: String
+#   subWork: String
+#   descr: String
+#   caseStatus: String
+#   subHcStatus: String
+#   HcStatus: String
+#   slaHour: String
+#   resPerson: String
+#   feedBack: String
+#   Q1: String
+#   Q2: String
+#   Q3: String
+#   Q4: String
+#   createdAt: Date
+#   StartProcessDate: Date
+#   slaTelDate: Date
+#   dateFinish: String
+#   SLA1: String
+#   SLA2: String
+#   SLA1_S: String
+#   SLA2_S: String
+#   type: String
+#   ttype: String
+#   remark: String
+#   dCurOpen: String
+#   hCurOpen: String
+#   casePiority: piority
+#   isPiority: String
+#   total: Int
+# }
+
+# type dataSLA {
+#   id: String
+#   pjName: String
+#   empName: String
+#   cSLA1: String
+#   cSLA1_S: String
+#   perSLA1: String
+#   cSLA2: String
+#   cSLA2_S: String
+#   perSLA2: String
+#   cSLA3: String
+#   cSLA3_S: String
+#   perSLA3: String
+# }
+
+# type dataCsat {
+#   id: String
+#   pjName: String
+#   cQ1: String
+#   cQ2: String
+#   sQ1: String
+#   sQ2: String
+#   avgQ1: String
+#   avgQ2: String
+#   cCase: String
+# }
+
+# type dataNitiServiceByUnitProj {
+#   id: ID
+#   serviceNumber: String
+#   project: String
+#   unit: String
+#   fullName: String
+#   phone: String
+#   houseNumber: String
+#   status: String
+#   transferDate: Date
+#   nameThai: String
+#   tsdId: String
+#   juristicPersonNo: String
+#   detail: String
+#   responsiblePerson: String
+#   responName: String
+#   appointmentDate: Date
+#   appointmentTime: String
+#   appointmentDateRepair: String
+#   appointmentTimeRepair: String
+#   taskServiceStatus: String
+#   mainCategoryId: String
+#   mcName: String
+#   subCategoryId: String
+#   scName: String
+#   SLA: String
+#   mainStatusId: String
+#   msName: String
+#   tsdAssignDate: Date
+#   tsdInProcessDate: Date
+#   tsdFinishDate: Date
+#   SLA1: String
+#   SLA1_S: String
+#   lastestRemark: String
+#   dCurOpen: String
+#   hCurOpen: String
+#   createdAt: Date
+# }
+
+# type dataNitiServiceCentralByUnitProj {
+#   id: ID
+#   serviceNumber: String
+#   project: String
+#   areaType: String
+#   name: String
+#   seq: String
+#   building: String
+#   floor: String
+#   informerName: String
+#   status: String
+#   createdBy: String
+#   updatedBy: String
+#   createdAt: Date
+#   juristicPersonNo: String
+#   detail: String
+#   responsiblePerson: String
+#   responName: String
+#   appointmentDate: Date
+#   appointmentTime: String
+#   appointmentDateRepair: String
+#   appointmentTimeRepair: String
+#   taskCentralServiceId: String
+#   mainCategoryId: String
+#   mcName: String
+#   subCategoryId: String
+#   scName: String
+#   SLA: String
+#   mainStatusId: String
+#   msName: String
+#   assignDate: Date
+#   inProcessDate: Date
+#   reProcessDate: Date
+#   finishDate: Date
+#   closeDate: Date
+#   lastestRemark: String
+#   dCurOpen: String
+#   hCurOpen: String
+#   SLA1: String
+#   SLA1_S: String
+#   SLA2: String
+#   SLA2_S: String
+# }
+
+# type dataMainArea {
+#   id: ID
+#   name: String
+#   areaType: String
+#   seq: String
+# }
+
+# type sla3 {
+#   days: String
+#   status: String
+#   color: String
+# }
+
+# type area {
+#   id: String
+#   name: String
+#   areaType: String
+# }
+
+# type homecareNitiSubCategory {
+#   id: String
+#   name: String
+#   SLA: Int
+#   mainCategoryId: String
+#   mainCategory: homecareNitiCategory
+# }
+
+# type homecareNitiCategory {
+#   id: String
+#   name: String
+#   mainMenuId: String
+#   mainMenu: mainMenu
+# }
+
+# type mainMenu {
+#   id: String
+#   name: String
+# }
+
+# type homecareNitiStatus {
+#   id: String
+#   name: String
+#   mainMenuId: String
+#   mainMenu: mainMenu
+# }
+
+# type mainCategory {
+#   id: String
+#   name: String
+# }
+
+# type subCategory {
+#   id: String
+#   name: String
+#   SLA: Int
+# }
+
+# type homecareNiti {
+#   id: String
+#   name: String
+#   mainMenuId: String
+#   mainCategory: mainCategory
+# }
+
+# type homecareSlaCategory {
+#   id: String
+#   category: String
+# }
+
+# type homecareSla {
+#   id: ID
+#   category: String
+#   subCategory: String
+#   hours: Float
+#   days: Float
+# }
+
+# type homecareSlaSubCategory {
+#   id: ID
+#   category: String
+#   subCategory: String
+#   hours: Float
+#   days: Float
+# }
+
+"""หัวข้อหลักการตรวจ"""
 type homecareCategory {
   id: String
   nameThai: String
   nameEng: String
   subCategory: [homecareSubCategory]
-  categoryId: String
+  # categoryId: String
   seq: Int
 }
 
+"""หัวข้อย่อยการตรวจ"""
 type homecareSubCategory {
   id: String
   nameThai: String
   nameEng: String
   category: homecareCategory
-  subList: [homecareSubList]
+  # subList: [homecareSubList]
 }
 
-type homecareSubList {
-  id: String
-  nameThai: String
-  nameEng: String
-  category: homecareCategory
-  subCategory: homecareSubCategory
-}
+# type homecareSubList {
+#   id: String
+#   nameThai: String
+#   nameEng: String
+#   category: homecareCategory
+#   subCategory: homecareSubCategory
+# }
 
-type mainStatus {
-  id: String
-  name: String
-}
+# type mainStatus {
+#   id: String
+#   name: String
+# }
 
-type homecareCaseDetailCount {
-  count: Int
-  rows: [homecareCaseDetail]
-}
+# type homecareCaseDetailCount {
+#   count: Int
+#   rows: [homecareCaseDetail]
+# }
 
-type homecareCause {
-  id: ID
-  nameThai: String
-  nameEng: String
-}
+# type homecareCause {
+#   id: ID
+#   nameThai: String
+#   nameEng: String
+# }
 
-type homecareCaseDetailCsat {
-  count: Int
-  rows: [homecareCaseDetail]
-}
+# type homecareCaseDetailCsat {
+#   count: Int
+#   rows: [homecareCaseDetail]
+# }
 
-input inputHomecareCsat {
-  mainId: ID
-  detailId: ID
-  csatQuestionId: ID
-  score: Float
-  remark: String
-}
+# input inputHomecareCsat {
+#   mainId: ID
+#   detailId: ID
+#   csatQuestionId: ID
+#   score: Float
+#   remark: String
+# }
 
-type homecareCsatDetail {
-  id: String
-  mainId: String
-  main: homecareCase
-  detailNumber: String
-  dateFinish: String
-  status: homecareCaseStatusAssign
-  homecareCase: String
-  description: String
-  remark: String
-}
+# type homecareCsatDetail {
+#   id: String
+#   mainId: String
+#   main: homecareCase
+#   detailNumber: String
+#   dateFinish: String
+#   status: homecareCaseStatusAssign
+#   homecareCase: String
+#   description: String
+#   remark: String
+# }
 
-type sadsadsadsa {
-  id: String
-}
+# type sadsadsadsa {
+#   id: String
+# }
 
-type homecareCsat {
-  id: ID
-  mainId: ID
-  detailId: ID
-  csatQuestionId: ID
-  score: String
-}
+# type homecareCsat {
+#   id: ID
+#   mainId: ID
+#   detailId: ID
+#   csatQuestionId: ID
+#   score: String
+# }
 
-type homecareCsatQuestion {
-  id: ID
-  seq: Int
-  wordThai: String
-  wordEng: String
-  wordOther: String
-  maxScore: Float
-  defaultScore: Float
-}
+# type homecareCsatQuestion {
+#   id: ID
+#   seq: Int
+#   wordThai: String
+#   wordEng: String
+#   wordOther: String
+#   maxScore: Float
+#   defaultScore: Float
+# }
 
-type hcPhoneLogData {
-  id: String
-  caseId: String
-  detailCaseId: String
-  detailCaseNumber: String
-  caseNumber: String
-  detailCall1: String
-  detailCall2: String
-  detailCall3: String
-  dateCall1: Date
-  dateCall2: Date
-  dateCall3: Date
-  createdBy: String
-  updatedBy: String
-}
+# type hcPhoneLogData {
+#   id: String
+#   caseId: String
+#   detailCaseId: String
+#   detailCaseNumber: String
+#   caseNumber: String
+#   detailCall1: String
+#   detailCall2: String
+#   detailCall3: String
+#   dateCall1: Date
+#   dateCall2: Date
+#   dateCall3: Date
+#   createdBy: String
+#   updatedBy: String
+# }
 
-input inputHcPhoneLog {
-  id: String
-  caseId: String
-  detailCaseId: String
-  detailCaseNumber: String
-  caseNumber: String
-  detailCall1: String
-  detailCall2: String
-  detailCall3: String
-  dateCall1: String
-  dateCall2: String
-  dateCall3: String
-  createdBy: String
-  updatedBy: String
-}
+# input inputHcPhoneLog {
+#   id: String
+#   caseId: String
+#   detailCaseId: String
+#   detailCaseNumber: String
+#   caseNumber: String
+#   detailCall1: String
+#   detailCall2: String
+#   detailCall3: String
+#   dateCall1: String
+#   dateCall2: String
+#   dateCall3: String
+#   createdBy: String
+#   updatedBy: String
+# }
 
-type listIds {
-  id: String
-}
+# type listIds {
+#   id: String
+# }
 
-type hcCaseData {
-  id: String
-  projectId: String
-  projectName: String
-  type: String
-  ttype: String
-  unitNo: String
-  hNo: String
-  custName: String
-  Phone: String
-  cadate: String
-  OpenCase: String
-  ReqCaseDate: Date
-  channelReq: String
-  assignDate: Date
-  caseNumber: String
-  subWork: String
-  descr: String
-  caseStatus: String
-  subHcStatus: String
-  HcStatus: String
-  slaHour: String
-  resPerson: String
-  feedBack: String
-  Q1: String
-  Q2: String
-  Q3: String
-  Q4: String
-  nitiRecReq: String
-  StartProcessDate: Date
-  SPDate: Date
-  slaTelDate: Date
-  dateFinish: String
-  FDate: Date
-  SLA1: String
-  SLA2: String
-  SLA1_S: String
-  SLA2_S: String
-  remark: String
-  lastInsuranceDate: Date
-  hCurOpen: String
-  dCurOpen: String
-  casePiority: String
-  isPiority: String
-  RN: String
-  AppointDate: Date
-  assignList: [homecareAssign]
-  listId: listIds
-  mainCase: homecareCase
-  detailCase: homecareCaseDetail
-}
+# type hcCaseData {
+#   id: String
+#   projectId: String
+#   projectName: String
+#   type: String
+#   ttype: String
+#   unitNo: String
+#   hNo: String
+#   custName: String
+#   Phone: String
+#   cadate: String
+#   OpenCase: String
+#   ReqCaseDate: Date
+#   channelReq: String
+#   assignDate: Date
+#   caseNumber: String
+#   subWork: String
+#   descr: String
+#   caseStatus: String
+#   subHcStatus: String
+#   HcStatus: String
+#   slaHour: String
+#   resPerson: String
+#   feedBack: String
+#   Q1: String
+#   Q2: String
+#   Q3: String
+#   Q4: String
+#   nitiRecReq: String
+#   StartProcessDate: Date
+#   SPDate: Date
+#   slaTelDate: Date
+#   dateFinish: String
+#   FDate: Date
+#   SLA1: String
+#   SLA2: String
+#   SLA1_S: String
+#   SLA2_S: String
+#   remark: String
+#   lastInsuranceDate: Date
+#   hCurOpen: String
+#   dCurOpen: String
+#   casePiority: String
+#   isPiority: String
+#   RN: String
+#   AppointDate: Date
+#   assignList: [homecareAssign]
+#   listId: listIds
+#   mainCase: homecareCase
+#   detailCase: homecareCaseDetail
+# }
 
-type homecareLineToken {
-  id: ID
-  type: String
-  status: String
-  projectId: String
-  token: String
-}
+# type homecareLineToken {
+#   id: ID
+#   type: String
+#   status: String
+#   projectId: String
+#   token: String
+# }
 
-type reportSLA3 {
-  count: reportSLA3Count
-  data: reportSLA3Data
-}
+# type reportSLA3 {
+#   count: reportSLA3Count
+#   data: reportSLA3Data
+# }
 
-type reportSLA3Data {
-  imminent: [reportSLA3Details]
-  fail: [reportSLA3Details]
-}
+# type reportSLA3Data {
+#   imminent: [reportSLA3Details]
+#   fail: [reportSLA3Details]
+# }
 
-type reportSLA3Details {
-  id: String
-  caseNumber: String
-  projectId: String
-  unitNumber: String
-  houseNumber: String
-  daysStart: Int
-  daysWork: Int
-  status: String
-}
+# type reportSLA3Details {
+#   id: String
+#   caseNumber: String
+#   projectId: String
+#   unitNumber: String
+#   houseNumber: String
+#   daysStart: Int
+#   daysWork: Int
+#   status: String
+# }
 
-type reportSLA3Count {
-  imminent: Int
-  fail: Int
-}
+# type reportSLA3Count {
+#   imminent: Int
+#   fail: Int
+# }
 
-type HomecareCaseToContractor {
-  id: ID!
-  name: String!
-  type: String!
-  description: String
-  status: String!
-  createBy: employee!
-  updateBy: employee!
-  createdAt: String!
-  updatedAt: String!
-}
+# type HomecareCaseToContractor {
+#   id: ID!
+#   name: String!
+#   type: String!
+#   description: String
+#   status: String!
+#   createBy: employee!
+#   updateBy: employee!
+#   createdAt: String!
+#   updatedAt: String!
+# }
 
-input InputHomecareCaseToContractor {
-  id: ID
-  name: String!
-  type: String!
-  description: String
-  status: String!
-}
+# input InputHomecareCaseToContractor {
+#   id: ID
+#   name: String!
+#   type: String!
+#   description: String
+#   status: String!
+# }
 
-input TaskCentralServiceDetailsToFilesInput {
-  taskCentralServiceDetailsId: String
-  fileId: String
-  fileName: String
-  fileFolder: String
-}
+# input TaskCentralServiceDetailsToFilesInput {
+#   taskCentralServiceDetailsId: String
+#   fileId: String
+#   fileName: String
+#   fileFolder: String
+# }
 
-type TaskCentralServiceDetailsToFiles {
-  id: ID
-  taskCentralServiceDetailsId: String
-  fileId: String
-  fileName: String
-  fileFolder: String
-  createdBy: employee
-  updatedBy: employee
-  createdAt: Date
-  updatedAt: Date
-}
+# type TaskCentralServiceDetailsToFiles {
+#   id: ID
+#   taskCentralServiceDetailsId: String
+#   fileId: String
+#   fileName: String
+#   fileFolder: String
+#   createdBy: employee
+#   updatedBy: employee
+#   createdAt: Date
+#   updatedAt: Date
+# }
 
-type HomecareAssignReportLogsToFiles {
-  id: ID
-  homecareReportLogsId: String
-  fileId: String
-  fileName: String
-  fileFolder: String
-}
+# type HomecareAssignReportLogsToFiles {
+#   id: ID
+#   homecareReportLogsId: String
+#   fileId: String
+#   fileName: String
+#   fileFolder: String
+# }
 
-type HomecareCaseDetailPagination {
-  totalCount: Int
-  edges: [HomecareCaseDetailPaginationEdge]
-  pageInfo: HomecareCaseDetailPaginationPageInfo
-}
+# type HomecareCaseDetailPagination {
+#   totalCount: Int
+#   edges: [HomecareCaseDetailPaginationEdge]
+#   pageInfo: HomecareCaseDetailPaginationPageInfo
+# }
 
-type HomecareCaseDetailPaginationPageInfo {
-  hasNextPage: Boolean
-  hasPreviousPage: Boolean
-  startCursor: String
-  endCursor: String
-}
+# type HomecareCaseDetailPaginationPageInfo {
+#   hasNextPage: Boolean
+#   hasPreviousPage: Boolean
+#   startCursor: String
+#   endCursor: String
+# }
 
-type HomecareCaseDetailPaginationEdge {
-  node: homecareCaseDetail
-  cursor: String
-}
+# type HomecareCaseDetailPaginationEdge {
+#   node: homecareCaseDetail
+#   cursor: String
+# }
