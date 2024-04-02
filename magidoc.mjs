@@ -20,7 +20,6 @@ export default {
       // You need to specify the base path of your github pages root
       // Example: `/magidoc`
       // siteRoot: '/demo-magidoc',
-      siteRoot: " https://origin-property.github.io/demo-magidoc/",
     },
   },
 };
