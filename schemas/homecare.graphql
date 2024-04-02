@@ -90,16 +90,37 @@ type Query {
   # allHomecareSubListNoAuth: [homecareSubList]
   # allHomecareCaseCustomer(startDate: String, endDate: String, fullName: String, projectId: String, unitNumber: String): [homecareCase]
   # allHomecareCaseCustomerFinish(startDate: String, endDate: String, fullName: String, projectId: String, unitNumber: String): [homecareCase]
-  # allHomecareCasePrimoplus(projectId: String, unitNumber: String): [homecareCase]
+
+  """รับรายการแจ้งซ่อมทั้งหมด ของห้องที่เลือก"""
+  allHomecareCasePrimoplus(
+    """รหัสโครงการ เช่น PRK01"""
+    projectId: String,
+    """หมายเลขห้อง เช่น A101"""
+    unitNumber: String
+  ): [homecareCase]
+
   # getHomecareCasePrimoplusNoti(projectId: String, units: String): [homecareCase]
-  # getHomecareCasePrimoplus(id: String): homecareCase
+
+  """รับรายการแจ้งซ่อม จาก id ของเคสหลัก"""
+  getHomecareCasePrimoplus(id: String): homecareCase
   # myHomecareAssign(projectId: String, status: String, offset: String, startDate: String): [homecareCaseDetail]
   # myHomecareAssignFinish(projectId: String): [homecareCaseDetail]
   # myHomecareAssignById(id: ID): homecareCaseDetail
   # myHomecareAssignNew(projectId: String, status: String, startDate: String, unit: String, offset: Int, limit: Int, remark: String): homecareCaseDetailCount
   # myHomecareAssignFinishNew(projectId: String, offset: Int, limit: Int): homecareCaseDetailCount
   # allHomecareCause: [homecareCause]
-  # allHomecareCsatQuestion: [homecareCsatQuestion]
+
+  """รับคำถามที่ใช้ในการประเมินสำหรับลูกค้า"""
+  allHomecareCsatQuestion: [homecareCsatQuestion]
+
+  """รับข้อมูลวันหยุดของพนักงาน"""
+  getCalendarIsWeekendByLength(
+    """วันที่ค้นหาเริ่มต้น รูปแบบ 'YYYY-MM-DD'"""
+    startDate: String,
+    """วันที่ค้นหาสิ้นสุด รูปแบบ 'YYYY-MM-DD'"""
+    endDate: String
+  ): [calendarWeekends]
+
   # allHomecareCsat(offset: Int, limit: Int, rangeTime: [String]): homecareCaseDetailCsat
   # allHcPhoneLog: [hcPhoneLogData]
   # getHcPhoneLog(detailCaseId: String!): hcPhoneLogData
@@ -121,8 +142,14 @@ type Query {
 }
 
 type Mutation {
-  addName: String
-  # createHomecareCase(input: inputEntryHomecareCase): homecareCase
+  # addName: String
+
+  """เพิ่มรายการแจ้งซ่อม"""
+  createHomecareCase(
+    """ชุดข้อมูลที่ลูกค้าเพิ่มรายการแจ้งซ่อม"""
+    input: inputEntryHomecareCase
+  ): homecareCase
+
   # updateInsuranceDate(id: ID, insuranceDate: String): homecareCase
   # updateStatusHomecare(id: ID, status: String, type: String): homecareCase
   # updateHomecareCaseDetail(input: inputEntryHomecareCaseDetail): homecareCaseDetail
@@ -147,7 +174,17 @@ type Mutation {
   # updateSlaHomecareTel(id: ID): homecareAssign
   # updateSlaHomecareStartWork(id: ID): homecareAssign
   # updateSlaHomecareEndWork(id: ID): homecareAssign
-  # createCsat(detailId: ID!, input: [inputHomecareCsat]!, remark: String): [homecareCsat]
+
+  """ทำประเมินความพึงพอใจของลูกค้า"""
+  createCsat(
+    """id ของเคสย่อย"""
+    detailId: ID!,
+    """ชุดข้อมูลที่ลูกค้าทำประเมิน"""
+    input: [inputHomecareCsat]!,
+    """ชมเชย/เสนอแนะ"""
+    remark: String
+  ): [homecareCsat]
+
   # updateHomecareCsatClose(id: String, status: String, remark: String): homecareCaseDetail
   # updateHomecareCsatCloseAll(id: [String], status: String, remark: String): homecareCaseDetail
   # createHcPhoneLog(dtInput: inputHcPhoneLog): hcPhoneLogData
@@ -189,6 +226,18 @@ type ddlProject {
   projectNameThai: String
   ProjectStatus: String
   ProjectType: String
+}
+
+"""วันหยุดพนักงาน"""
+type calendarWeekends {
+  id: ID
+  date: Date
+  title: String
+  description: String
+  # createdAt: Date
+  # updatedAt: Date
+  # createdBy: employee
+  # updatedBy: employee
 }
 
 # type homecareCasePagination {
@@ -601,54 +650,72 @@ type ddlProject {
 #   slaId: ID
 # }
 
-# input inputEntryHomecareCase {
-#   username: String
-#   projectId: String
-#   units: String
-#   owner: String
-#   channel: String
-#   phoneOwner: String
-#   status: String
-#   checkInDate: Date
-#   checkInRangeTime: String
-#   repairDateFromCustomer: String
-#   detail: [inputEntryHomecareCaseDetail]
-# }
+"""ชุดข้อมูลที่ลูกค้าเพิ่มรายการแจ้งซ่อม"""
+input inputEntryHomecareCase {
+  # username: String
+  """รหัสโครงการ เช่น PRK01"""
+  projectId: String
+  """หมายเลขห้อง เช่น A101"""
+  units: String
+  """ชื่อ-สกุลเจ้าของห้อง"""
+  owner: String
+  """ช่องทางที่แจ้ง ของ primoplus ระบุเป็น '05'"""
+  channel: String
+  """เบอร์โทรศัพท์เจ้าของห้อง"""
+  phoneOwner: String
+  # status: String
+  """วันที่เข้าตรวจ รูปแบบ 'YYYY-MM-DD HH:mm:ss'"""
+  checkInDate: String
+  """ช่วงเวลาที่เข้าตรวจ เช่น '10-11'"""
+  checkInRangeTime: String
+  # repairDateFromCustomer: String
+  """รายการแจ้งซ่อม"""
+  detail: [inputEntryHomecareCaseDetail]
+}
 
-# input inputEntryHomecareCaseDetail {
-#   id: String
-#   textCategory: String
-#   textSubCategory: String
-#   category: String
-#   subcategory: String
-#   sublist: String
-#   description: String
-#   status: String
-#   homecareName: String
-#   homecareInDate: Date
-#   homecareRangeTime: String
-#   assignInDate: Date
-#   assignRangeTime: String
-#   homecareStatus: String
-#   reasonStatus: String
-#   checkDeatil: String
-#   singOwner: String
-#   listDefect: String
-#   causeId: ID
-#   remark: String
-#   slaId: ID
-#   files: [inputhomecareFiles]
-#   contractor: String
-#   endOfJobDate: Date
-# }
+"""รายการแจ้งซ่อม"""
+input inputEntryHomecareCaseDetail {
+  """กำหนดเป็น UUIDv4"""
+  id: String
+  # textCategory: String
+  # textSubCategory: String
+  """id ของ category"""
+  category: String
+  """id ของ subcategory"""
+  subcategory: String
+  # sublist: String
+  """รายละเอียดเพิ่มเติม"""
+  description: String
+  # status: String
+  # homecareName: String
+  # homecareInDate: Date
+  # homecareRangeTime: String
+  # assignInDate: Date
+  # assignRangeTime: String
+  # homecareStatus: String
+  # reasonStatus: String
+  # checkDeatil: String
+  # singOwner: String
+  # listDefect: String
+  # causeId: ID
+  # remark: String
+  # slaId: ID
+  """รูปภาพแนบประกอบ"""
+  files: [inputhomecareFiles]
+  # contractor: String
+  # endOfJobDate: Date
+}
 
-# input inputhomecareFiles {
-#   id: String
-#   idNumber: Int
-#   fileName: String
-#   fileType: String
-#   uri: String
-# }
+"""รูปภาพแนบประกอบ"""
+input inputhomecareFiles {
+  """กำหนดเป็น UUIDv4 เช่น """
+  id: String
+  # idNumber: Int
+  """ชื่อไฟล์รูปที่ upload เช่น {{UUIDv4}}.jpg"""
+  fileName: String
+  # fileType: String
+  # uri: String
+}
 
 # input inputEntryHomecareAssign {
 #   id: String
@@ -699,31 +766,38 @@ type ddlProject {
 #   filesMove: [inputHomecareAssignReportLogsToFiles]
 # }
 
-# type homecareCase {
-#   id: ID
-#   caseNumber: String
-#   project: ddlProject
-#   units: String
-#   owner: String
-#   channel: homecareChannel
-#   phoneOwner: String
-#   status: homecareCaseStatusMain
-#   checkInDate: Date
-#   checkInDateService: String
-#   checkInRangeTime: homecareRangeTime
-#   firstInDate: Date
-#   firstInRangeTime: homecareRangeTime
-#   createdBy: employee
-#   lastInsuranceDate: Date
-#   insuranceDateDefault: String
-#   transferDate: Date
-#   createdAt: Date
-#   detail: [homecareCaseDetail]
-#   insurance: Boolean
-#   countDetail: Int
-#   detailShowExcell: String
-#   detailByDetailNumber(detailNumber: [String]): [homecareCaseDetail]
-# }
+"""รายละเอียดเคสหลัก"""
+type homecareCase {
+  id: ID
+  """หมายเลขเคสหลัก"""
+  caseNumber: String
+  # project: ddlProject
+  # units: String
+  # owner: String
+  # channel: homecareChannel
+  # phoneOwner: String
+  """สถานะของเคสหลัก"""
+  status: homecareCaseStatusMain
+  """วันที่รับบริการ"""
+  checkInDate: Date
+  # checkInDateService: String
+  """ช่วงเวลาที่รับบริการ"""
+  checkInRangeTime: homecareRangeTime
+  # firstInDate: Date
+  # firstInRangeTime: homecareRangeTime
+  # createdBy: employee
+  # lastInsuranceDate: Date
+  # insuranceDateDefault: String
+  # transferDate: Date
+  """วันที่แจ้งซ่อม"""
+  createdAt: Date
+  """รายการแจ้งซ่อม"""
+  detail: [homecareCaseDetail]
+  # insurance: Boolean
+  # countDetail: Int
+  # detailShowExcell: String
+  # detailByDetailNumber(detailNumber: [String]): [homecareCaseDetail]
+}
 
 # type homecareCasePending {
 #   count: Int
@@ -743,80 +817,99 @@ type ddlProject {
 #   projectStatus: String
 # }
 
-# type homecareCaseDetail {
-#   id: ID
-#   main: homecareCase
-#   detailNumber: String
-#   dateFinish: Date
-#   defaultCategory: homecareCategory
-#   defaultSubcategory: homecareCategory
-#   category: homecareCategory
-#   subcategory: homecareSubCategory
-#   # sublist: homecareSubList
-#   description: String
-#   assignList: [homecareAssign]
-#   status: homecareCaseStatusDetail
-#   homecareName: employee
-#   homecareInDate: Date
-#   homecareRangeTime: homecareRangeTime
-#   homecareStatus: homecareCaseStatusHomecare
-#   assignInDate: Date
-#   assignRangeTime: homecareRangeTime
-#   reasonStatus: String
-#   checkDeatil: String
-#   singOwner: String
-#   listDefect: String
-#   remark: String
-#   files: detailFile
-#   sla: homecareSla
-#   slaTelDate: Date
-#   cause: homecareCause
-#   csat: [homecareCsat]
-#   csatStatus: String
-#   reportLogs: [homecareReportLogs]
-#   assignLogs: [homecareAssignLogs]
-#   createdBy: employee
-#   createdAt: Date
-#   mainId: String
-#   FDate: Date
-#   SPDate: Date
-#   hcPhoneLog: [hcPhoneLogData]
-#   sla3: sla3
-# }
+"""รายการแจ้งซ่อมเคสย่อย"""
+type homecareCaseDetail {
+  id: ID
+  """รายการเคสหลัก"""
+  main: homecareCase
+  """หมายเลขเคสย่อย"""
+  detailNumber: String
+  # dateFinish: Date
+  # defaultCategory: homecareCategory
+  # defaultSubcategory: homecareCategory
+  """หัวข้อหลักการตรวจ"""
+  category: homecareCategory
+  """หัวข้อย่อยการตรวจ"""
+  subcategory: homecareSubCategory
+  # # sublist: homecareSubList
+  """รายละเอียดเพิ่มเติม"""
+  description: String
+  """รายละเอียดขั้นตอนการตรวจของ Homecare"""
+  assignList: [homecareAssign]
+  """สถานะของเคสย่อย"""
+  status: homecareCaseStatusDetail
+  """ข้อมูลพนักงานที่รับผิดชอบ"""
+  homecareName: employee
+  """วันที่ตรวจสอบหน้างาน"""
+  homecareInDate: Date
+  """ช่วงเวลาที่ตรวจสอบหน้างาน"""
+  homecareRangeTime: homecareRangeTime
+  """สถานะที่พนักงานเข้าตรวจ"""
+  homecareStatus: homecareCaseStatusHomecare
+  # assignInDate: Date
+  # assignRangeTime: homecareRangeTime
+  # reasonStatus: String
+  # checkDeatil: String
+  # singOwner: String
+  # listDefect: String
+  # remark: String
+  """รูปภาพประกอบ"""
+  files: detailFile
+  # sla: homecareSla
+  # slaTelDate: Date
+  # cause: homecareCause
+  """ข้อมูลที่ลูกค้าทำประเมิน"""
+  csat: [homecareCsat]
+  """สถานะที่ลูกค้าทำประเมิน"""
+  csatStatus: String
+  # reportLogs: [homecareReportLogs]
+  # assignLogs: [homecareAssignLogs]
+  # createdBy: employee
+  # createdAt: Date
+  # mainId: String
+  # FDate: Date
+  # SPDate: Date
+  # hcPhoneLog: [hcPhoneLogData]
+  # sla3: sla3
+}
 
 # type piority {
 #   id: String
 #   name: String
 # }
 
-# type homecareAssign {
-#   id: ID
-#   detail: homecareCaseDetail
-#   assignNumber: String
-#   status: homecareCaseStatusAssign
-#   rank: String
-#   comment: String
-#   remark: String
-#   requestDate: Date
-#   requestRangeTime: homecareRangeTime
-#   # sublist: homecareSubList
-#   sla: Int
-#   staff: employee
-#   files: assignFile
-#   staffStatus: homecareCaseStatusStaff
-#   reAssignRemark: String
-#   finishType: String
-#   assetComment: String
-#   dateFinish: String
-#   assetCustomerStatus: String
-#   customerNameFinish: String
-#   reAssignInDate: Date
-#   slaStartDate: Date
-#   slaEndDate: Date
-#   homecareSlaWork: homecareSlaWork
-#   reAssignRangeTime: homecareRangeTime
-#   logs: [homecareAssignLogs]
-# }
+"""ลำดับขั้นตอนการทำงาน ของพนักงาน"""
+type homecareAssign {
+  id: ID
+  """รายละเอียดเคสย่อย"""
+  detail: homecareCaseDetail
+  # assignNumber: String
+  """สถานะของขั้นตอนนั้นๆ"""
+  status: homecareCaseStatusAssign
+  # rank: String
+  # comment: String
+  # remark: String
+  # requestDate: Date
+  # requestRangeTime: homecareRangeTime
+  # sublist: homecareSubList
+  # sla: Int
+  # staff: employee
+  """รูปภาพประกอบ"""
+  files: assignFile
+  # staffStatus: homecareCaseStatusStaff
+  # reAssignRemark: String
+  # finishType: String
+  # assetComment: String
+  # dateFinish: String
+  # assetCustomerStatus: String
+  # customerNameFinish: String
+  # reAssignInDate: Date
+  # slaStartDate: Date
+  # slaEndDate: Date
+  # homecareSlaWork: homecareSlaWork
+  # reAssignRangeTime: homecareRangeTime
+  # logs: [homecareAssignLogs]
+}
 
 # type homecareAssignLogs {
 #   id: ID
@@ -847,41 +940,45 @@ type ddlProject {
 #   filesMore: [HomecareAssignReportLogsToFiles]
 # }
 
-# type homecareCaseStatusMain {
-#   id: String
-#   name: String
-#   labelThai: String
-#   labelEng: String
-#   color: String
-#   bgColor: String
-# }
+"""สถานะของเคสหลัก"""
+type homecareCaseStatusMain {
+  id: String
+  name: String
+  labelThai: String
+  labelEng: String
+  color: String
+  bgColor: String
+}
 
-# type homecareCaseStatusDetail {
-#   id: String
-#   name: String
-#   labelThai: String
-#   labelEng: String
-#   color: String
-#   bgColor: String
-# }
+"""สถานะของเคสย่อย"""
+type homecareCaseStatusDetail {
+  id: String
+  name: String
+  labelThai: String
+  labelEng: String
+  color: String
+  bgColor: String
+}
 
-# type homecareCaseStatusHomecare {
-#   id: String
-#   name: String
-#   labelThai: String
-#   labelEng: String
-#   color: String
-#   bgColor: String
-# }
+"""สถานะที่พนักงานเข้าตรวจ"""
+type homecareCaseStatusHomecare {
+  id: String
+  name: String
+  labelThai: String
+  labelEng: String
+  color: String
+  bgColor: String
+}
 
-# type homecareCaseStatusAssign {
-#   id: String
-#   name: String
-#   labelThai: String
-#   labelEng: String
-#   color: String
-#   bgColor: String
-# }
+"""สถานะของขั้นตอนการทำงาน"""
+type homecareCaseStatusAssign {
+  id: String
+  name: String
+  labelThai: String
+  labelEng: String
+  color: String
+  bgColor: String
+}
 
 # type homecareCaseStatusStaff {
 #   id: String
@@ -901,39 +998,53 @@ type ddlProject {
 #   bgColor: String
 # }
 
-# type detailFile {
-#   id: ID
-#   detailId: String
-#   owner: [homecareImage]
-#   homecare: [homecareImage]
-# }
+"""รูปภาพประกอบ"""
+type detailFile {
+  id: ID
+  """id ของเคสย่อย"""
+  detailId: String
+  """รูปภาพของเจ้าของห้อง"""
+  owner: [homecareImage]
+  """รูปภาพที่เจ้าหน้าที่ส่ง"""
+  homecare: [homecareImage]
+}
 
-# type assignFile {
-#   id: ID
-#   assignId: String
-#   assignBefore: [homecareImage]
-#   assignProtect: [homecareImage]
-#   assignDoing: [homecareImage]
-#   assignFinish: [homecareImage]
-#   signature: [homecareImage]
-#   assignUploadFinishCustomer: [homecareImage]
-# }
+"""รูปภาพประกอบ"""
+type assignFile {
+  id: ID
+  # assignId: String
+  """รูปภาพก่อนทำงาน (Before)"""
+  assignBefore: [homecareImage]
+  """รูปภาพการป้องกันความเสียหาย (Protection)"""
+  assignProtect: [homecareImage]
+  """รูปภาพระหว่างทำงาน (Doing)"""
+  assignDoing: [homecareImage]
+  """รูปภาพหลังทำงานเสร็จ (Finish)"""
+  assignFinish: [homecareImage]
+  # signature: [homecareImage]
+  # assignUploadFinishCustomer: [homecareImage]
+}
 
-# type homecareImage {
-#   id: String
-#   detailId: String
-#   assignId: String
-#   fileName: String
-#   fileType: String
-#   fileExtension: String
-#   isShow: Boolean
-# }
+"""รูปภาพประกอบ"""
+type homecareImage {
+  id: String
+  """id ของเคสย่อย"""
+  detailId: String
+  # assignId: String
+  """ชื่อไฟล์รูป"""
+  fileName: String
+  # fileType: String
+  # fileExtension: String
+  """แสดงหรือไม่แสดง"""
+  isShow: Boolean
+}
 
-# type homecareRangeTime {
-#   id: String
-#   name: String
-#   label: String
-# }
+"""ช่วงเวลา"""
+type homecareRangeTime {
+  id: String
+  name: String
+  label: String
+}
 
 # type homecareChannel {
 #   id: String
@@ -1245,13 +1356,19 @@ type homecareSubCategory {
 #   rows: [homecareCaseDetail]
 # }
 
-# input inputHomecareCsat {
-#   mainId: ID
-#   detailId: ID
-#   csatQuestionId: ID
-#   score: Float
-#   remark: String
-# }
+"""ชุดข้อมูลที่ลูกค้าทำประเมิน"""
+input inputHomecareCsat {
+  """id ของเคสหลัก"""
+  mainId: ID
+  """id ของเคสย่อย"""
+  detailId: ID
+  """id ของคำถาม"""
+  csatQuestionId: ID
+  """คะแนนที่ลูกค้าให้ 1-5"""
+  score: Float
+  """หมายเหตุ"""
+  remark: String
+}
 
 # type homecareCsatDetail {
 #   id: String
@@ -1269,23 +1386,29 @@ type homecareSubCategory {
 #   id: String
 # }
 
-# type homecareCsat {
-#   id: ID
-#   mainId: ID
-#   detailId: ID
-#   csatQuestionId: ID
-#   score: String
-# }
+"""ข้อมูลที่ลูกค้าทำประเมิน"""
+type homecareCsat {
+  id: ID
+  """id ของเคสหลัก"""
+  mainId: ID
+  """id ของเคสย่อย"""
+  detailId: ID
+  """id ของคำถาม"""
+  csatQuestionId: ID
+  """คะแนนที่ลูกค้าให้ 1-5"""
+  score: String
+}
 
-# type homecareCsatQuestion {
-#   id: ID
-#   seq: Int
-#   wordThai: String
-#   wordEng: String
-#   wordOther: String
-#   maxScore: Float
-#   defaultScore: Float
-# }
+"""คำถามที่ใช้ในการประเมิน"""
+type homecareCsatQuestion {
+  id: ID
+  seq: Int
+  wordThai: String
+  wordEng: String
+  wordOther: String
+  maxScore: Float
+  defaultScore: Float
+}
 
 # type hcPhoneLogData {
 #   id: String
