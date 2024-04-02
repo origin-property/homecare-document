@@ -1,0 +1,15 @@
+version: "3.9"
+
+services:
+  app:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    restart: always
+    networks:
+      - demo-magidoc
+    ports:
+      - 3000:3000
+
+networks:
+  demo-magidoc:
