@@ -1037,6 +1037,8 @@ type homecareImage {
   # fileExtension: String
   """แสดงหรือไม่แสดง"""
   isShow: Boolean
+  """วันที่ทำรายการ"""
+  createdAt: Date
 }
 
 """ช่วงเวลา"""
