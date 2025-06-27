@@ -141,6 +141,28 @@ type Query {
     endDate: String
   ): [calendarWeekends]
 
+  """
+  ปฏิทินวันหยุดของพนักงานและวันที่ตรวจสอบซ่อมที่เลือกเต็มวัน
+  """
+  getHomecareCalendarDurationDate(
+    """
+    รหัสโครงการ เช่น SOR02
+    """
+    projectId: String!
+    """
+    หมายเลขห้อง เช่น z1421
+    """
+    unitNumber: String!
+    """
+    วันที่ค้นหาเริ่มต้น รูปแบบ 'YYYY-MM-DD' เช่น 2025-06-28
+    """
+    startDate: String!
+    """
+    วันที่ค้นหาสิ้นสุด รูปแบบ 'YYYY-MM-DD' เช่น 2025-06-28
+    """
+    endDate: String!
+  ): [calendarWeekends]
+
   # allHomecareCsat(offset: Int, limit: Int, rangeTime: [String]): homecareCaseDetailCsat
   # allHcPhoneLog: [hcPhoneLogData]
   # getHcPhoneLog(detailCaseId: String!): hcPhoneLogData
@@ -175,7 +197,7 @@ type Query {
     """
     วันที่ตรวจสอบซ่อม รูปแบบ 'YYYY-MM-DD' เช่น 2025-06-28
     """
-    checkInDate: Date!
+    checkInDate: String!
   ): [homecareDurationTimeRange]
 }
 
@@ -1815,17 +1837,25 @@ type homecareDurationTimeRange {
   """
   id ของช่วงเวลา
   """
-  id: ID!
+  id: ID
   """
   ชื่อภาษาอังกฤษ
   """
-  nameEn: String!
+  nameEn: String
   """
   ชื่อภาษาไทย
   """
-  nameTh: String!
+  nameTh: String
   """
   สถานะการใช้งาน
   """
-  disabled: Boolean!
+  disabled: Boolean
+  """
+  เวลาเริ่มต้น
+  """
+  timeRangeStart: Int
+  """
+  เวลาสิ้นสุด
+  """
+  timeRangeEnd: Int
 }
