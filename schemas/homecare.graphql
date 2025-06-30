@@ -144,7 +144,7 @@ type Query {
   """
   ปฏิทินวันหยุดของพนักงานและวันที่ตรวจสอบซ่อมที่เลือกเต็มวัน
   """
-  getHomecareCalendarDurationDate(
+  getHomecareCalendars(
     """
     รหัสโครงการ เช่น SOR02
     """
@@ -185,7 +185,7 @@ type Query {
   """
   ช่วงเวลาเข้าตรวจสอบซ่อมในระบบตามวันที่ตรวจสอบซ่อมที่เลือก
   """
-  getHomecareDurationTimeRange(
+  getHomecareTimeRanges(
     """
     รหัสโครงการ เช่น SOR02
     """
@@ -198,7 +198,7 @@ type Query {
     วันที่ตรวจสอบซ่อม รูปแบบ 'YYYY-MM-DD' เช่น 2025-06-28
     """
     checkInDate: String!
-  ): [homecareDurationTimeRange]
+  ): [homecareTimeRange]
 }
 
 type Mutation {
@@ -1833,7 +1833,7 @@ type homecareCsatQuestion {
 #   cursor: String
 # }
 
-type homecareDurationTimeRange {
+type homecareTimeRange {
   """
   id ของช่วงเวลา
   """
@@ -1853,9 +1853,9 @@ type homecareDurationTimeRange {
   """
   เวลาเริ่มต้น
   """
-  timeRangeStart: Int
+  start: Int
   """
   เวลาสิ้นสุด
   """
-  timeRangeEnd: Int
+  end: Int
 }
