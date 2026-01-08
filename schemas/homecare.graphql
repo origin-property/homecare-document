@@ -17,7 +17,7 @@ enum AssessmentStatus {
     NOT_EVALUATED
 
     """
-    ยังไม่ต้องประเมิน
+    ยังไม่เข้าเงื่อนการประเมิน
     """
     NOT_REQUIRED
 }
