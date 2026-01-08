@@ -1,1861 +1,4867 @@
-type Query {
-  # name: String
-  # allHomecareCasePagination(startDate: String, endDate: String, projectIds: [String], status: [String], isInsur: String, search: String, offset: Int, limit: Int): homecareCasePagination
-  # allHomecareCase(startDate: String, endDate: String, projectIds: [String], status: [String], isInsur: String): [homecareCase]
-  # allHomecareCasePending(status: String, search: String, offset: Int, limit: Int): homecareCasePending
-  # allHomecareCaseWaitForApproval(search: String, offset: Int, limit: Int): homecareCasePending
-  # allHomecareCaseDetailForward(projectIds: [String], year: String, month: String): [homecareCaseDetail]
-  # allHomecareCaseDetailOpen(projectIds: [String], year: String, month: String): [homecareCaseDetail]
-  # allHomecareCaseDetailClose(projectIds: [String], year: String, month: String): [homecareCaseDetail]
-  # allHomecareCaseDetailRemain(projectIds: [String], year: String, month: String): [homecareCaseDetail]
-  # allHomecareCaseNoAuth(startDate: String, endDate: String): [homecareCase]
-  # allHomecareCaseExpiredInsuranse(startDate: String, endDate: String, projectId: [String]): [homecareCase]
-  # getHomecareStatus: [homecareCaseStatus]
-  # getProject(projectId: String): ddlProject
-  # myHomecareCheckingCase(projectId: String, status: String): [homecareCaseDetail]
-  # myHomecareCheckingCaseById(id: String): homecareCaseDetail
-  # allHomeCareEmployee: [employee]
-  # myAssignCase(projectId: String, status: String): [homecareAssign]
-  # myAssignCaseById(id: String): homecareAssign
-  # getHomecarePerformance(sDate: String, eDate: String): [homecareNewPerformance]
-  # allHomecareCaseDetailAppr(startDate: String, endDate: String, projectIds: [String]): [testHomecareCaseDetail]
-  # allSysMasterProjects: [sysMasterProjects]
-  # getProjectsToConnect(projectId: String): [sysMasterProjects]
-  # getHomecareCase(projectId: String): [homecareCase]
-  # allRoomHomecareCase(units: String, caseNumber: String, projectId: [String]): [homecareCase]
-  # rpCaseGroupByUnitProj(projectIds: [String]): [dataCaseGroupByUnitProj]
-  # rpOpencase(projectIds: [String]): [dataCaseGroupByUnitProj]
-  # getHomecareBacklogUnit(projectIds: [String]): [dataCaseGroupByUnitProj]
-  # getHomecareBacklogCsatUnit(projectIds: [String]): [dataCaseGroupByUnitProj]
-  # getHomecareEmpSla(empName: [String]): [dataCaseGroupByUnitProj]
-  # getHomecareEmpCsat(empName: [String]): [dataCaseGroupByUnitProj]
-  # getHomecareBacklog(projectId: String): [dataCaseGroupByUnitProj]
-  # getHomecareBacklogByProjectId(projectId: String): [dataCaseGroupByUnitProj]
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
 
-  # """test"""
-  # allConntHomecareCase(
-  #   """test2"""
-  #   startDate: String
-
-  #   """test3"""
-  #   endDate: String
-
-  #   """test4"""
-  #   projectIds: [String]
-  # ): homecareCount
-
-  # allHomecareCaseInsuring(search: String): [HomecareCaseUnInsuring]
-  # allHomecareCaseUnInsuring: [HomecareCaseUnInsuring]
-  # allHomecareCaseTest: [homecareCase]
-  # getHomecareTransferAndInsurance(input: InputInsurance): insuranceType
-  # getHomecareSlaRp(projectIds: [String], slaType: String, mMonth: [String], rPType: String, empId: [String]): [dataSLA]
-  # getHomecareCsatRp(projectIds: [String], mMonth: [String], rPType: String, empId: [String]): [dataCsat]
-  # allNitiServiceCase(startDate: String, endDate: String, projectId: [String]): [taskService]
-  # allNitiServiceCentralCase(startDate: String, endDate: String, projectId: [String]): [taskServiceCentral]
-  # allConntServiceCase(startDate: String, endDate: String, projectIds: [String]): serviceCount
-  # allConntServiceCentralCase(startDate: String, endDate: String, projectIds: [String]): serviceCentralCount
-  # getServiceDetailLog(id: String): [serviceDetailLogs]
-  # getServiceCentralDetailLog(id: String): [serviceCentralDetailLogs]
-  # rpNitiServiceByUnitProj(projectIds: [String]): [dataNitiServiceByUnitProj]
-  # rpNitiServiceCentralByUnitProj(projectIds: [String]): [dataNitiServiceCentralByUnitProj]
-  # centerAllNitiServiceCase(search: String, offset: Int, limit: Int): [taskService]
-  # centerAllNitiServiceCentralCase(search: String, offset: Int, limit: Int): [taskServiceCentral]
-  # allMainArea: [dataMainArea]
-  # getMainAreaById(areaId: String): [dataMainArea]
-  # allHomeCareEmployeeRespService: [employee]
-  # allHomeCareEmployeeRespCentralService: [employee]
-  # gethomecareCaseDetailById(mainId: String): [homecareCaseDetail]
-  # pushHomecareLineNotify: [homecareCaseDetail]
-  # pushHomecareLineNotifySLA3: [homecareCaseDetail]
-
-  """
-  รับหัวข้อการตรวจทั้งหมด
-  """
-  allHomecareCategory: [homecareCategory]
-
-  """
-  รับหัวข้อย่อยการตรวจทั้งหมด
-  """
-  allHomecareSubCategory: [homecareSubCategory]
-
-  # allHomecareSubList: [homecareSubList]
-  # allHomecareSLACategory: [homecareSlaCategory]
-  # allHomecareSLASubCategory(category: String): [homecareSlaSubCategory]
-  # getHomecareSubCategory(categoryId: String): [homecareSubCategory]
-  # allHomecareNiti: [homecareNiti]
-  # allHomecareNitiStatus: [homecareNitiStatus]
-  # allHomecareNitiCategory: [homecareNitiCategory]
-  # allHomecareNitiSubCategory: [homecareNitiSubCategory]
-  # allHomeCareNitiArea: [area]
-  # getHomecareCategoryByIds(ids: [String]): [homecareCategory]
-  # getHomecareSubCategoryByIds(ids: [String]): [homecareSubCategory]
-  # allHomecareCategoryNoAuth: [homecareCategory]
-  # allHomecareSubCategoryNoAuth: [homecareSubCategory]
-  # allHomecareSubListNoAuth: [homecareSubList]
-  # allHomecareCaseCustomer(startDate: String, endDate: String, fullName: String, projectId: String, unitNumber: String): [homecareCase]
-  # allHomecareCaseCustomerFinish(startDate: String, endDate: String, fullName: String, projectId: String, unitNumber: String): [homecareCase]
-
-  """
-  รับรายการแจ้งซ่อมทั้งหมด ของห้องที่เลือก
-  """
-  allHomecareCasePrimoplus(
+"""
+สถานะการประเมิน
+"""
+enum AssessmentStatus {
     """
-    รหัสโครงการ เช่น PRK01
+    ประเมินแล้ว
+    """
+    EVALUATED
+
+    """
+    ยังไม่ได้ประเมิน
+    """
+    NOT_EVALUATED
+
+    """
+    ยังไม่ต้องประเมิน
+    """
+    NOT_REQUIRED
+}
+
+input AssignRoleInput {
+    """
+    รหัส Role
+    """
+    roleId: ID!
+
+    """
+    รหัสผู้ใช้งาน
+    """
+    userId: ID!
+}
+
+input AssignRolesInput {
+    """
+    รหัส Roles
+    """
+    roleIds: [ID!]!
+
+    """
+    รหัสผู้ใช้งาน
+    """
+    userId: ID!
+}
+
+type Calendar {
+    """
+    วันที่
+    """
+    date: Date
+
+    """
+    คำอธิบาย
+    """
+    description: String
+    id: ID!
+
+    """
+    ชื่อ
+    """
+    title: String
+}
+
+type Calling {
+    """
+    วันที่นัดเข้าซ่อม
+    """
+    appointmentRepairAt: Date
+
+    """
+    ช่วงเวลานัดเข้าซ่อม
+    """
+    appointmentRepairRangeTime: Option
+
+    """
+    ผลการติดต่อ
+    """
+    callResult: CallingResult
+
+    """
+    สถานะการติดต่อ
+    """
+    callStatus: CallingStatus
+
+    """
+    ประเภทการติดต่อ
+    """
+    callType: CallingType
+
+    """
+    วันที่ติดต่อ
+    """
+    calledAt: Date
+
+    """
+    วันที่ติดต่อกลับ
+    """
+    calledBackAt: Date
+    createdAt: Date
+
+    """
+    ผู้สร้าง
+    """
+    createdBy: User
+    deletedAt: Date
+
+    """
+    ผู้ลบ
+    """
+    deletedBy: User
+    id: ID!
+
+    """
+    วันที่เข้าตรวจสอบ
+    """
+    inspectionAt: Date
+
+    """
+    ช่วงเวลาตรวจสอบ
+    """
+    inspectionRangeTime: Option
+
+    """
+    การติดต่อเคสย่อย
+    """
+    isRepair: Boolean!
+
+    """
+    งานซ่อมย่อยที่มี SOP
+    """
+    isSop: Boolean!
+
+    """
+    การติดต่อเคสหลัก
+    """
+    isTask: Boolean!
+
+    """
+    เหตุผล
+    """
+    reason: Master
+
+    """
+    เหตุผล
+    """
+    reasonId: String
+
+    """
+    รหัสเคสหลักหรือเคสย่อย
+    """
+    refId: String!
+
+    """
+    หมายเหตุ
+    """
+    remark: String
+
+    """
+    งานซ่อม
+    """
+    repair: Repair
+
+    """
+    SOP
+    """
+    sop: RepairSop
+
+    """
+    รหัส SOP
+    """
+    sopId: String
+
+    """
+    เคสหลัก
+    """
+    task: Task
+    updatedAt: Date
+
+    """
+    ผู้แก้ไข
+    """
+    updatedBy: User
+}
+
+"""
+ผลการติดต่อลูกค้า
+"""
+enum CallingResult {
+    """
+    นัดลูกค้าได้
+    """
+    APPOINTMENT
+
+    """
+    ลูกค้าไม่สะดวก
+    """
+    NOT_CONVENIENT
+}
+
+"""
+สถานะการติดต่อลูกค้า
+"""
+enum CallingStatus {
+    """
+    ก่อนเข้าตรวจสอบ
+    """
+    BEFORE_INSPECTION
+
+    """
+    ก่อนเข้าซ่อม
+    """
+    BEFORE_REPAIR
+
+    """
+    เข้าซ่อม
+    """
+    REPAIR
+}
+
+"""
+ประเภทการติดต่อลูกค้า
+"""
+enum CallingType {
+    """
+    ติดต่อลูกค้าได้
+    """
+    CALL
+
+    """
+    ติดต่อลูกค้าไม่ได้
+    """
+    NOT_CALL
+
+    """
+    อื่นๆ
+    """
+    OTHER
+}
+
+type Consent {
+    """
+    วันที่ให้ความยินยอม
+    """
+    consentedAt: Date!
+
+    """
+    วันที่สร้าง
+    """
+    createdAt: Date!
+
+    """
+    วันที่ลบ
+    """
+    deletedAt: Date
+
+    """
+    อีเมล
+    """
+    email: String
+
+    """
+    ชื่อ
+    """
+    firstname: String
+
+    """
+    Consent ID
+    """
+    id: String!
+
+    """
+    เลขบัตรประชาชน
+    """
+    idCard: String
+
+    """
+    นามสกุล
+    """
+    lastname: String
+
+    """
+    รหัสสมาชิก
+    """
+    memberId: String
+
+    """
+    เลขที่หนังสือเดินทาง
+    """
+    passport: String
+
+    """
+    รหัสโครงการ
+    """
+    projectId: String!
+
+    """
+    แหล่งที่มาของข้อมูล
+    """
+    source: String!
+
+    """
+    เบอร์โทรศัพท์
+    """
+    telephone: String
+
+    """
+    รหัสยูนิต
+    """
+    unitId: String
+
+    """
+    เลขที่ยูนิต
+    """
+    unitNumber: String!
+
+    """
+    วันที่อัพเดท
+    """
+    updatedAt: Date!
+
+    """
+    รหัสผู้ใช้งาน
+    """
+    userId: String
+}
+
+input CreateCallingInput {
+    """
+    วันที่นัดเข้าซ่อม
+    """
+    appointmentRepairAt: Date
+
+    """
+    ช่วงเวลานัดเข้าซ่อม
+    """
+    appointmentRepairRangeTime: String
+
+    """
+    ผลการติดต่อ
+    """
+    callResult: CallingResult
+
+    """
+    สถานะการติดต่อ
+    """
+    callStatus: CallingStatus
+
+    """
+    ประเภทการติดต่อ
+    """
+    callType: CallingType
+
+    """
+    วันที่ติดต่อกลับ
+    """
+    calledBackAt: Date
+    deletedAt: Date
+
+    """
+    วันที่เข้าตรวจสอบ
+    """
+    inspectionAt: Date
+
+    """
+    ช่วงเวลาตรวจสอบ
+    """
+    inspectionRangeTime: String
+
+    """
+    การติดต่อเคสย่อย
+    """
+    isRepair: Boolean = false
+
+    """
+    งานซ่อมย่อยที่มี SOP
+    """
+    isSop: Boolean = false
+
+    """
+    การติดต่อเคสหลัก
+    """
+    isTask: Boolean = false
+
+    """
+    เหตุผล
+    """
+    reasonId: String
+
+    """
+    รหัสเคสหลักหรือเคสย่อย
+    """
+    refId: String
+
+    """
+    หมายเหตุ
+    """
+    remark: String
+
+    """
+    รหัส SOP
+    """
+    sopId: String
+}
+
+input CreateConsentInput {
+    """
+    อีเมล
+    """
+    email: String
+
+    """
+    ชื่อ
+    """
+    firstname: String
+
+    """
+    เลขบัตรประชาชน
+    """
+    idCard: String
+
+    """
+    นามสกุล
+    """
+    lastname: String
+
+    """
+    รหัสสมาชิก
+    """
+    memberId: String
+
+    """
+    เลขที่หนังสือเดินทาง
+    """
+    passport: String
+
+    """
+    รหัสโครงการ
     """
     projectId: String
+
     """
-    หมายเลขห้อง เช่น A101
+    แหล่งที่มาของข้อมูล
+    """
+    source: String
+
+    """
+    เบอร์โทรศัพท์
+    """
+    telephone: String
+
+    """
+    รหัสยูนิต
+    """
+    unitId: String
+
+    """
+    เลขที่ยูนิต
     """
     unitNumber: String
-  ): [homecareCase]
 
-  # getHomecareCasePrimoplusNoti(projectId: String, units: String): [homecareCase]
+    """
+    รหัสผู้ใช้งาน
+    """
+    userId: String
+}
 
-  """
-  รับรายการแจ้งซ่อม จาก id ของเคสหลัก
-  """
-  getHomecareCasePrimoplus(id: String): homecareCase
-  # myHomecareAssign(projectId: String, status: String, offset: String, startDate: String): [homecareCaseDetail]
-  # myHomecareAssignFinish(projectId: String): [homecareCaseDetail]
-  # myHomecareAssignById(id: ID): homecareCaseDetail
-  # myHomecareAssignNew(projectId: String, status: String, startDate: String, unit: String, offset: Int, limit: Int, remark: String): homecareCaseDetailCount
-  # myHomecareAssignFinishNew(projectId: String, offset: Int, limit: Int): homecareCaseDetailCount
-  # allHomecareCause: [homecareCause]
+input CreateCsatCallingInput {
+    """
+    วันที่โทร
+    """
+    calledAt: Date
+    deletedAt: Date
 
-  """
-  รับคำถามที่ใช้ในการประเมินสำหรับลูกค้า
-  """
-  allHomecareCsatQuestion: [homecareCsatQuestion]
+    """
+    รายละเอียดการโทร
+    """
+    description: String
 
-  """
-  รับข้อมูลวันหยุดของพนักงาน
-  """
-  getCalendarIsWeekendByLength(
     """
-    วันที่ค้นหาเริ่มต้น รูปแบบ 'YYYY-MM-DD'
+    รหัสซ่อม
     """
-    startDate: String
-    """
-    วันที่ค้นหาสิ้นสุด รูปแบบ 'YYYY-MM-DD'
-    """
-    endDate: String
-  ): [calendarWeekends]
+    repairId: String
 
-  """
-  ปฏิทินวันหยุดของพนักงานและวันที่ตรวจสอบซ่อมที่เลือกเต็มวัน
-  """
-  getHomecareCalendars(
     """
-    รหัสโครงการ เช่น SOR02
+    รหัสงาน
+    """
+    taskId: String
+}
+
+input CreateCsatInput {
+    children: [CreateCsatInput!]
+    comment: String
+    deletedAt: Date
+    questionId: String
+    repairId: String
+    score: Int
+}
+
+input CreateFileInput {
+    """
+    Bucket ของไฟล์
+    """
+    fileBucket: String
+
+    """
+    นามสกุลไฟล์
+    """
+    fileExtension: String
+
+    """
+    โฟลเดอร์ไฟล์
+    """
+    fileFolder: String
+
+    """
+    รหัสไฟล์
+    """
+    fileId: String
+
+    """
+    ชื่อไฟล์
+    """
+    fileName: String
+
+    """
+    พาธไฟล์
+    """
+    filePath: String
+
+    """
+    ประเภทไฟล์
+    """
+    fileType: String
+
+    """
+    สามารถเข้าถึงได้ทั่วไปหรือไม่
+    """
+    isPublic: Boolean = true
+}
+
+input CreateJuristicCentralInput {
+    areaId: String
+    buildingId: String
+
+    """
+    ชื่อผู้แจ้งซ่อม
+    """
+    customerName: String
+
+    """
+    เบอร์โทรผู้แจ้งซ่อม
+    """
+    customerPhone: String
+    floorId: String
+
+    """
+    รหัสโครงการ
     """
     projectId: String!
-    """
-    หมายเลขห้อง เช่น z1421
-    """
-    unitNumber: String!
-    """
-    วันที่ค้นหาเริ่มต้น รูปแบบ 'YYYY-MM-DD' เช่น 2025-06-28
-    """
-    startDate: String!
-    """
-    วันที่ค้นหาสิ้นสุด รูปแบบ 'YYYY-MM-DD' เช่น 2025-06-28
-    """
-    endDate: String!
-  ): [calendarWeekends]
 
-  # allHomecareCsat(offset: Int, limit: Int, rangeTime: [String]): homecareCaseDetailCsat
-  # allHcPhoneLog: [hcPhoneLogData]
-  # getHcPhoneLog(detailCaseId: String!): hcPhoneLogData
-  # getHomecarePhoneLogByCaseId(caseId: ID!): [hcPhoneLogData]
-  # getHcCaseOpenByProject(projectId: String!): [hcCaseData]
-  # getHomecareCalendar: [hcCaseData]
-  # allHomecareCaseDetailByUserId: [homecareCaseDetail]
-  # allhomecareLineToken: [homecareLineToken]
-  # getReportSLA3(projectId: String): reportSLA3
-  # allHomecareCaseByCaseNumber(caseNumber: [String]): [homecareCase]
-  # allHomecareCaseToContractors: [HomecareCaseToContractor]
-  # allHomecareCaseToContractorWithSearch(searchText: String): [HomecareCaseToContractor]
-  # getTaskCentralServiceDetailsToFilesByTaskCentralServiceDetailsId(taskCentralServiceDetailsId: String): [TaskCentralServiceDetailsToFiles]
-  # getHomecareReportLogsToFilesByIds(ids: [String]): [HomecareAssignReportLogsToFiles]
-  # allTotalMyHomecareAssignById: Int
-  # allTotalCloseMyHomecareAssignById: Int
-  # getHomecareCaseByMeWithLoadMore(projectId: String, status: String, day: Date, units: String, limit: Int, remark: String, after: String): HomecareCaseDetailPagination
-  # getHomecareCaseByMeFilterStatusFinishWithLoadMore(projectId: String, limit: Int, after: String): HomecareCaseDetailPagination
-
-  """
-  ช่วงเวลาเข้าตรวจสอบซ่อมในระบบตามวันที่ตรวจสอบซ่อมที่เลือก
-  """
-  getHomecareTimeRanges(
     """
-    รหัสโครงการ เช่น SOR02
+    งานซ่อมย่อย
+    """
+    repairs: [CreateJuristicCentralRepairInput!]
+}
+
+input CreateJuristicCentralRepairInput {
+    """
+    รหัสประเภท
+    """
+    categoryId: String
+
+    """
+    รายละเอียด
+    """
+    description: String
+
+    """
+    ไฟล์
+    """
+    files: [CreateFileInput!]!
+
+    """
+    รหัสประเภทย่อย
+    """
+    subCategoryId: String
+}
+
+input CreateJuristicServiceInput {
+    """
+    ชื่อผู้แจ้งซ่อม
+    """
+    customerName: String
+
+    """
+    เบอร์โทรผู้แจ้งซ่อม
+    """
+    customerPhone: String
+
+    """
+    รหัสโครงการ
     """
     projectId: String!
+
     """
-    หมายเลขห้อง เช่น z1421
+    งานซ่อมย่อย
+    """
+    repairs: [CreateJuristicServiceRepairInput!]
+
+    """
+    เลขห้อง
     """
     unitNumber: String!
+}
+
+input CreateJuristicServiceRepairInput {
     """
-    วันที่ตรวจสอบซ่อม รูปแบบ 'YYYY-MM-DD' เช่น 2025-06-28
+    รหัสประเภท
     """
-    checkInDate: String!
-  ): [homecareTimeRange]
+    categoryId: String
+
+    """
+    รายละเอียด
+    """
+    description: String
+
+    """
+    ไฟล์
+    """
+    files: [CreateFileInput!]!
+
+    """
+    รหัสประเภทย่อย
+    """
+    subCategoryId: String
+}
+
+input CreateMasterInput {
+    """
+    รหัส
+    """
+    code: String
+    deletedAt: Date
+
+    """
+    คำอธิบายภาษาอังกฤษ
+    """
+    descriptionEn: String
+
+    """
+    คำอธิบายภาษาไทย
+    """
+    descriptionTh: String
+
+    """
+    ไอคอน
+    """
+    icon: String
+
+    """
+    สถานะ
+    """
+    isActive: Boolean = true
+
+    """
+    สำหรับประเภทอื่นๆ
+    """
+    isOther: Boolean = false
+
+    """
+    ชื่อภาษาอังกฤษ
+    """
+    nameEn: String
+
+    """
+    ชื่อภาษาไทย
+    """
+    nameTh: String
+
+    """
+    รหัสหลัก
+    """
+    parentId: String
+
+    """
+    ลำดับ
+    """
+    sequence: Int = 1
+
+    """
+    ระยะเวลาการตอบกลับ (วัน)
+    """
+    sla1D: Int
+
+    """
+    ระยะเวลาการตอบกลับ (นาที)
+    """
+    sla1H: Int
+
+    """
+    ระยะเวลาการตอบกลับ (วัน)
+    """
+    sla2D: Int
+
+    """
+    ระยะเวลาการตอบกลับ (นาที)
+    """
+    sla2H: Int
+
+    """
+    ระยะเวลาการตอบกลับ (วัน)
+    """
+    sla3D: Int
+
+    """
+    ระยะเวลาการตอบกลับ (นาที)
+    """
+    sla3H: Int
+
+    """
+    ประเภท
+    """
+    type: String
+}
+
+input CreateNotificationInput {
+    deletedAt: Date
+
+    """
+    รูปภาพ
+    """
+    icon: String
+
+    """
+    อ่านแล้วหรือไม่
+    """
+    isRead: Boolean = false
+
+    """
+    ข้อความ
+    """
+    message: String
+
+    """
+    วันที่ส่ง
+    """
+    sendAt: Date
+
+    """
+    หัวข้อ
+    """
+    title: String
+
+    """
+    ประเภทการแจ้งเตือน
+    """
+    type: NotificationType
+
+    """
+    URL
+    """
+    url: String
+
+    """
+    รหัสผู้ใช้งาน
+    """
+    userId: String
+}
+
+input CreateOrUpdateInsuranceExtensionInput {
+    deletedAt: Date
+    files: [CreateFileInput!]!
+
+    """
+    รหัสขยายประกัน
+    """
+    id: ID
+
+    """
+    วันที่ขยายประกัน
+    """
+    insuranceExpandDate: Date
+
+    """
+    วันที่สิ้นสุดประกัน
+    """
+    insuranceExpireDate: Date
+
+    """
+    รหัสโครงการ
+    """
+    projectId: String
+
+    """
+    รหัสยูนิต
+    """
+    unitId: String
+}
+
+"""
+ข้อมูลการประเมินความพึงพอใจหลังการซ่อม
+"""
+input CreateOriginConnectCSATInput {
+    """
+    ความคิดเห็น
+    """
+    CSATComment: String
+    items: [CreateCsatInput!]!
+}
+
+input CreateOriginConnectConsentInput {
+    """
+    อีเมล
+    """
+    email: String
+
+    """
+    ชื่อ
+    """
+    firstname: String
+
+    """
+    เลขบัตรประชาชน
+    """
+    idCard: String
+
+    """
+    นามสกุล
+    """
+    lastname: String
+
+    """
+    รหัสสมาชิก
+    """
+    memberId: String
+
+    """
+    เลขที่หนังสือเดินทาง
+    """
+    passport: String
+
+    """
+    รหัสโครงการ
+    """
+    projectId: String
+
+    """
+    แหล่งที่มาของข้อมูล
+    """
+    source: String
+
+    """
+    เบอร์โทรศัพท์
+    """
+    telephone: String
+
+    """
+    รหัสยูนิต
+    """
+    unitId: String
+
+    """
+    เลขที่ยูนิต
+    """
+    unitNumber: String
+
+    """
+    รหัสผู้ใช้งาน
+    """
+    userId: String
+}
+
+"""
+ข้อมูลการซ่อม
+"""
+input CreateOriginConnectRepairInput {
+    """
+    ประเภทงาน
+    """
+    categoryId: String!
+
+    """
+    รายละเอียด
+    """
+    description: String!
+
+    """
+    ไฟล์
+    """
+    files: [CreateFileInput!]!
+
+    """
+    ประเภทงานย่อย
+    """
+    subCategoryId: String!
+}
+
+"""
+ข้อมูลผู้แจ้งซ่อม
+"""
+input CreateOriginConnectTaskInput {
+    """
+    ชื่อลูกค้า
+    """
+    customerName: String!
+
+    """
+    เบอร์โทรศัพท์ลูกค้า
+    """
+    customerPhone: String!
+
+    """
+    วันที่ตรวจสอบ
+    """
+    inspectionAt: Date!
+
+    """
+    ช่วงเวลาตรวจสอบ
+    """
+    inspectionRangeTime: String!
+
+    """
+    รหัสโครงการ
+    """
+    projectId: String!
+
+    """
+    งานซ่อม
+    """
+    repairs: [CreateOriginConnectRepairInput!]!
+
+    """
+    รหัสหน่วย
+    """
+    unitNumber: String!
+}
+
+"""
+ข้อมูลการประเมินความพึงพอใจหลังการซ่อม
+"""
+input CreatePrimoPlusCSATInput {
+    children: [CreateCsatInput!]
+    comment: String
+    deletedAt: Date
+    questionId: String
+    repairId: String
+    score: Int
+}
+
+"""
+ข้อมูลการซ่อม
+"""
+input CreatePrimoPlusRepairInput {
+    """
+    ประเภทงาน
+    """
+    categoryId: String!
+
+    """
+    รายละเอียด
+    """
+    description: String!
+
+    """
+    ไฟล์
+    """
+    files: [CreateFileInput!]!
+
+    """
+    ประเภทงานย่อย
+    """
+    subCategoryId: String!
+}
+
+"""
+ข้อมูลผู้แจ้งซ่อม
+"""
+input CreatePrimoPlusTaskInput {
+    """
+    ชื่อลูกค้า
+    """
+    customerName: String!
+
+    """
+    เบอร์โทรศัพท์ลูกค้า
+    """
+    customerPhone: String!
+
+    """
+    วันที่ตรวจสอบ
+    """
+    inspectionAt: Date!
+
+    """
+    ช่วงเวลาตรวจสอบ
+    """
+    inspectionRangeTime: String!
+
+    """
+    รหัสโครงการ
+    """
+    projectId: String!
+
+    """
+    งานซ่อม
+    """
+    repairs: [CreatePrimoPlusRepairInput!]!
+
+    """
+    รหัสหน่วย
+    """
+    unitNumber: String!
+}
+
+input CreateRepairInput {
+    """
+    ความคิดเห็นการประเมิน
+    """
+    CSATComment: String
+
+    """
+    วันที่นัดซ่อม
+    """
+    appointmentAt: Date
+
+    """
+    วันที่สะดวกซ่อม
+    """
+    appointmentRepairAt: Date
+
+    """
+    ช่วงเวลาเข้าซ่อม
+    """
+    appointmentRepairRangeTime: String
+
+    """
+    หมายเหตุของไม่ครบ
+    """
+    assetsCompleteRemark: String
+
+    """
+    วันที่มอบงาน
+    """
+    assignedAt: Date
+
+    """
+    รหัสประเภท
+    """
+    categoryId: String
+
+    """
+    รหัสสาเหตุ
+    """
+    causeId: String
+
+    """
+    สาเหตุอื่นๆ
+    """
+    causeOther: String
+
+    """
+    วันที่ปิดเคส
+    """
+    closedAt: Date
+
+    """
+    หมายเหตุการปิดเคสจาก Call Center
+    """
+    closedForCallCenterRemark: String
+
+    """
+    รหัสผู้รับเหมา
+    """
+    contractorId: String
+    deletedAt: Date
+
+    """
+    รายละเอียด
+    """
+    description: String
+
+    """
+    ไฟล์
+    """
+    files: [CreateFileInput!]!
+
+    """
+    กำหนดจบงาน
+    """
+    finishTargetAt: Date
+
+    """
+    วันที่จบงาน
+    """
+    finishedAt: Date
+
+    """
+    วันที่จบงานนอกเหนือการรับประกัน
+    """
+    finishedCustomerAt: Date
+
+    """
+    วันที่โทรครั้งแรก
+    """
+    firstCalledAt: Date
+
+    """
+    วันที่จบงาน
+    """
+    inprogressAt: Date
+
+    """
+    หมายเหตุการเข้าตรวจสอบ
+    """
+    inspectionRemark: String
+
+    """
+    ทรัพย์สินครบทุกชิ้น
+    """
+    isAssetsComplete: Boolean = false
+
+    """
+    สถานะการประเมิน
+    """
+    isCSAT: Boolean = false
+
+    """
+    สถานะการปิดเคสจาก Call Center
+    """
+    isClosedForCallCenter: Boolean = false
+
+    """
+    ปิดเคส (รอดูอาการ)
+    """
+    isFinishedMonitoring: Boolean = false
+
+    """
+    นอกเหนือการรับประกัน
+    """
+    isOutsideInsurance: Boolean = false
+
+    """
+    มีผู้รับงานหรือไม่
+    """
+    isRecipient: Boolean = false
+
+    """
+    เริ่มซ่อมวันนี้หรือนัดซ่อมวันอื่น
+    """
+    isScheduledToday: Boolean = false
+
+    """
+    วันที่เข้าซ่อมล่าสุด
+    """
+    lastRepairAt: Date
+
+    """
+    ช่วงเวลาเข้าซ่อมล่าสุด
+    """
+    lastRepairRangeTime: String
+
+    """
+    หมายเหตุนอกเหนือการรับประกัน
+    """
+    outsideInsuranceRemark: String
+
+    """
+    ความสำคัญ
+    """
+    priorityId: String
+
+    """
+    ชื่อ นามสกุล ผู้รับงาน
+    """
+    receiverName: String
+
+    """
+    วันที่เข้าซ่อม
+    """
+    repairAt: Date
+
+    """
+    วันที่เข้าซ่อม
+    """
+    repairDate: Date
+
+    """
+    ช่วงเวลาเข้าซ่อม
+    """
+    repairRangeTime: String
+
+    """
+    วันที่เริ่มทำงาน
+    """
+    scheduledAt: Date
+
+    """
+    รหัส SLA
+    """
+    slaId: String
+
+    """
+    สถานะงาน
+    """
+    status: TaskStatus = OPEN
+
+    """
+    รหัสประเภทย่อย
+    """
+    subCategoryId: String
+
+    """
+    รหัสงานหลัก
+    """
+    taskId: String
+
+    """
+    รหัสผู้ใช้งาน
+    """
+    userId: String
+}
+
+input CreateRepairSopInput {
+    deletedAt: Date
+
+    """
+    ไฟล์
+    """
+    files: [CreateFileInput!]!
+    finishIssue: RepairSopFinishIssue
+    finishPendingReason: RepairSopFinishPendingReason
+    finishType: RepairSopFinishType
+    finishedAt: Date
+    isFinished: Boolean = false
+    nextRepairAt: Date
+
+    """
+    ช่วงเวลาเข้าซ่อม
+    """
+    nextRepairRangeTime: String
+    parentId: String
+    pictureAt: Date
+    remark: String
+    repairId: String
+    status: RepairSopStatus
+    transactionAt: Date
+}
+
+input CreateRoleInput {
+    """
+    คำอธิบาย
+    """
+    description: String
+
+    """
+    ระดับลำดับชั้น
+    """
+    level: Int = 0
+
+    """
+    ชื่อ Role
+    """
+    name: String!
+
+    """
+    รหัส Parent Role
+    """
+    parentId: String
+
+    """
+    รายการ Permissions
+    """
+    permissions: [String!] = []
+}
+
+input CreateTaskInput {
+    """
+    วันที่มอบงาน
+    """
+    assignedAt: Date
+
+    """
+    วันที่เริ่มทำงาน
+    """
+    checkedAt: Date
+
+    """
+    วันที่ปิดเคส
+    """
+    closedAt: Date
+
+    """
+    หมายเหตุการปิดเคสจากหลังบ้าน
+    """
+    closedForAdmRemark: String
+
+    """
+    วันที่ลูกค้านัดซ่อม
+    """
+    customerAppointmentRepairAt: Date
+
+    """
+    ชื่อผู้แจ้งซ่อม
+    """
+    customerName: String
+
+    """
+    เบอร์โทรผู้แจ้งซ่อม
+    """
+    customerPhone: String
+    deletedAt: Date
+
+    """
+    วันที่จบงาน
+    """
+    finishedAt: Date
+
+    """
+    เลขที่บ้าน
+    """
+    houseNumber: String
+
+    """
+    วันที่จบงาน
+    """
+    inprogressAt: Date
+
+    """
+    วันที่ตรวจสอบ
+    """
+    inspectionAt: Date
+
+    """
+    ช่วงเวลาตรวจสอบ
+    """
+    inspectionRangeTime: String
+
+    """
+    วันที่หมดประกัน (จำนวนเดือนที่ถูกขยาย)
+    """
+    insuranceExpireExtendCount: Int
+
+    """
+    ปิดเคสจากหลังบ้าน
+    """
+    isClosedForAdm: Boolean = false
+
+    """
+    สถานะประกัน
+    """
+    isInsurance: Boolean = false
+
+    """
+    ข้อมูลจากระบบเก่า
+    """
+    isMigration: Boolean
+
+    """
+    รหัสโครงการ
+    """
+    projectId: String
+
+    """
+    ช่วงเวลาเข้าซ่อม
+    """
+    repairRangeTime: String
+
+    """
+    งานซ่อมย่อย
+    """
+    repairs: [CreateTaskRepairInput!]
+
+    """
+    วันที่เริ่มทำงาน
+    """
+    scheduledAt: Date
+
+    """
+    รหัสแหล่งข้อมูล
+    """
+    sourceId: String
+
+    """
+    เลขห้อง
+    """
+    unitNumber: String
+}
+
+input CreateTaskRepairInput {
+    """
+    ความคิดเห็นการประเมิน
+    """
+    CSATComment: String
+
+    """
+    วันที่นัดซ่อม
+    """
+    appointmentAt: Date
+
+    """
+    วันที่สะดวกซ่อม
+    """
+    appointmentRepairAt: Date
+
+    """
+    ช่วงเวลาเข้าซ่อม
+    """
+    appointmentRepairRangeTime: String
+
+    """
+    หมายเหตุของไม่ครบ
+    """
+    assetsCompleteRemark: String
+
+    """
+    วันที่มอบงาน
+    """
+    assignedAt: Date
+
+    """
+    รหัสประเภท
+    """
+    categoryId: String
+
+    """
+    รหัสสาเหตุ
+    """
+    causeId: String
+
+    """
+    สาเหตุอื่นๆ
+    """
+    causeOther: String
+
+    """
+    วันที่ปิดเคส
+    """
+    closedAt: Date
+
+    """
+    หมายเหตุการปิดเคสจาก Call Center
+    """
+    closedForCallCenterRemark: String
+
+    """
+    รหัสผู้รับเหมา
+    """
+    contractorId: String
+    deletedAt: Date
+
+    """
+    รายละเอียด
+    """
+    description: String
+
+    """
+    ไฟล์
+    """
+    files: [CreateFileInput!]
+
+    """
+    กำหนดจบงาน
+    """
+    finishTargetAt: Date
+
+    """
+    วันที่จบงาน
+    """
+    finishedAt: Date
+
+    """
+    วันที่จบงานนอกเหนือการรับประกัน
+    """
+    finishedCustomerAt: Date
+
+    """
+    วันที่โทรครั้งแรก
+    """
+    firstCalledAt: Date
+
+    """
+    วันที่จบงาน
+    """
+    inprogressAt: Date
+
+    """
+    หมายเหตุการเข้าตรวจสอบ
+    """
+    inspectionRemark: String
+
+    """
+    ทรัพย์สินครบทุกชิ้น
+    """
+    isAssetsComplete: Boolean = false
+
+    """
+    สถานะการประเมิน
+    """
+    isCSAT: Boolean = false
+
+    """
+    สถานะการปิดเคสจาก Call Center
+    """
+    isClosedForCallCenter: Boolean = false
+
+    """
+    ปิดเคส (รอดูอาการ)
+    """
+    isFinishedMonitoring: Boolean = false
+
+    """
+    นอกเหนือการรับประกัน
+    """
+    isOutsideInsurance: Boolean = false
+
+    """
+    มีผู้รับงานหรือไม่
+    """
+    isRecipient: Boolean = false
+
+    """
+    เริ่มซ่อมวันนี้หรือนัดซ่อมวันอื่น
+    """
+    isScheduledToday: Boolean = false
+
+    """
+    วันที่เข้าซ่อมล่าสุด
+    """
+    lastRepairAt: Date
+
+    """
+    ช่วงเวลาเข้าซ่อมล่าสุด
+    """
+    lastRepairRangeTime: String
+
+    """
+    หมายเหตุนอกเหนือการรับประกัน
+    """
+    outsideInsuranceRemark: String
+
+    """
+    ความสำคัญ
+    """
+    priorityId: String
+
+    """
+    ชื่อ นามสกุล ผู้รับงาน
+    """
+    receiverName: String
+
+    """
+    วันที่เข้าซ่อม
+    """
+    repairAt: Date
+
+    """
+    วันที่เข้าซ่อม
+    """
+    repairDate: Date
+
+    """
+    ช่วงเวลาเข้าซ่อม
+    """
+    repairRangeTime: String
+
+    """
+    วันที่เริ่มทำงาน
+    """
+    scheduledAt: Date
+
+    """
+    รหัส SLA
+    """
+    slaId: String
+
+    """
+    สถานะงาน
+    """
+    status: TaskStatus = OPEN
+
+    """
+    รหัสประเภทย่อย
+    """
+    subCategoryId: String
+
+    """
+    รหัสผู้ใช้งาน
+    """
+    userId: String
+}
+
+input CreateUserProjectInput {
+    deletedAt: Date
+    projectId: String
+    towers: [CreateUserProjectTowerInput!]!
+    userId: String
+}
+
+input CreateUserProjectTowerInput {
+    deletedAt: Date
+    floors: [String!]
+    tower: String
+}
+
+input CreateUserSettingInput {
+    deletedAt: Date
+    notification: Boolean = true
+    userId: String
+}
+
+type Csat {
+    comment: String
+    createdAt: Date
+    createdBy: User
+    deletedAt: Date
+    deletedBy: User
+    evaluatedAt: Date!
+    id: ID!
+    questionId: String
+    repairId: String
+    score: Int
+    updatedAt: Date
+    updatedBy: User
+}
+
+type CsatCalling {
+    """
+    วันที่โทร
+    """
+    calledAt: Date!
+    createdAt: Date
+    createdBy: User
+    deletedAt: Date
+    deletedBy: User
+
+    """
+    รายละเอียดการโทร
+    """
+    description: String
+    id: ID!
+
+    """
+    รหัสซ่อม
+    """
+    repairId: String
+
+    """
+    ครั้งที่โทร
+    """
+    sequence: Int!
+
+    """
+    รหัสงาน
+    """
+    taskId: String
+    updatedAt: Date
+    updatedBy: User
+}
+
+"""
+Date custom scalar type (UTC)
+"""
+scalar Date
+
+type Employee {
+    """
+    อีเมล
+    """
+    email: String
+
+    """
+    รหัสพนักงาน
+    """
+    employeeId: String
+
+    """
+    ชื่อภาษาอังกฤษ
+    """
+    firstnameEng: String
+
+    """
+    ชื่อภาษาไทย
+    """
+    firstnameThai: String
+    id: ID!
+    imageUrl: String
+
+    """
+    นามสกุลภาษาอังกฤษ
+    """
+    lastnameEng: String
+
+    """
+    นามสกุลภาษาไทย
+    """
+    lastnameThai: String
+    lineId: String
+    mobilePhone: String
+
+    """
+    ชื่อเล่น
+    """
+    nickname: String
+    workPhone: String
+}
+
+type File {
+    createdAt: Date
+
+    """
+    ผู้สร้าง
+    """
+    createdBy: User
+    deletedAt: Date
+
+    """
+    ผู้ลบ
+    """
+    deletedBy: User
+
+    """
+    Bucket ของไฟล์
+    """
+    fileBucket: String
+
+    """
+    นามสกุลไฟล์
+    """
+    fileExtension: String
+
+    """
+    โฟลเดอร์ไฟล์
+    """
+    fileFolder: String
+
+    """
+    รหัสไฟล์
+    """
+    fileId: String
+
+    """
+    ชื่อไฟล์
+    """
+    fileName: String
+
+    """
+    พาธไฟล์
+    """
+    filePath: String
+
+    """
+    ประเภทไฟล์
+    """
+    fileType: String
+
+    """
+    ลิงค์ของไฟล์
+    """
+    fileUrl: String
+    id: ID!
+
+    """
+    สามารถเข้าถึงได้ทั่วไปหรือไม่
+    """
+    isPublic: Boolean!
+
+    """
+    รหัสอ้างอิง
+    """
+    refId: String
+    updatedAt: Date
+
+    """
+    ผู้แก้ไข
+    """
+    updatedBy: User
+}
+
+type Floor {
+    id: Int!
+    nameEn: String
+    nameTh: String
+    projectId: String
+    towerId: Int
+}
+
+type IPaginateLinks {
+    """
+    ลิงค์หน้าแรก
+    """
+    first: String
+
+    """
+    ลิงค์หน้าสุดท้าย
+    """
+    last: String
+
+    """
+    ลิงค์หน้าถัดไป
+    """
+    next: String
+
+    """
+    ลิงค์หน้าก่อนหน้า
+    """
+    previous: String
+}
+
+type IPaginateMeta {
+    """
+    หน้าปัจจุบัน
+    """
+    currentPage: Float!
+
+    """
+    จำนวนรายการที่มีอยู่ในหน้านี้
+    """
+    itemCount: Float!
+
+    """
+    จำนวนรายการที่แสดงในหน้านี้
+    """
+    itemsPerPage: Float!
+
+    """
+    จำนวนรายการทั้งหมด
+    """
+    totalItems: Float
+
+    """
+    จำนวนหน้าทั้งหมด
+    """
+    totalPages: Float
+}
+
+type InsuranceExtension {
+    createdAt: Date
+    createdBy: User
+    deletedAt: Date
+    deletedBy: User
+    files: [File!]!
+
+    """
+    เลขที่บ้าน
+    """
+    houseNumber: String
+
+    """
+    รหัสขยายประกัน
+    """
+    id: ID!
+
+    """
+    วันที่ขยายประกัน
+    """
+    insuranceExpandDate: Date
+
+    """
+    วันที่สิ้นสุดประกัน
+    """
+    insuranceExpireDate: Date
+    project: Project
+
+    """
+    รหัสโครงการ
+    """
+    projectId: String!
+
+    """
+    วันที่โอนกรรมสิทธิ์
+    """
+    transferDate: Date
+    unit: Unit
+
+    """
+    รหัสยูนิต
+    """
+    unitId: String!
+
+    """
+    หมายเลขห้อง
+    """
+    unitNumber: String
+    updatedAt: Date
+    updatedBy: User
+}
+
+type InsuranceExtensionPaginate {
+    items: [InsuranceExtension!]!
+
+    """
+    ลิงค์หน้า
+    """
+    links: IPaginateLinks
+
+    """
+    ข้อมูลการจัดการหน้า
+    """
+    meta: IPaginateMeta
+}
+
+type LegacyMigrationResponse {
+    message: String!
+    startedAt: Date!
+}
+
+type LegacyMigrationStatus {
+    isRunning: Boolean!
+}
+
+type Master {
+    children: [Master!]!
+
+    """
+    รหัส
+    """
+    code: String
+    createdAt: Date
+    createdBy: User
+    deletedAt: Date
+    deletedBy: User
+
+    """
+    คำอธิบายภาษาอังกฤษ
+    """
+    descriptionEn: String
+
+    """
+    คำอธิบายภาษาไทย
+    """
+    descriptionTh: String
+
+    """
+    ไอคอน
+    """
+    icon: String
+    id: ID!
+
+    """
+    สถานะ
+    """
+    isActive: Boolean!
+
+    """
+    สำหรับประเภทอื่นๆ
+    """
+    isOther: Boolean!
+
+    """
+    ชื่อภาษาอังกฤษ
+    """
+    nameEn: String
+
+    """
+    ชื่อภาษาไทย
+    """
+    nameTh: String
+    parent: Master
+
+    """
+    รหัสหลัก
+    """
+    parentId: String
+
+    """
+    ลำดับ
+    """
+    sequence: Int
+
+    """
+    ระยะเวลาการตอบกลับ (วัน)
+    """
+    sla1D: Int
+
+    """
+    ระยะเวลาการตอบกลับ (นาที)
+    """
+    sla1H: Int
+
+    """
+    ระยะเวลาการตอบกลับ (วัน)
+    """
+    sla2D: Int
+
+    """
+    ระยะเวลาการตอบกลับ (นาที)
+    """
+    sla2H: Int
+
+    """
+    ระยะเวลาการตอบกลับ (วัน)
+    """
+    sla3D: Int
+
+    """
+    ระยะเวลาการตอบกลับ (นาที)
+    """
+    sla3H: Int
+
+    """
+    ประเภท
+    """
+    type: String
+    updatedAt: Date
+    updatedBy: User
 }
 
 type Mutation {
-  # addName: String
+    """
+    สร้างข้อมูลการประเมินคุณภาพหลังเข้ารับบริการ
+    """
+    createPrimoPlusCsat(
+        """
+        ความคิดเห็น
+        """
+        CSATComment: String
 
-  """
-  เพิ่มรายการแจ้งซ่อม
-  """
-  createHomecareCase(
-    """
-    ชุดข้อมูลที่ลูกค้าเพิ่มรายการแจ้งซ่อม
-    """
-    input: inputEntryHomecareCase
-  ): homecareCase
+        """
+        ข้อมูลการประเมินคุณภาพ
+        """
+        createPrimoPlusCSATInput: [CreatePrimoPlusCSATInput!]!
+    ): [PrimoPlusCsat!]!
 
-  # updateInsuranceDate(id: ID, insuranceDate: String): homecareCase
-  # updateStatusHomecare(id: ID, status: String, type: String): homecareCase
-  # updateHomecareCaseDetail(input: inputEntryHomecareCaseDetail): homecareCaseDetail
-  # createHomecareAssign(input: inputEntryHomecareAssign): homecareAssign
-  # createHomecareReportLogs(input: inputEntryHomecareReportLogs): homecareReportLogs
-  # createHomecareAssignReportLogs(input: inputEntryHomecareAssignReportLogs): homecareReportLogs
-  # updateHomecareAssign(input: inputEntryHomecareAssign): homecareAssign
-  # updateCaseHomecare(input: inputAddCase): homecareCaseDetail
-  # updateHomeCasePiority(input: inputPiority): homecareCaseDetail
-  # createHomecareNitiService(input: inputEntryServiceCase): onSuccess
-  # updateServiceCaseDetail(input: inputEntryServiceCase): onSuccess
-  # createHomecareNitiServiceCentral(input: inputEntryServiceCentralCase): onSuccess
-  # updateServiceCentralCaseDetail(input: inputEntryServiceCentralCase): taskServiceCentralDetail
-  # createCaseUpdateService(input: inputEntryCaseUpdate): caseUpdate
-  # createCaseUpdateServiceCentral(input: inputEntryCaseUpdateCentral): caseUpdateCentral
-  # singleUpload(file: Upload, input: inputEntryformAttachment): uploadSuccess
-  # singleUploadCentral(file: Upload, input: inputEntryformAttachmentCentral): uploadSuccess
-  # closeServiceCentral(id: String): onSuccess
-  # reProcessServiceCentral(id: String): onSuccess
-  # removeFormAttachment(id: String, onMenu: String): Boolean
-  # deleteHomecareCustomer(id: ID): homecareCase
-  # updateSlaHomecareTel(id: ID): homecareAssign
-  # updateSlaHomecareStartWork(id: ID): homecareAssign
-  # updateSlaHomecareEndWork(id: ID): homecareAssign
+    """
+    สร้างข้อมูลการแจ้งซ่อม
+    """
+    createPrimoPlusTask(
+        """
+        ข้อมูลการแจ้งซ่อม
+        """
+        createPrimoPlusTaskInput: CreatePrimoPlusTaskInput!
+    ): PrimoPlusTask!
+}
 
-  """
-  ทำประเมินความพึงพอใจของลูกค้า
-  """
-  createCsat(
+type Notification {
+    createdAt: Date
+    createdBy: User
+    deletedAt: Date
+    deletedBy: User
+
     """
-    id ของเคสย่อย
+    รูปภาพ
     """
-    detailId: ID!
+    icon: String
+    id: ID!
+
     """
-    ชุดข้อมูลที่ลูกค้าทำประเมิน
+    อ่านแล้วหรือไม่
     """
-    input: [inputHomecareCsat]!
+    isRead: Boolean!
+
     """
-    ชมเชย/เสนอแนะ
+    ข้อความ
+    """
+    message: String!
+
+    """
+    วันที่ส่ง
+    """
+    sendAt: Date!
+
+    """
+    หัวข้อ
+    """
+    title: String!
+
+    """
+    ประเภทการแจ้งเตือน
+    """
+    type: NotificationType!
+    updatedAt: Date
+    updatedBy: User
+
+    """
+    URL
+    """
+    url: String
+    user: User
+
+    """
+    รหัสผู้ใช้งาน
+    """
+    userId: String
+}
+
+enum NotificationType {
+    CUSTOMER
+    HOMECARE
+}
+
+type Option {
+    id: String!
+    nameEn: String!
+    nameTh: String!
+}
+
+"""
+ปฏิทินวันที่แจ้งซ่อม
+"""
+type OriginConnectCalendar {
+    """
+    วันที่
+    """
+    date: Date
+
+    """
+    คำอธิบาย
+    """
+    description: String
+    id: ID
+
+    """
+    ชื่อ
+    """
+    title: String
+}
+
+"""
+ตัวเลือกงานซ่อมหลักทั้งหมด
+"""
+type OriginConnectCategory {
+    """
+    ไอคอน
+    """
+    icon: String
+    id: ID!
+
+    """
+    ชื่อภาษาอังกฤษ
+    """
+    nameEn: String
+
+    """
+    ชื่อภาษาไทย
+    """
+    nameTh: String!
+
+    """
+    ลำดับ
+    """
+    sequence: Int!
+
+    """
+    ตัวเลือกประเภทย่อยตามที่งานซ่อมย่อย
+    """
+    subCategories: [OriginConnectSubCategory!]!
+}
+
+"""
+ตัวเลือกสาเหตุทั้งหมด
+"""
+type OriginConnectCause {
+    id: ID!
+
+    """
+    ชื่อภาษาอังกฤษ
+    """
+    nameEn: String
+
+    """
+    ชื่อภาษาไทย
+    """
+    nameTh: String!
+
+    """
+    ลำดับ
+    """
+    sequence: Int!
+}
+
+type OriginConnectConsent {
+    """
+    วันที่ให้ความยินยอม
+    """
+    consentedAt: Date!
+
+    """
+    วันที่สร้าง
+    """
+    createdAt: Date!
+
+    """
+    วันที่ลบ
+    """
+    deletedAt: Date
+
+    """
+    อีเมล
+    """
+    email: String
+
+    """
+    ชื่อ
+    """
+    firstname: String
+
+    """
+    Consent ID
+    """
+    id: String!
+
+    """
+    เลขบัตรประชาชน
+    """
+    idCard: String
+
+    """
+    นามสกุล
+    """
+    lastname: String
+
+    """
+    รหัสสมาชิก
+    """
+    memberId: String
+
+    """
+    เลขที่หนังสือเดินทาง
+    """
+    passport: String
+
+    """
+    รหัสโครงการ
+    """
+    projectId: String!
+
+    """
+    แหล่งที่มาของข้อมูล
+    """
+    source: String!
+
+    """
+    เบอร์โทรศัพท์
+    """
+    telephone: String
+
+    """
+    รหัสยูนิต
+    """
+    unitId: String
+
+    """
+    เลขที่ยูนิต
+    """
+    unitNumber: String!
+
+    """
+    วันที่อัพเดท
+    """
+    updatedAt: Date!
+
+    """
+    รหัสผู้ใช้งาน
+    """
+    userId: String
+}
+
+type OriginConnectConsentPurposeWithLanguage {
+    description: String!
+    language: String!
+    title: String!
+}
+
+"""
+ผลการประเมินหลังการซ่อม
+"""
+type OriginConnectCsat {
+    """
+    ความคิดเห็น
+    """
+    comment: String
+    id: ID!
+
+    """
+    รหัสคำถาม
+    """
+    questionId: String!
+
+    """
+    รหัสงานซ่อม
+    """
+    repairId: String!
+
+    """
+    คะแนน
+    """
+    score: Int!
+}
+
+"""
+ตัวเลือกคำถามประเมินคุณภาพหลังเข้ารับบริการ
+"""
+type OriginConnectCsatQuestion {
+    id: ID!
+
+    """
+    ชื่อภาษาอังกฤษ
+    """
+    nameEn: String
+
+    """
+    ชื่อภาษาไทย
+    """
+    nameTh: String!
+
+    """
+    ลำดับ
+    """
+    sequence: Int!
+}
+
+"""
+งานซ่อม
+"""
+type OriginConnectRepair {
+    """
+    ความคิดเห็นการประเมิน
+    """
+    CSATComment: String
+
+    """
+    วันที่สะดวกซ่อม
+    """
+    appointmentRepairAt: Date
+
+    """
+    ช่วงเวลาที่สะดวกซ่อม
+    """
+    appointmentRepairRangeTime: Option
+
+    """
+    สถานะการประเมิน
+    """
+    assessmentStatus: AssessmentStatus!
+
+    """
+    วันที่มอบงาน
+    """
+    assignedAt: Date
+
+    """
+    ผู้รับงาน
+    """
+    assignedTo: User
+
+    """
+    ประเภทหลัก
+    """
+    category: OriginConnectCategory
+
+    """
+    รหัสหมวดหมู่
+    """
+    categoryId: String
+
+    """
+    สาเหตุ
+    """
+    cause: OriginConnectCause
+
+    """
+    รหัสสาเหตุ
+    """
+    causeId: String
+
+    """
+    สาเหตุอื่นๆ
+    """
+    causeOther: String
+
+    """
+    วันที่เริ่มทำงาน
+    """
+    checkedAt: Date
+
+    """
+    วันที่ปิดเคส
+    """
+    closedAt: Date
+
+    """
+    เลขที่ซ่อม
+    """
+    code: String!
+
+    """
+    รายละเอียดงาน
+    """
+    description: String
+
+    """
+    ไฟล์
+    """
+    files: [File!]
+
+    """
+    วันที่จบงาน
+    """
+    finishedAt: Date
+    id: ID!
+
+    """
+    วันที่จบงาน
+    """
+    inprogressAt: Date
+
+    """
+    หมายเหตุการเข้าตรวจสอบ
+    """
+    inspectionRemark: String
+
+    """
+    สถานะ CSAT
+    """
+    isCSAT: Boolean!
+
+    """
+    วันที่เข้าซ่อมล่าสุด
+    """
+    lastRepairAt: Date
+
+    """
+    ช่วงเวลาที่เข้าซ่อมล่าสุด
+    """
+    lastRepairRangeTime: Option
+
+    """
+    วันที่เปิดเคส
+    """
+    openedAt: Date!
+
+    """
+    วันที่เข้าซ่อม
+    """
+    repairAt: Date
+
+    """
+    ช่วงเวลาที่เข้าซ่อมครั้งแรก
+    """
+    repairRangeTime: Option
+
+    """
+    วันที่เริ่มทำงาน
+    """
+    scheduledAt: Date
+
+    """
+    งานซ่อมย่อย
+    """
+    sop: [RepairSop!]!
+
+    """
+    สถานะแจ้งซ่อม
+    """
+    status: OriginConnectStatusOption!
+
+    """
+    ประวัติสถานะแจ้งซ่อม
+    """
+    statusHistories: [OriginConnectStatusHistory!]!
+
+    """
+    ประเภทย่อย
+    """
+    subCategory: OriginConnectSubCategory
+
+    """
+    รหัสหมวดหมู่ย่อย
+    """
+    subCategoryId: String
+
+    """
+    รหัสงานหลัก
+    """
+    taskId: String!
+
+    """
+    รหัสผู้รับงาน
+    """
+    userId: String
+}
+
+type OriginConnectStatusHistory {
+    date: Date
+    status: OriginConnectStatusOption!
+}
+
+type OriginConnectStatusOption {
+    bgColor: String!
+    borderColor: String!
+    id: TaskStatus!
+    nameEn: String!
+    nameTh: String!
+    textColor: String!
+}
+
+"""
+ตัวเลือกงานซ่อมย่อยทั้งหมด
+"""
+type OriginConnectSubCategory {
+    id: ID!
+
+    """
+    ชื่อภาษาอังกฤษ
+    """
+    nameEn: String
+
+    """
+    ชื่อภาษาไทย
+    """
+    nameTh: String!
+
+    """
+    ลำดับ
+    """
+    sequence: Int!
+}
+
+"""
+ข้อมูลผู้แจ้งซ่อม
+"""
+type OriginConnectTask {
+    """
+    วันที่มอบงาน
+    """
+    assignedAt: Date
+
+    """
+    วันที่เริ่มทำงาน
+    """
+    checkedAt: Date
+
+    """
+    วันที่ปิดเคส
+    """
+    closedAt: Date
+
+    """
+    รหัสแจ้งซ่อม
+    """
+    code: String!
+
+    """
+    วันที่จบงาน
+    """
+    finishedAt: Date
+    id: ID!
+
+    """
+    วันที่จบงาน
+    """
+    inprogressAt: Date
+
+    """
+    วันที่ตรวจสอบ
+    """
+    inspectionAt: Date
+
+    """
+    ช่วงเวลาตรวจสอบ
+    """
+    inspectionRangeTime: Option
+
+    """
+    วันที่เปิดเคส
+    """
+    openedAt: Date!
+
+    """
+    รหัสโครงการ
+    """
+    projectId: String!
+
+    """
+    รายการซ่อม
+    """
+    repairs: [OriginConnectRepair!]!
+
+    """
+    วันที่เริ่มทำงาน
+    """
+    scheduledAt: Date
+
+    """
+    สถานะแจ้งซ่อม
+    """
+    status: OriginConnectStatusOption!
+
+    """
+    รหัสหน่วย
+    """
+    unitNumber: String!
+}
+
+"""
+ช่วงเวลาเข้าซ่อม
+"""
+type OriginConnectTimeRange {
+    disabled: Boolean
+    end: Int
+    id: ID
+    nameEn: String
+    nameTh: String
+    start: Int
+}
+
+type Overview {
+    counts: [OverviewCount!]
+    extra: String
+    icon: String
+    id: String!
+    label: String!
+    value: Int!
+}
+
+type OverviewCount {
+    label: String!
+    unit: String
+    value: Int!
+}
+
+"""
+ปฏิทินวันที่แจ้งซ่อม
+"""
+type PrimoPlusCalendar {
+    """
+    วันที่
+    """
+    date: Date
+
+    """
+    คำอธิบาย
+    """
+    description: String
+    id: ID
+
+    """
+    ชื่อ
+    """
+    title: String
+}
+
+"""
+ตัวเลือกงานซ่อมหลักทั้งหมด
+"""
+type PrimoPlusCategory {
+    """
+    ไอคอน
+    """
+    icon: String
+    id: ID!
+
+    """
+    ชื่อภาษาอังกฤษ
+    """
+    nameEn: String
+
+    """
+    ชื่อภาษาไทย
+    """
+    nameTh: String!
+
+    """
+    ลำดับ
+    """
+    sequence: Int!
+
+    """
+    ตัวเลือกประเภทย่อยตามที่งานหลัก
+    """
+    subCategories: [PrimoPlusSubCategory!]!
+}
+
+"""
+ตัวเลือกสาเหตุทั้งหมด
+"""
+type PrimoPlusCause {
+    id: ID!
+
+    """
+    ชื่อภาษาอังกฤษ
+    """
+    nameEn: String
+
+    """
+    ชื่อภาษาไทย
+    """
+    nameTh: String!
+
+    """
+    ลำดับ
+    """
+    sequence: Int!
+}
+
+"""
+ผลการประเมินหลังการซ่อม
+"""
+type PrimoPlusCsat {
+    """
+    ความคิดเห็น
+    """
+    comment: String
+    id: ID!
+
+    """
+    รหัสคำถาม
+    """
+    questionId: String!
+
+    """
+    รหัสงานซ่อม
+    """
+    repairId: String!
+
+    """
+    คะแนน
+    """
+    score: Int!
+}
+
+"""
+ตัวเลือกคำถามประเมินคุณภาพหลังเข้ารับบริการ
+"""
+type PrimoPlusCsatQuestion {
+    id: ID!
+
+    """
+    ชื่อภาษาอังกฤษ
+    """
+    nameEn: String
+
+    """
+    ชื่อภาษาไทย
+    """
+    nameTh: String!
+
+    """
+    ลำดับ
+    """
+    sequence: Int!
+}
+
+"""
+งานซ่อม
+"""
+type PrimoPlusRepair {
+    """
+    ความคิดเห็นการประเมิน
+    """
+    CSATComment: String
+
+    """
+    วันที่สะดวกซ่อม
+    """
+    appointmentRepairAt: Date
+
+    """
+    ช่วงเวลาที่สะดวกซ่อม
+    """
+    appointmentRepairRangeTime: Option
+
+    """
+    สถานะการประเมิน
+    """
+    assessmentStatus: AssessmentStatus!
+
+    """
+    วันที่มอบงาน
+    """
+    assignedAt: Date
+
+    """
+    ผู้รับงาน
+    """
+    assignedTo: User
+
+    """
+    ประเภทหลัก
+    """
+    category: PrimoPlusCategory
+
+    """
+    รหัสหมวดหมู่
+    """
+    categoryId: String
+
+    """
+    สาเหตุ
+    """
+    cause: PrimoPlusCause
+
+    """
+    รหัสสาเหตุ
+    """
+    causeId: String
+
+    """
+    สาเหตุอื่นๆ
+    """
+    causeOther: String
+
+    """
+    วันที่เริ่มทำงาน
+    """
+    checkedAt: Date
+
+    """
+    วันที่ปิดเคส
+    """
+    closedAt: Date
+
+    """
+    เลขที่ซ่อม
+    """
+    code: String!
+
+    """
+    รายละเอียดงาน
+    """
+    description: String
+
+    """
+    ไฟล์
+    """
+    files: [File!]
+
+    """
+    วันที่จบงาน
+    """
+    finishedAt: Date
+    id: ID!
+
+    """
+    วันที่จบงาน
+    """
+    inprogressAt: Date
+
+    """
+    หมายเหตุการเข้าตรวจสอบ
+    """
+    inspectionRemark: String
+
+    """
+    สถานะ CSAT
+    """
+    isCSAT: Boolean!
+
+    """
+    วันที่เข้าซ่อมล่าสุด
+    """
+    lastRepairAt: Date
+
+    """
+    ช่วงเวลาที่เข้าซ่อมล่าสุด
+    """
+    lastRepairRangeTime: Option
+
+    """
+    วันที่เปิดเคส
+    """
+    openedAt: Date!
+
+    """
+    วันที่เข้าซ่อม
+    """
+    repairAt: Date
+
+    """
+    ช่วงเวลาที่เข้าซ่อมครั้งแรก
+    """
+    repairRangeTime: Option
+
+    """
+    วันที่เริ่มทำงาน
+    """
+    scheduledAt: Date
+
+    """
+    งานซ่อมย่อย
+    """
+    sop: [RepairSop!]!
+
+    """
+    สถานะแจ้งซ่อม
+    """
+    status: PrimoPlusStatusOption!
+
+    """
+    ประวัติสถานะแจ้งซ่อม
+    """
+    statusHistories: [PrimoPlusStatusHistory!]!
+
+    """
+    ประเภทย่อย
+    """
+    subCategory: PrimoPlusSubCategory
+
+    """
+    รหัสหมวดหมู่ย่อย
+    """
+    subCategoryId: String
+
+    """
+    รหัสงานหลัก
+    """
+    taskId: String!
+
+    """
+    รหัสผู้รับงาน
+    """
+    userId: String
+}
+
+type PrimoPlusStatusHistory {
+    date: Date
+    status: PrimoPlusStatusOption!
+}
+
+type PrimoPlusStatusOption {
+    bgColor: String!
+    borderColor: String!
+    id: TaskStatus!
+    nameEn: String!
+    nameTh: String!
+    textColor: String!
+}
+
+"""
+ตัวเลือกงานซ่อมย่อยทั้งหมด
+"""
+type PrimoPlusSubCategory {
+    id: ID!
+
+    """
+    ชื่อภาษาอังกฤษ
+    """
+    nameEn: String
+
+    """
+    ชื่อภาษาไทย
+    """
+    nameTh: String!
+
+    """
+    ลำดับ
+    """
+    sequence: Int!
+}
+
+"""
+ข้อมูลผู้แจ้งซ่อม
+"""
+type PrimoPlusTask {
+    """
+    วันที่มอบงาน
+    """
+    assignedAt: Date
+
+    """
+    วันที่เริ่มทำงาน
+    """
+    checkedAt: Date
+
+    """
+    วันที่ปิดเคส
+    """
+    closedAt: Date
+
+    """
+    รหัสแจ้งซ่อม
+    """
+    code: String!
+
+    """
+    วันที่จบงาน
+    """
+    finishedAt: Date
+    id: ID!
+
+    """
+    วันที่จบงาน
+    """
+    inprogressAt: Date
+
+    """
+    วันที่ตรวจสอบ
+    """
+    inspectionAt: Date
+
+    """
+    ช่วงเวลาตรวจสอบ
+    """
+    inspectionRangeTime: Option
+
+    """
+    วันที่เปิดเคส
+    """
+    openedAt: Date!
+
+    """
+    รหัสโครงการ
+    """
+    projectId: String!
+
+    """
+    รายการซ่อม
+    """
+    repairs: [PrimoPlusRepair!]!
+
+    """
+    วันที่เริ่มทำงาน
+    """
+    scheduledAt: Date
+
+    """
+    สถานะแจ้งซ่อม
+    """
+    status: PrimoPlusStatusOption!
+
+    """
+    รหัสหน่วย
+    """
+    unitNumber: String!
+}
+
+type PrimoPlusTaskPaginate {
+    items: [PrimoPlusTask!]!
+
+    """
+    ลิงค์หน้า
+    """
+    links: IPaginateLinks
+
+    """
+    ข้อมูลการจัดการหน้า
+    """
+    meta: IPaginateMeta
+}
+
+"""
+ช่วงเวลาเข้าซ่อม
+"""
+type PrimoPlusTimeRange {
+    disabled: Boolean
+    end: Int
+    id: ID
+    nameEn: String
+    nameTh: String
+    start: Int
+}
+
+type Project {
+    """
+    วันที่จดทะเบียนนิติฯ
+    """
+    a10Date: Date
+    id: ID!
+
+    """
+    วันที่ประกันนิติฯ
+    """
+    insuranceDate: Date
+    nameEn: String!
+    nameTh: String!
+    towers: [Tower!]!
+    units: [Unit!]!
+}
+
+type Query {
+    """
+    ข้อมูลวันหยุดประจำสัปดาห์หรือวันหยุดบริษัท
+    """
+    allPrimoPlusCalendars(
+        """
+        วันที่สิ้นสุด
+        """
+        endDate: Date!
+
+        """
+        รหัสโครงการ
+        """
+        projectId: String!
+
+        """
+        วันที่เริ่มต้น
+        """
+        startDate: Date!
+
+        """
+        หมายเลขห้อง
+        """
+        unitNumber: String!
+    ): [PrimoPlusCalendar!]!
+
+    """
+    ตัวเลือกประเภทหลักงานแจ้งซ่อมหลักทั้งหมด
+    """
+    allPrimoPlusCategories: [PrimoPlusCategory!]!
+
+    """
+    คำถามประเมินคุณภาพหลังเข้ารับบริการทั้งหมด
+    """
+    allPrimoPlusCsatQuestions: [PrimoPlusCsatQuestion!]!
+
+    """
+    รายการแจ้งซ่อมทั้งหมด
+    """
+    allPrimoPlusRepairs(
+        """
+        รหัสงาน
+        """
+        taskId: ID!
+    ): [PrimoPlusRepair!]!
+
+    """
+    รายการแจ้งซ่อมทั้งหมด
+    """
+    allPrimoPlusTasks(
+        limit: Int! = 10
+        page: Int! = 1
+
+        """
+        รหัสโครงการ
+        """
+        projectId: String!
+
+        """
+        สถานะงาน
+        """
+        status: [TaskStatus!]!
+
+        """
+        รหัสยูนิต
+        """
+        unitNumber: String!
+    ): PrimoPlusTaskPaginate!
+
+    """
+    ช่วงเวลาเข้าซ่อม
+    """
+    allPrimoPlusTimeRanges(
+        """
+        วันที่เลือก
+        """
+        date: Date!
+
+        """
+        รหัสโครงการ
+        """
+        projectId: String!
+
+        """
+        หมายเลขห้อง
+        """
+        unitNumber: String!
+    ): [PrimoPlusTimeRange!]!
+
+    """
+    รายการแจ้งซ่อมทั้งหมด
+    """
+    getPrimoPlusRepair(
+        """
+        รหัสงานซ่อม
+        """
+        id: ID!
+    ): PrimoPlusRepair!
+
+    """
+    รายละเอียดแจ้งซ่อม
+    """
+    getPrimoPlusTask(
+        """
+        รหัสแจ้งซ่อม
+        """
+        id: ID!
+    ): PrimoPlusTask!
+
+    """
+    ข้อมูล Master ช่วงเวลาแจ้งซ่อม
+    """
+    timeOptions: [Option!]!
+}
+
+type Repair {
+    """
+    ความคิดเห็นการประเมิน
+    """
+    CSATComment: String
+
+    """
+    วันที่นัดซ่อม
+    """
+    appointmentAt: Date
+    appointmentRangeTime: Option
+
+    """
+    วันที่สะดวกซ่อม
+    """
+    appointmentRepairAt: Date
+    appointmentRepairRangeTime: Option
+
+    """
+    สถานะการประเมิน
+    """
+    assessmentStatus: AssessmentStatus!
+
+    """
+    หมายเหตุของไม่ครบ
+    """
+    assetsCompleteRemark: String
+
+    """
+    วันที่มอบงาน
+    """
+    assignedAt: Date
+
+    """
+    ผู้รับงาน
+    """
+    assignedTo: User
+    callings: [Calling!]!
+    caseUpdatesThreads: [RepairCaseUpdateThread!]!
+
+    """
+    ประเภทหลัก
+    """
+    category: Master
+
+    """
+    รหัสประเภท
+    """
+    categoryId: String
+
+    """
+    สาเหตุ
+    """
+    cause: Master
+
+    """
+    รหัสสาเหตุ
+    """
+    causeId: String
+
+    """
+    สาเหตุอื่นๆ
+    """
+    causeOther: String
+
+    """
+    วันที่ปิดเคส
+    """
+    closedAt: Date
+
+    """
+    หมายเหตุการปิดเคสจาก Call Center
+    """
+    closedForCallCenterRemark: String
+
+    """
+    เลขที่ซ่อม
+    """
+    code: String!
+
+    """
+    ผู้รับเหมา
+    """
+    contractor: Master
+
+    """
+    รหัสผู้รับเหมา
+    """
+    contractorId: String
+    createdAt: Date
+
+    """
+    ผู้สร้าง
+    """
+    createdBy: User
+
+    """
+    การโทรประเมินลูกค้าทั้งหมดของงานซ่อมย่อย
+    """
+    csatCallings: [CsatCalling!]!
+
+    """
+    การประเมินลูกค้าทั้งหมดของงานซ่อมย่อย
+    """
+    csats: [Csat!]!
+    deletedAt: Date
+
+    """
+    ผู้ลบ
+    """
+    deletedBy: User
+
+    """
+    รายละเอียด
+    """
+    description: String
+
+    """
+    ไฟล์
+    """
+    files: [File!]
+
+    """
+    กำหนดจบงาน
+    """
+    finishTargetAt: Date
+
+    """
+    วันที่จบงาน
+    """
+    finishedAt: Date
+
+    """
+    วันที่จบงานนอกเหนือการรับประกัน
+    """
+    finishedCustomerAt: Date
+
+    """
+    วันที่โทรครั้งแรก
+    """
+    firstCalledAt: Date
+    id: ID!
+
+    """
+    วันที่จบงาน
+    """
+    inprogressAt: Date
+
+    """
+    หมายเหตุการเข้าตรวจสอบ
+    """
+    inspectionRemark: String
+
+    """
+    ทรัพย์สินครบทุกชิ้น
+    """
+    isAssetsComplete: Boolean!
+
+    """
+    สถานะการประเมิน
+    """
+    isCSAT: Boolean!
+
+    """
+    สถานะการปิดเคสจาก Call Center
+    """
+    isClosedForCallCenter: Boolean!
+
+    """
+    ปิดเคส (รอดูอาการ)
+    """
+    isFinishedMonitoring: Boolean!
+
+    """
+    นอกเหนือการรับประกัน
+    """
+    isOutsideInsurance: Boolean!
+
+    """
+    มีผู้รับงานหรือไม่
+    """
+    isRecipient: Boolean!
+
+    """
+    เริ่มซ่อมวันนี้หรือนัดซ่อมวันอื่น
+    """
+    isScheduledToday: Boolean!
+
+    """
+    วันที่เข้าซ่อมล่าสุด
+    """
+    lastRepairAt: Date
+    lastRepairRangeTime: Option
+
+    """
+    วันที่เปิดเคส
+    """
+    openedAt: Date!
+
+    """
+    หมายเหตุนอกเหนือการรับประกัน
+    """
+    outsideInsuranceRemark: String
+
+    """
+    Priority
+    """
+    priority: Master
+
+    """
+    ความสำคัญ
+    """
+    priorityId: String
+
+    """
+    ชื่อ นามสกุล ผู้รับงาน
+    """
+    receiverName: String
+
+    """
+    วันที่เข้าซ่อม
+    """
+    repairAt: Date
+    repairRangeTime: Option
+
+    """
+    วันที่เริ่มทำงาน
+    """
+    scheduledAt: Date
+
+    """
+    สาเหตุ
+    """
+    sla: Master
+
+    """
+    รหัส SLA
+    """
+    slaId: String
+
+    """
+    งานซ่อมย่อย
+    """
+    sop: [RepairSop!]!
+
+    """
+    สถานะงาน
+    """
+    status: TaskStatus!
+
+    """
+    ประเภทย่อย
+    """
+    subCategory: Master
+
+    """
+    รหัสประเภทย่อย
+    """
+    subCategoryId: String
+
+    """
+    งานซ่อมหลัก
+    """
+    task: Task!
+
+    """
+    รหัสงานหลัก
+    """
+    taskId: String!
+    updatedAt: Date
+
+    """
+    ผู้แก้ไข
+    """
+    updatedBy: User
+
+    """
+    รหัสผู้ใช้งาน
+    """
+    userId: String
+}
+
+type RepairCaseUpdateThread {
+    createdAt: Date
+
+    """
+    ผู้สร้าง
+    """
+    createdBy: User
+    deletedAt: Date
+
+    """
+    ผู้ลบ
+    """
+    deletedBy: User
+
+    """
+    ไฟล์
+    """
+    files: [File!]
+    id: ID!
+    message: String!
+    messageAt: Date!
+    repair: Repair!
+    repairId: String!
+    updatedAt: Date
+
+    """
+    ผู้แก้ไข
+    """
+    updatedBy: User
+}
+
+type RepairPaginate {
+    items: [Repair!]!
+
+    """
+    ลิงค์หน้า
+    """
+    links: IPaginateLinks
+
+    """
+    ข้อมูลการจัดการหน้า
+    """
+    meta: IPaginateMeta
+}
+
+type RepairSop {
+    """
+    งานซ่อมย่อยทั้งหมด
+    """
+    children: [RepairSop!]
+    createdAt: Date
+
+    """
+    ผู้สร้าง
+    """
+    createdBy: User
+    deletedAt: Date
+
+    """
+    ผู้ลบ
+    """
+    deletedBy: User
+
+    """
+    ไฟล์
+    """
+    files: [File!]
+    finishIssue: RepairSopFinishIssue
+    finishPendingReason: RepairSopFinishPendingReason
+    finishType: RepairSopFinishType
+    finishedAt: Date
+    id: ID!
+    isFinished: Boolean!
+    nextRepairAt: Date
+    nextRepairRangeTime: Option
+
+    """
+    งานซ่อมย่อย
+    """
+    parent: RepairSop
+    parentId: String
+    pictureAt: Date
+    remark: String
+
+    """
+    งานซ่อม
+    """
+    repair: Repair
+    repairId: String
+    sequence: Int
+    status: RepairSopStatus!
+    transactionAt: Date
+    updatedAt: Date
+
+    """
+    ผู้แก้ไข
+    """
+    updatedBy: User
+}
+
+"""
+สถานะการมีปัญหา
+"""
+enum RepairSopFinishIssue {
+    """
+    ติดปัญหา
+    """
+    HAS_ISSUE
+
+    """
+    ไม่ติดปัญหา
+    """
+    NO_ISSUE
+}
+
+"""
+เหตุผลที่ต้องรอ (ใช้เมื่อสถานะเป็น PENDING)
+"""
+enum RepairSopFinishPendingReason {
+    """
+    รอของ
+    """
+    PARTS_PENDING
+
+    """
+    รอสรุป
+    """
+    SUMMARY_PENDING
+
+    """
+    รอช่าง
+    """
+    TECHNICIAN_UNAVAILABLE
+}
+
+"""
+สรุปการทำงาน
+"""
+enum RepairSopFinishType {
+    """
+    ปิดเคส (รอดูอาการ)
+    """
+    CLOSED_MONITORING
+
+    """
+    ปิดเคส (งานเสร็จสมบูรณ์)
+    """
+    COMPLETED
+
+    """
+    ยังไม่ปิดเคส (ต้องนัดหมายซ่อมต่อ)
+    """
+    PENDING
+}
+
+"""
+สถานะการทำงาน
+"""
+enum RepairSopStatus {
+    ASSIGNED
+
+    """
+    ก่อนเข้าซ่อม
+    """
+    BEFORE
+
+    """
+    กำลังทำงาน
+    """
+    DOING
+
+    """
+    ทำงานเสร็จ
+    """
+    FINISHED
+
+    """
+    ขั้นตอนการปกป้องงานซ่อม
+    """
+    PROTECTION
+}
+
+type Role {
+    children: [Role!]!
+    createdAt: Date
+    createdBy: User
+    deletedAt: Date
+    deletedBy: User
+
+    """
+    คำอธิบาย
+    """
+    description: String
+    id: ID!
+
+    """
+    ระดับลำดับชั้น
+    """
+    level: Int!
+
+    """
+    ชื่อ Role
+    """
+    name: String!
+    parent: Role
+
+    """
+    รหัส Parent Role
+    """
+    parentId: String
+
+    """
+    รายการ Permissions
+    """
+    permissions: [String!]!
+    updatedAt: Date
+    updatedBy: User
+}
+
+input SearchVwTaskRepairFeedInput {
+    status: TaskStatus!
+    type: String!
+}
+
+type Task {
+    area: Master
+    areaId: String
+
+    """
+    วันที่มอบงาน
+    """
+    assignedAt: Date
+    building: Master
+    buildingId: String
+
+    """
+    การติดต่อลูกบ้านทั้งหมดของงานหลัก
+    """
+    callings: [Calling!]
+
+    """
+    วันที่เริ่มทำงาน
+    """
+    checkedAt: Date
+
+    """
+    วันที่ปิดเคส
+    """
+    closedAt: Date
+
+    """
+    หมายเหตุการปิดเคสจากหลังบ้าน
+    """
+    closedForAdmRemark: String
+
+    """
+    เลขที่งาน
+    """
+    code: String!
+    createdAt: Date
+
+    """
+    ผู้สร้าง
+    """
+    createdBy: User
+
+    """
+    การโทรประเมินลูกค้าทั้งหมดของงานหลัก
+    """
+    csatCallings: [CsatCalling!]!
+
+    """
+    การประเมินลูกค้าทั้งหมดของงานหลัก
+    """
+    csats: [Csat!]!
+
+    """
+    วันที่ลูกค้านัดซ่อม
+    """
+    customerAppointmentRepairAt: Date
+
+    """
+    ช่วงเวลาลูกค้านัดซ่อม
+    """
+    customerAppointmentRepairRangeTime: Option
+
+    """
+    ชื่อผู้แจ้งซ่อม
+    """
+    customerName: String
+
+    """
+    เบอร์โทรผู้แจ้งซ่อม
+    """
+    customerPhone: String
+    deletedAt: Date
+
+    """
+    ผู้ลบ
+    """
+    deletedBy: User
+
+    """
+    วันที่จบงาน
+    """
+    finishedAt: Date
+    floor: Master
+    floorId: String
+
+    """
+    เลขที่บ้าน
+    """
+    houseNumber: String
+    id: ID!
+
+    """
+    วันที่จบงาน
+    """
+    inprogressAt: Date
+
+    """
+    วันที่ตรวจสอบ
+    """
+    inspectionAt: Date
+
+    """
+    ช่วงเวลาตรวจสอบ
+    """
+    inspectionRangeTime: Option
+
+    """
+    วันที่ขยายประกัน
+    """
+    insuranceExpandDate: Date
+
+    """
+    วันที่สิ้นสุดประกัน
+    """
+    insuranceExpireDate: Date
+
+    """
+    วันที่หมดประกัน (จำนวนเดือนที่ถูกขยาย)
+    """
+    insuranceExpireExtendCount: Int
+
+    """
+    ปิดเคสจากหลังบ้าน
+    """
+    isClosedForAdm: Boolean!
+
+    """
+    งานซ่อมทั้งหมดถูกประเมินแล้ว
+    """
+    isEvaluated: Boolean!
+
+    """
+    สถานะประกัน
+    """
+    isInsurance: Boolean!
+
+    """
+    ข้อมูลจากระบบเก่า
+    """
+    isMigration: Boolean
+
+    """
+    วันที่เปิดเคส
+    """
+    openedAt: Date!
+
+    """
+    โครงการ
+    """
+    project: Project
+
+    """
+    รหัสโครงการ
+    """
+    projectId: String!
+
+    """
+    งานซ่อมย่อยทั้งหมดของงานหลัก
+    """
+    repairs: [Repair!]
+
+    """
+    วันที่เริ่มทำงาน
+    """
+    scheduledAt: Date
+
+    """
+    ข้อมูลแหล่งข้อมูล
+    """
+    source: Master
+
+    """
+    รหัสแหล่งข้อมูล
+    """
+    sourceId: String
+
+    """
+    สถานะงาน
+    """
+    status: TaskStatus!
+
+    """
+    วันที่โอนกรรมสิทธิ์
+    """
+    transferDate: Date
+
+    """
+    ประเภทงาน
+    """
+    type: TaskType!
+
+    """
+    รหัสยูนิต
+    """
+    unitId: String!
+
+    """
+    เลขห้อง
+    """
+    unitNumber: String!
+    updatedAt: Date
+
+    """
+    ผู้แก้ไข
+    """
+    updatedBy: User
+}
+
+type TaskPaginate {
+    items: [Task!]!
+
+    """
+    ลิงค์หน้า
+    """
+    links: IPaginateLinks
+
+    """
+    ข้อมูลการจัดการหน้า
+    """
+    meta: IPaginateMeta
+}
+
+"""
+สถานะงาน
+"""
+enum TaskStatus {
+    """
+    มอบหมายงานแล้ว
+    """
+    ASSIGNED
+
+    """
+    ตรวจสอบแล้ว
+    """
+    CHECKED
+
+    """
+    ปิดงาน
+    """
+    CLOSED
+
+    """
+    เสร็จสิ้น
+    """
+    FINISHED
+
+    """
+    เสร็จสิ้นโดยโครงการ
+    """
+    FINISHED_BY_PROJECT
+
+    """
+    เสร็จสิ้นโดยลูกค้า
+    """
+    FINISHED_CUSTOMER
+
+    """
+    กำลังดำเนินการ
+    """
+    INPROGRESS
+
+    """
+    เปิดงาน
+    """
+    OPEN
+
+    """
+    กำลังดำเนินการอีกครั้ง
+    """
+    REINPROGRESS
+
+    """
+    กำหนดการแล้ว
+    """
+    SCHEDULED
+}
+
+"""
+ประเภทงาน
+"""
+enum TaskType {
+    """
+    งานส่วนกลาง
+    """
+    CENTRAL
+
+    """
+    งานซ่อม
+    """
+    REPAIR
+
+    """
+    งานบริการ
+    """
+    SERVICE
+}
+
+type TimeSlot {
+    disabled: Boolean!
+    end: Int!
+    id: ID!
+    nameEn: String!
+    nameTh: String!
+    start: Int!
+}
+
+type Token {
+    accessToken: String!
+    accessTokenExpires: Int!
+    refreshToken: String!
+    refreshTokenExpires: Int!
+
+    """
+    ข้อมูลผู้ใช้งาน
+    """
+    user: User
+}
+
+type Tower {
+    floors: [Floor!]!
+    id: Int!
+    nameEn: String
+    nameTh: String
+    projectId: String
+}
+
+type Unit {
+    customerName: String
+    customerPhone: String
+    houseNumber: String
+    id: ID!
+    projectId: String!
+    unitNumber: String!
+}
+
+input UpdateCallingInput {
+    """
+    วันที่นัดเข้าซ่อม
+    """
+    appointmentRepairAt: Date
+
+    """
+    ช่วงเวลานัดเข้าซ่อม
+    """
+    appointmentRepairRangeTime: String
+
+    """
+    ผลการติดต่อ
+    """
+    callResult: CallingResult
+
+    """
+    สถานะการติดต่อ
+    """
+    callStatus: CallingStatus
+
+    """
+    ประเภทการติดต่อ
+    """
+    callType: CallingType
+
+    """
+    วันที่ติดต่อกลับ
+    """
+    calledBackAt: Date
+    deletedAt: Date
+    id: ID!
+
+    """
+    วันที่เข้าตรวจสอบ
+    """
+    inspectionAt: Date
+
+    """
+    ช่วงเวลาตรวจสอบ
+    """
+    inspectionRangeTime: String
+
+    """
+    การติดต่อเคสย่อย
+    """
+    isRepair: Boolean = false
+
+    """
+    งานซ่อมย่อยที่มี SOP
+    """
+    isSop: Boolean = false
+
+    """
+    การติดต่อเคสหลัก
+    """
+    isTask: Boolean = false
+
+    """
+    เหตุผล
+    """
+    reasonId: String
+
+    """
+    รหัสเคสหลักหรือเคสย่อย
+    """
+    refId: String
+
+    """
+    หมายเหตุ
     """
     remark: String
-  ): [homecareCsat]
 
-  # updateHomecareCsatClose(id: String, status: String, remark: String): homecareCaseDetail
-  # updateHomecareCsatCloseAll(id: [String], status: String, remark: String): homecareCaseDetail
-  # createHcPhoneLog(dtInput: inputHcPhoneLog): hcPhoneLogData
-  # updateHcPhoneLog(dtInput: inputHcPhoneLog): hcPhoneLogData
-  # updateStatusHomecareDetailById(id: ID!, status: String!): homecareCaseDetail
-  # createHomecareLineToken: String
-  # createdHomecareCaseToContractor(input: InputHomecareCaseToContractor): HomecareCaseToContractor
-  # updatedHomecareCaseToContractor(input: InputHomecareCaseToContractor): HomecareCaseToContractor
-  # deletedHomecareCaseToContractor(id: String): HomecareCaseToContractor
-  # createdTaskCentralServiceDetailsToFiles(input: [TaskCentralServiceDetailsToFilesInput]): [TaskCentralServiceDetailsToFiles]
+    """
+    รหัส SOP
+    """
+    sopId: String
 }
 
-# type Subscription {
-#   counter: String
-# }
+input UpdateCsatCallingInput {
+    """
+    วันที่โทร
+    """
+    calledAt: Date
+    deletedAt: Date
 
-scalar Date
+    """
+    รายละเอียดการโทร
+    """
+    description: String
+    id: ID!
 
-scalar Upload
+    """
+    รหัสซ่อม
+    """
+    repairId: String
 
-"""
-ข้อมูลพนักงาน
-"""
-type employee {
-  id: ID
-  """
-  รหัสพนักงาน
-  """
-  employeeId: String
-  firstnameThai: String
-  lastnameThai: String
-  firstnameEng: String
-  lastnameEng: String
-  email: String
-  mobilePhone: String
+    """
+    รหัสงาน
+    """
+    taskId: String
 }
 
-"""
-ข้อมูลโครงการ
-"""
-type ddlProject {
-  id: String
-  projectId: String
-  projectName: String
-  projectNameThai: String
-  ProjectStatus: String
-  ProjectType: String
+input UpdateCsatInput {
+    children: [CreateCsatInput!]
+    comment: String
+    deletedAt: Date
+    id: ID!
+    questionId: String
+    repairId: String
+    score: Int
 }
 
-"""
-วันหยุดพนักงาน
-"""
-type calendarWeekends {
-  id: ID
-  date: Date
-  title: String
-  description: String
-  # createdAt: Date
-  # updatedAt: Date
-  # createdBy: employee
-  # updatedBy: employee
+input UpdateFileInput {
+    """
+    Bucket ของไฟล์
+    """
+    fileBucket: String
+
+    """
+    นามสกุลไฟล์
+    """
+    fileExtension: String
+
+    """
+    โฟลเดอร์ไฟล์
+    """
+    fileFolder: String
+
+    """
+    รหัสไฟล์
+    """
+    fileId: String
+
+    """
+    ชื่อไฟล์
+    """
+    fileName: String
+
+    """
+    พาธไฟล์
+    """
+    filePath: String
+
+    """
+    ประเภทไฟล์
+    """
+    fileType: String
+    id: ID!
+
+    """
+    สามารถเข้าถึงได้ทั่วไปหรือไม่
+    """
+    isPublic: Boolean = true
 }
 
-# type homecareCasePagination {
-#   count: Int
-#   rows: [homecareCase]
-# }
+input UpdateJuristicCentralsRepairInput {
+    """
+    วันที่นัดซ่อม
+    """
+    appointmentAt: Date
 
-# type insuranceType {
-#   transferDate: Date
-#   insuranceDate: Date
-#   projectId: String
-#   units: String
-# }
+    """
+    ช่วงเวลาเข้าซ่อม
+    """
+    appointmentRangeTime: String
 
-# type uploadSuccess {
-#   id: String
-#   filePath: String
-# }
+    """
+    วันที่สะดวกซ่อม
+    """
+    appointmentRepairAt: Date
 
-# type serviceDetailLogs {
-#   id: ID
-#   taskServiceId: String
-#   mainCategory: mainCategory
-#   subCategory: subCategory
-#   status: homecareCaseStatusMain
-#   mainStatusId: String
-#   taskServiceStatus: String
-#   responsiblePerson: employee
-#   appointmentDate: String
-#   appointmentTime: String
-#   appointmentDateRepair: String
-#   appointmentTimeRepair: String
-#   createdBy: employee
-#   createdAt: Date
-# }
+    """
+    ช่วงเวลาเข้าซ่อม
+    """
+    appointmentRepairRangeTime: String
 
-# type serviceCentralDetailLogs {
-#   id: ID
-#   taskServiceId: String
-#   mainCategory: mainCategory
-#   subCategory: subCategory
-#   status: homecareCaseStatusMain
-#   mainStatusId: String
-#   taskServiceStatus: String
-#   responsiblePerson: employee
-#   appointmentDate: String
-#   appointmentTime: String
-#   appointmentDateRepair: String
-#   appointmentTimeRepair: String
-#   createdBy: employee
-#   createdAt: Date
-# }
+    """
+    รหัสประเภท
+    """
+    categoryId: String
 
-# type File {
-#   fileName: String
-#   mimeType: String
-#   encoding: String
-# }
+    """
+    รายละเอียด
+    """
+    description: String
+    id: ID!
 
-# type Image {
-#   filename: String
-#   width: Int
-#   height: Int
-# }
+    """
+    สถานะงาน
+    """
+    status: TaskStatus! = OPEN
 
-# input inputFile {
-#   file: String
-# }
+    """
+    รหัสประเภทย่อย
+    """
+    subCategoryId: String
 
-# input inputEntryformAttachment {
-#   filePath: String
-#   taskServiceDetailId: String
-# }
-
-# input inputEntryformAttachmentCentral {
-#   filePath: String
-#   taskServiceCenterDetailId: String
-# }
-
-# input inputEntryCaseUpdate {
-#   message: String
-#   taskServiceDetailId: String
-# }
-
-# input inputEntryCaseUpdateCentral {
-#   message: String
-#   taskServiceCenterDetailId: String
-# }
-
-# input InputInsurance {
-#   projectId: String
-#   units: String
-# }
-
-# input inputEntryServiceCentralCase {
-#   username: String
-#   project: String
-#   area: String
-#   building: String
-#   floor: String
-#   status: String
-#   informerName: String
-#   informerPhone: String
-#   detail: [inputEntryServiceCaseDetail]
-# }
-
-# input inputEntryServiceCentralCaseDetail {
-#   id: ID
-#   mainCategoryId: String
-#   subCategoryId: String
-#   mainStatusId: String
-#   detail: String
-#   responsiblePerson: String
-#   taskServiceStatus: String
-#   appointmentDate: String
-#   appointmentTime: String
-#   appointmentDateRepair: String
-#   appointmentTimeRepair: String
-# }
-
-# type serviceCount {
-#   countAll: String
-#   countAssign: String
-#   countOpen: String
-#   countInprocess: String
-#   countFinish: String
-#   countClose: String
-# }
-
-# type serviceCentralCount {
-#   countAll: String
-#   countAssign: String
-#   countOpen: String
-#   countInprocess: String
-#   countReInProcess: String
-#   countFinishByProject: String
-#   countFinish: String
-#   countClose: String
-# }
-
-# type onSuccess {
-#   status: String
-# }
-
-# type mainArea {
-#   id: String
-#   name: String
-#   areaType: String
-# }
-
-# type taskServiceCentral {
-#   id: ID
-#   serviceNumber: String
-#   project: ddlProject
-#   area: [mainArea]
-#   building: [mainArea]
-#   floor: [mainArea]
-#   informerName: String
-#   informerPhone: String
-#   status: homecareCaseStatusMain
-#   createdBy: employee
-#   createdAt: Date
-#   detail: [taskServiceCentralDetail]
-# }
-
-# type caseUpdate {
-#   message: String
-#   createdBy: employee
-#   createdAt: Date
-# }
-
-# type caseUpdateCentral {
-#   message: String
-#   createdBy: employee
-#   createdAt: Date
-# }
-
-# type mainFormAttachment {
-#   id: String
-#   filePath: String
-#   createdBy: employee
-#   createdAt: Date
-# }
-
-# type formAttachment {
-#   id: String
-#   filePath: String
-#   createdBy: employee
-#   createdAt: Date
-# }
-
-# type formAttachmentCentral {
-#   id: String
-#   filePath: String
-#   createdBy: employee
-#   createdAt: Date
-# }
-
-# type taskServiceCentralDetail {
-#   id: ID
-#   juristicPersonNo: String
-#   detail: String
-#   taskCentralServiceId: String
-#   mainCategory: mainCategory
-#   subCategory: subCategory
-#   status: homecareCaseStatusMain
-#   mainStatusId: String
-#   responsiblePerson: employee
-#   caseUpdate: [caseUpdateCentral]
-#   formAttachment: [formAttachmentCentral]
-#   mainFormAttachment: [formAttachmentCentral]
-#   appointmentDate: String
-#   appointmentTime: String
-#   appointmentDateRepair: String
-#   appointmentTimeRepair: String
-#   createdBy: employee
-#   createdAt: Date
-#   updatedBy: employee
-#   updatedAt: Date
-#   filesMore: [TaskCentralServiceDetailsToFiles]
-# }
-
-# type taskService {
-#   id: ID
-#   serviceNumber: String
-#   project: ddlProject
-#   unit: String
-#   fullName: String
-#   phone: String
-#   houseNumber: String
-#   status: homecareCaseStatusMain
-#   lastInsuranceDate: Date
-#   insuranceDateDefault: String
-#   transferDate: Date
-#   createdBy: employee
-#   createdAt: Date
-#   detail: [taskServiceDetail]
-# }
-
-# type taskServiceDetail {
-#   id: ID
-#   juristicPersonNo: String
-#   detail: String
-#   taskServiceId: String
-#   mainCategory: mainCategory
-#   subCategory: subCategory
-#   status: homecareCaseStatusMain
-#   mainStatusId: String
-#   taskServiceStatus: String
-#   responsiblePerson: employee
-#   appointmentDate: String
-#   appointmentTime: String
-#   appointmentDateRepair: String
-#   appointmentTimeRepair: String
-#   caseUpdate: [caseUpdate]
-#   formAttachment: [formAttachment]
-#   mainFormAttachment: [mainFormAttachment]
-#   createdBy: employee
-#   createdAt: Date
-#   updatedBy: employee
-#   updatedAt: Date
-# }
-
-# input inputEntryServiceCase {
-#   username: String
-#   project: String
-#   unit: String
-#   fullName: String
-#   phone: String
-#   houseNumber: String
-#   status: String
-#   checkInDate: Date
-#   checkInRangeTime: String
-#   repairDateFromCustomer: String
-#   detail: [inputEntryServiceCaseDetail]
-# }
-
-# input inputEntryServiceCaseDetail {
-#   id: ID
-#   mainCategoryId: String
-#   subCategoryId: String
-#   mainStatusId: String
-#   detail: String
-#   responsiblePerson: String
-#   taskServiceStatus: String
-#   appointmentDate: String
-#   appointmentTime: String
-#   appointmentDateRepair: String
-#   appointmentTimeRepair: String
-#   file: [Upload]
-# }
-
-# type serviceCentralCase {
-#   id: ID
-#   serviceNumber: String
-#   project: ddlProject
-#   area: String
-#   building: String
-#   floor: String
-#   informerName: String
-#   informerPhone: String
-#   status: homecareCaseStatusMain
-#   createdBy: employee
-#   createdAt: Date
-#   detail: [serviceCaseCentralDetail]
-# }
-
-# type serviceCaseCentralDetail {
-#   id: ID
-#   juristicPersonNo: String
-#   detail: String
-#   responsiblePerson: employee
-#   appointmentDate: String
-#   appointmentTime: String
-#   taskServiceStatus: String
-#   mainCategory: mainCategory
-#   subCategory: subCategory
-#   status: homecareCaseStatusMain
-#   createdBy: employee
-#   createdAt: Date
-#   updatedBy: employee
-#   updatedAt: Date
-# }
-
-# type serviceCase {
-#   id: ID
-#   serviceNumber: String
-#   project: ddlProject
-#   unit: String
-#   fullName: String
-#   phone: String
-#   status: homecareCaseStatusMain
-#   checkInDate: Date
-#   checkInRangeTime: homecareRangeTime
-#   firstInDate: Date
-#   firstInRangeTime: homecareRangeTime
-#   createdBy: employee
-#   lastInsuranceDate: Date
-#   insuranceDateDefault: String
-#   transferDate: Date
-#   createdAt: Date
-#   detail: [serviceCaseDetail]
-# }
-
-# type serviceCaseDetail {
-#   id: ID
-#   juristicPersonNo: String
-#   detail: String
-#   responsiblePerson: employee
-#   appointmentDate: String
-#   appointmentTime: homecareRangeTime
-#   appointmentDateRepair: String
-#   appointmentTimeRepair: homecareRangeTime
-#   taskServiceStatus: homecareCaseStatusDetail
-#   taskServiceId: String
-#   mainCategoryId: mainCategory
-#   subCategoryId: subCategory
-#   createdBy: employee
-#   createdAt: Date
-# }
-
-# input inputPiority {
-#   id: ID
-#   casePiority: Int
-#   detailNumber: String
-# }
-
-# type HomecareCaseUnInsuring {
-#   id: Int
-#   owner: String
-#   units: String
-#   project: String
-# }
-
-# """test5"""
-# type homecareCount {
-#   countAll: String
-#   countPending: String
-#   countOpen: String
-#   countChecking: String
-#   countInprogress: String
-#   countFinish: String
-#   filterInsuringRoom: String
-#   filterUnderInsuringRoom: String
-# }
-
-# input inputAddCase {
-#   caseNumber: String
-#   mainId: String
-#   id: String
-#   textCategory: String
-#   textSubCategory: String
-#   category: String
-#   subcategory: String
-#   sublist: String
-#   description: String
-#   status: String
-#   homecareName: String
-#   homecareInDate: Date
-#   homecareRangeTime: String
-#   assignInDate: Date
-#   assignRangeTime: String
-#   homecareStatus: String
-#   reasonStatus: String
-#   checkDeatil: String
-#   singOwner: String
-#   listDefect: String
-#   causeId: ID
-#   remark: String
-#   slaId: ID
-# }
-
-"""
-ชุดข้อมูลที่ลูกค้าเพิ่มรายการแจ้งซ่อม
-"""
-input inputEntryHomecareCase {
-  # username: String
-  """
-  รหัสโครงการ เช่น PRK01
-  """
-  projectId: String
-  """
-  หมายเลขห้อง เช่น A101
-  """
-  units: String
-  """
-  ชื่อ-สกุลเจ้าของห้อง
-  """
-  owner: String
-  """
-  ช่องทางที่แจ้ง ของ primoplus ระบุเป็น '05'
-  """
-  channel: String
-  """
-  เบอร์โทรศัพท์เจ้าของห้อง
-  """
-  phoneOwner: String
-  # status: String
-  """
-  วันที่เข้าตรวจ รูปแบบ 'YYYY-MM-DD HH:mm:ss'
-  """
-  checkInDate: String
-  """
-  ช่วงเวลาที่เข้าตรวจ เช่น '10-11'
-  """
-  checkInRangeTime: String
-  # repairDateFromCustomer: String
-  """
-  รายการแจ้งซ่อม
-  """
-  detail: [inputEntryHomecareCaseDetail]
+    """
+    รหัสผู้ใช้งาน
+    """
+    userId: String
 }
 
-"""
-รายการแจ้งซ่อม
-"""
-input inputEntryHomecareCaseDetail {
-  """
-  กำหนดเป็น UUIDv4
-  """
-  id: String
-  # textCategory: String
-  # textSubCategory: String
-  """
-  id ของ category
-  """
-  category: String
-  """
-  id ของ subcategory
-  """
-  subcategory: String
-  # sublist: String
-  """
-  รายละเอียดเพิ่มเติม
-  """
-  description: String
-  # status: String
-  # homecareName: String
-  # homecareInDate: Date
-  # homecareRangeTime: String
-  # assignInDate: Date
-  # assignRangeTime: String
-  # homecareStatus: String
-  # reasonStatus: String
-  # checkDeatil: String
-  # singOwner: String
-  # listDefect: String
-  # causeId: ID
-  # remark: String
-  # slaId: ID
-  """
-  รูปภาพแนบประกอบ
-  """
-  files: [inputhomecareFiles]
-  # contractor: String
-  # endOfJobDate: Date
+input UpdateJuristicServiceRepairInput {
+    """
+    วันที่นัดซ่อม
+    """
+    appointmentAt: Date
+
+    """
+    ช่วงเวลาเข้าซ่อม
+    """
+    appointmentRangeTime: String
+
+    """
+    วันที่สะดวกซ่อม
+    """
+    appointmentRepairAt: Date
+
+    """
+    ช่วงเวลาเข้าซ่อม
+    """
+    appointmentRepairRangeTime: String
+
+    """
+    รหัสประเภท
+    """
+    categoryId: String
+
+    """
+    รายละเอียด
+    """
+    description: String
+    id: ID!
+
+    """
+    สถานะงาน
+    """
+    status: TaskStatus! = OPEN
+
+    """
+    รหัสประเภทย่อย
+    """
+    subCategoryId: String
+
+    """
+    รหัสผู้ใช้งาน
+    """
+    userId: String
 }
 
-"""
-รูปภาพแนบประกอบ
-"""
-input inputhomecareFiles {
-  """
-  กำหนดเป็น UUIDv4 เช่น
-  """
-  id: String
-  # idNumber: Int
-  """
-  ชื่อไฟล์รูปที่ upload เช่น {{UUIDv4}}.jpg
-  """
-  fileName: String
-  # fileType: String
-  # uri: String
+input UpdateMasterInput {
+    """
+    รหัส
+    """
+    code: String
+    deletedAt: Date
+
+    """
+    คำอธิบายภาษาอังกฤษ
+    """
+    descriptionEn: String
+
+    """
+    คำอธิบายภาษาไทย
+    """
+    descriptionTh: String
+
+    """
+    ไอคอน
+    """
+    icon: String
+    id: ID!
+
+    """
+    สถานะ
+    """
+    isActive: Boolean = true
+
+    """
+    สำหรับประเภทอื่นๆ
+    """
+    isOther: Boolean = false
+
+    """
+    ชื่อภาษาอังกฤษ
+    """
+    nameEn: String
+
+    """
+    ชื่อภาษาไทย
+    """
+    nameTh: String
+
+    """
+    รหัสหลัก
+    """
+    parentId: String
+
+    """
+    ลำดับ
+    """
+    sequence: Int = 1
+
+    """
+    ระยะเวลาการตอบกลับ (วัน)
+    """
+    sla1D: Int
+
+    """
+    ระยะเวลาการตอบกลับ (นาที)
+    """
+    sla1H: Int
+
+    """
+    ระยะเวลาการตอบกลับ (วัน)
+    """
+    sla2D: Int
+
+    """
+    ระยะเวลาการตอบกลับ (นาที)
+    """
+    sla2H: Int
+
+    """
+    ระยะเวลาการตอบกลับ (วัน)
+    """
+    sla3D: Int
+
+    """
+    ระยะเวลาการตอบกลับ (นาที)
+    """
+    sla3H: Int
+
+    """
+    ประเภท
+    """
+    type: String
 }
 
-# input inputEntryHomecareAssign {
-#   id: String
-#   assignLogId: String
-#   detailId: String
-#   staffId: String
-#   sublistId: String
-#   requestDate: Date
-#   requestRangeTime: String
-#   sla: Int
-#   staffStatus: String
-#   caseStatus: String
-#   comment: String
-#   remark: String
-#   reAssignRemark: String
-#   finishType: String
-#   assetComment: String
-#   assetCustomerStatus: String
-#   customerName: String
-#   reAssignInDate: Date
-#   reAssignRangeTime: String
-#   files: [inputhomecareFiles]
-# }
+input UpdateNotificationInput {
+    deletedAt: Date
 
-# input inputEntryHomecareReportLogs {
-#   callBackDate: Date
-#   checkInDate: Date
-#   checkInRangeTime: String
-#   remark: String
-#   detailId: String
-#   type: String
-#   filesMove: [inputHomecareAssignReportLogsToFiles]
-# }
+    """
+    รูปภาพ
+    """
+    icon: String
+    id: ID!
 
-# input inputHomecareAssignReportLogsToFiles {
-#   fileId: String
-#   fileName: String
-#   fileFolder: String
-# }
+    """
+    อ่านแล้วหรือไม่
+    """
+    isRead: Boolean = false
 
-# input inputEntryHomecareAssignReportLogs {
-#   callBackDate: Date
-#   checkInDate: Date
-#   checkInRangeTime: String
-#   remark: String
-#   assignId: String
-#   type: String
-#   filesMove: [inputHomecareAssignReportLogsToFiles]
-# }
+    """
+    ข้อความ
+    """
+    message: String
 
-"""
-รายละเอียดเคสหลัก
-"""
-type homecareCase {
-  id: ID
-  """
-  หมายเลขเคสหลัก
-  """
-  caseNumber: String
-  # project: ddlProject
-  # units: String
-  # owner: String
-  # channel: homecareChannel
-  # phoneOwner: String
-  """
-  สถานะของเคสหลัก
-  """
-  status: homecareCaseStatusMain
-  """
-  วันที่รับบริการ
-  """
-  checkInDate: Date
-  # checkInDateService: String
-  """
-  ช่วงเวลาที่รับบริการ
-  """
-  checkInRangeTime: homecareRangeTime
-  # firstInDate: Date
-  # firstInRangeTime: homecareRangeTime
-  # createdBy: employee
-  # lastInsuranceDate: Date
-  # insuranceDateDefault: String
-  # transferDate: Date
-  """
-  วันที่แจ้งซ่อม
-  """
-  createdAt: Date
-  """
-  รายการแจ้งซ่อม
-  """
-  detail: [homecareCaseDetail]
-  # insurance: Boolean
-  # countDetail: Int
-  # detailShowExcell: String
-  # detailByDetailNumber(detailNumber: [String]): [homecareCaseDetail]
+    """
+    วันที่ส่ง
+    """
+    sendAt: Date
+
+    """
+    หัวข้อ
+    """
+    title: String
+
+    """
+    ประเภทการแจ้งเตือน
+    """
+    type: NotificationType
+
+    """
+    URL
+    """
+    url: String
+
+    """
+    รหัสผู้ใช้งาน
+    """
+    userId: String
 }
 
-# type homecareCasePending {
-#   count: Int
-#   rows: [homecareCase]
-# }
+input UpdateRepairInput {
+    """
+    ความคิดเห็นการประเมิน
+    """
+    CSATComment: String
 
-# type testHomecareCaseDetail {
-#   id: ID
-#   mainId: String
-# }
+    """
+    วันที่นัดซ่อม
+    """
+    appointmentAt: Date
 
-# type sysMasterProjects {
-#   id: ID
-#   name: String
-#   nameEng: String
-#   companyId: String
-#   projectStatus: String
-# }
+    """
+    วันที่สะดวกซ่อม
+    """
+    appointmentRepairAt: Date
 
-"""
-รายการแจ้งซ่อมเคสย่อย
-"""
-type homecareCaseDetail {
-  id: ID
-  """
-  รายการเคสหลัก
-  """
-  main: homecareCase
-  """
-  หมายเลขเคสย่อย
-  """
-  detailNumber: String
-  # dateFinish: Date
-  # defaultCategory: homecareCategory
-  # defaultSubcategory: homecareCategory
-  """
-  หัวข้อหลักการตรวจ
-  """
-  category: homecareCategory
-  """
-  หัวข้อย่อยการตรวจ
-  """
-  subcategory: homecareSubCategory
-  # # sublist: homecareSubList
-  """
-  รายละเอียดเพิ่มเติม
-  """
-  description: String
-  """
-  รายละเอียดขั้นตอนการตรวจของ Homecare
-  """
-  assignList: [homecareAssign]
-  """
-  สถานะของเคสย่อย
-  """
-  status: homecareCaseStatusDetail
-  """
-  ข้อมูลพนักงานที่รับผิดชอบ
-  """
-  homecareName: employee
-  """
-  วันที่ตรวจสอบหน้างาน
-  """
-  homecareInDate: Date
-  """
-  ช่วงเวลาที่ตรวจสอบหน้างาน
-  """
-  homecareRangeTime: homecareRangeTime
-  """
-  สถานะที่พนักงานเข้าตรวจ
-  """
-  homecareStatus: homecareCaseStatusHomecare
-  # assignInDate: Date
-  # assignRangeTime: homecareRangeTime
-  # reasonStatus: String
-  # checkDeatil: String
-  # singOwner: String
-  # listDefect: String
-  # remark: String
-  """
-  รูปภาพประกอบ
-  """
-  files: detailFile
-  # sla: homecareSla
-  # slaTelDate: Date
-  # cause: homecareCause
-  """
-  ข้อมูลที่ลูกค้าทำประเมิน
-  """
-  csat: [homecareCsat]
-  """
-  สถานะที่ลูกค้าทำประเมิน
-  """
-  csatStatus: String
-  # reportLogs: [homecareReportLogs]
-  # assignLogs: [homecareAssignLogs]
-  # createdBy: employee
-  # createdAt: Date
-  # mainId: String
-  # FDate: Date
-  # SPDate: Date
-  # hcPhoneLog: [hcPhoneLogData]
-  # sla3: sla3
+    """
+    ช่วงเวลาเข้าซ่อม
+    """
+    appointmentRepairRangeTime: String
+
+    """
+    หมายเหตุของไม่ครบ
+    """
+    assetsCompleteRemark: String
+
+    """
+    วันที่มอบงาน
+    """
+    assignedAt: Date
+
+    """
+    รหัสประเภท
+    """
+    categoryId: String
+
+    """
+    รหัสสาเหตุ
+    """
+    causeId: String
+
+    """
+    สาเหตุอื่นๆ
+    """
+    causeOther: String
+
+    """
+    วันที่ปิดเคส
+    """
+    closedAt: Date
+
+    """
+    หมายเหตุการปิดเคสจาก Call Center
+    """
+    closedForCallCenterRemark: String
+
+    """
+    รหัสผู้รับเหมา
+    """
+    contractorId: String
+    deletedAt: Date
+
+    """
+    รายละเอียด
+    """
+    description: String
+
+    """
+    ไฟล์
+    """
+    files: [CreateFileInput!]
+
+    """
+    กำหนดจบงาน
+    """
+    finishTargetAt: Date
+
+    """
+    วันที่จบงาน
+    """
+    finishedAt: Date
+
+    """
+    วันที่จบงานนอกเหนือการรับประกัน
+    """
+    finishedCustomerAt: Date
+
+    """
+    วันที่โทรครั้งแรก
+    """
+    firstCalledAt: Date
+    id: ID!
+
+    """
+    วันที่จบงาน
+    """
+    inprogressAt: Date
+
+    """
+    หมายเหตุการเข้าตรวจสอบ
+    """
+    inspectionRemark: String
+
+    """
+    ทรัพย์สินครบทุกชิ้น
+    """
+    isAssetsComplete: Boolean = false
+
+    """
+    สถานะการประเมิน
+    """
+    isCSAT: Boolean = false
+
+    """
+    สถานะการปิดเคสจาก Call Center
+    """
+    isClosedForCallCenter: Boolean = false
+
+    """
+    ปิดเคส (รอดูอาการ)
+    """
+    isFinishedMonitoring: Boolean = false
+
+    """
+    นอกเหนือการรับประกัน
+    """
+    isOutsideInsurance: Boolean = false
+
+    """
+    มีผู้รับงานหรือไม่
+    """
+    isRecipient: Boolean = false
+
+    """
+    เริ่มซ่อมวันนี้หรือนัดซ่อมวันอื่น
+    """
+    isScheduledToday: Boolean = false
+
+    """
+    วันที่เข้าซ่อมล่าสุด
+    """
+    lastRepairAt: Date
+
+    """
+    ช่วงเวลาเข้าซ่อมล่าสุด
+    """
+    lastRepairRangeTime: String
+
+    """
+    หมายเหตุนอกเหนือการรับประกัน
+    """
+    outsideInsuranceRemark: String
+
+    """
+    ความสำคัญ
+    """
+    priorityId: String
+
+    """
+    ชื่อ นามสกุล ผู้รับงาน
+    """
+    receiverName: String
+
+    """
+    วันที่เข้าซ่อม
+    """
+    repairAt: Date
+
+    """
+    วันที่เข้าซ่อม
+    """
+    repairDate: Date
+
+    """
+    ช่วงเวลาเข้าซ่อม
+    """
+    repairRangeTime: String
+
+    """
+    วันที่เริ่มทำงาน
+    """
+    scheduledAt: Date
+
+    """
+    รหัส SLA
+    """
+    slaId: String
+
+    """
+    สถานะงาน
+    """
+    status: TaskStatus = OPEN
+
+    """
+    รหัสประเภทย่อย
+    """
+    subCategoryId: String
+
+    """
+    รหัสงานหลัก
+    """
+    taskId: String
+
+    """
+    รหัสผู้ใช้งาน
+    """
+    userId: String
 }
 
-# type piority {
-#   id: String
-#   name: String
-# }
+input UpdateRepairSiteInspectionInput {
+    """
+    รหัสสาเหตุ
+    """
+    causeId: String
 
-"""
-ลำดับขั้นตอนการทำงาน ของพนักงาน
-"""
-type homecareAssign {
-  id: ID
-  """
-  รายละเอียดเคสย่อย
-  """
-  detail: homecareCaseDetail
-  # assignNumber: String
-  """
-  สถานะของขั้นตอนนั้นๆ
-  """
-  status: homecareCaseStatusAssign
-  # rank: String
-  # comment: String
-  # remark: String
-  # requestDate: Date
-  # requestRangeTime: homecareRangeTime
-  # sublist: homecareSubList
-  # sla: Int
-  # staff: employee
-  """
-  รูปภาพประกอบ
-  """
-  files: assignFile
-  # staffStatus: homecareCaseStatusStaff
-  # reAssignRemark: String
-  # finishType: String
-  # assetComment: String
-  # dateFinish: String
-  # assetCustomerStatus: String
-  # customerNameFinish: String
-  # reAssignInDate: Date
-  # slaStartDate: Date
-  # slaEndDate: Date
-  # homecareSlaWork: homecareSlaWork
-  # reAssignRangeTime: homecareRangeTime
-  # logs: [homecareAssignLogs]
+    """
+    รหัสผู้รับเหมา
+    """
+    contractorId: String
+
+    """
+    กำหนดจบงาน
+    """
+    finishTargetAt: Date
+    id: ID!
+
+    """
+    รหัส SLA
+    """
+    slaId: String
 }
 
-# type homecareAssignLogs {
-#   id: ID
-#   assignId: String
-#   detail: homecareCaseDetail
-#   status: homecareCaseStatusAssign
-#   rank: String
-#   comment: String
-#   remark: String
-#   requestDate: Date
-#   requestRangeTime: homecareRangeTime
-#   # sublist: homecareSubList
-#   sla: Int
-#   staff: employee
-#   files: assignFile
-#   staffStatus: homecareCaseStatusStaff
-# }
+input UpdateRepairSopInput {
+    deletedAt: Date
 
-# type homecareReportLogs {
-#   id: ID
-#   createdAt: Date
-#   callBackDate: Date
-#   checkInDate: Date
-#   checkInRangeTime: String
-#   remark: String
-#   detailId: String
-#   type: String
-#   filesMore: [HomecareAssignReportLogsToFiles]
-# }
+    """
+    ไฟล์
+    """
+    files: [CreateFileInput!]
+    finishIssue: RepairSopFinishIssue
+    finishPendingReason: RepairSopFinishPendingReason
+    finishType: RepairSopFinishType
+    finishedAt: Date
+    id: ID!
+    isFinished: Boolean = false
+    nextRepairAt: Date
 
-"""
-สถานะของเคสหลัก
-"""
-type homecareCaseStatusMain {
-  id: String
-  name: String
-  labelThai: String
-  labelEng: String
-  color: String
-  bgColor: String
+    """
+    ช่วงเวลาเข้าซ่อม
+    """
+    nextRepairRangeTime: String
+    parentId: String
+    pictureAt: Date
+    remark: String
+    repairId: String
+    status: RepairSopStatus
+    transactionAt: Date
 }
 
-"""
-สถานะของเคสย่อย
-"""
-type homecareCaseStatusDetail {
-  id: String
-  name: String
-  labelThai: String
-  labelEng: String
-  color: String
-  bgColor: String
+input UpdateRoleInput {
+    """
+    คำอธิบาย
+    """
+    description: String
+    id: ID!
+
+    """
+    ระดับลำดับชั้น
+    """
+    level: Int = 0
+
+    """
+    ชื่อ Role
+    """
+    name: String
+
+    """
+    รหัส Parent Role
+    """
+    parentId: String
+
+    """
+    รายการ Permissions
+    """
+    permissions: [String!] = []
 }
 
-"""
-สถานะที่พนักงานเข้าตรวจ
-"""
-type homecareCaseStatusHomecare {
-  id: String
-  name: String
-  labelThai: String
-  labelEng: String
-  color: String
-  bgColor: String
+input UpdateUserProjectInput {
+    deletedAt: Date
+    id: ID!
+    projectId: String
+    towers: [CreateUserProjectTowerInput!]
+    userId: String
 }
 
-"""
-สถานะของขั้นตอนการทำงาน
-"""
-type homecareCaseStatusAssign {
-  id: String
-  name: String
-  labelThai: String
-  labelEng: String
-  color: String
-  bgColor: String
+input UpdateUserProjectTowerInput {
+    deletedAt: Date
+    floors: [String!]
+    id: ID!
+    tower: String
 }
 
-# type homecareCaseStatusStaff {
-#   id: String
-#   name: String
-#   labelThai: String
-#   labelEng: String
-#   color: String
-#   bgColor: String
-# }
+type User {
+    """
+    ข้อมูลพนักงาน
+    """
+    employee: Employee
 
-# type homecareCaseStatus {
-#   id: String
-#   name: String
-#   labelThai: String
-#   labelEng: String
-#   color: String
-#   bgColor: String
-# }
+    """
+    รหัสผู้ใช้งาน
+    """
+    id: ID!
 
-"""
-รูปภาพประกอบ
-"""
-type detailFile {
-  id: ID
-  """
-  id ของเคสย่อย
-  """
-  detailId: String
-  """
-  รูปภาพของเจ้าของห้อง
-  """
-  owner: [homecareImage]
-  """
-  รูปภาพที่เจ้าหน้าที่ส่ง
-  """
-  homecare: [homecareImage]
+    """
+    ข้อมูลโครงการที่ดูแล
+    """
+    project: Project
+
+    """
+    ข้อมูลโครงการที่ดูแลทั้งหมด
+    """
+    projects: [UserProject!]
+
+    """
+    ข้อมูล Roles
+    """
+    roles: [Role!]
+
+    """
+    ข้อมูลการตั้งค่า
+    """
+    setting: UserSetting
+
+    """
+    ชื่อผู้ใช้งาน
+    """
+    username: String!
 }
 
-"""
-รูปภาพประกอบ
-"""
-type assignFile {
-  id: ID
-  # assignId: String
-  """
-  รูปภาพก่อนทำงาน (Before)
-  """
-  assignBefore: [homecareImage]
-  """
-  รูปภาพการป้องกันความเสียหาย (Protection)
-  """
-  assignProtect: [homecareImage]
-  """
-  รูปภาพระหว่างทำงาน (Doing)
-  """
-  assignDoing: [homecareImage]
-  """
-  รูปภาพหลังทำงานเสร็จ (Finish)
-  """
-  assignFinish: [homecareImage]
-  # signature: [homecareImage]
-  # assignUploadFinishCustomer: [homecareImage]
+type UserPaginate {
+    """
+    รายการผู้ใช้งาน
+    """
+    items: [User!]!
+
+    """
+    ลิงค์หน้า
+    """
+    links: IPaginateLinks
+
+    """
+    ข้อมูลการจัดการหน้า
+    """
+    meta: IPaginateMeta
 }
 
-"""
-รูปภาพประกอบ
-"""
-type homecareImage {
-  id: String
-  """
-  id ของเคสย่อย
-  """
-  detailId: String
-  # assignId: String
-  """
-  ชื่อไฟล์รูป
-  """
-  fileName: String
-  # fileType: String
-  # fileExtension: String
-  """
-  แสดงหรือไม่แสดง
-  """
-  isShow: Boolean
-  """
-  วันที่ทำรายการ
-  """
-  createdAt: Date
+type UserProject {
+    createdAt: Date
+    deletedAt: Date
+    id: ID!
+    project: Project!
+    projectId: String!
+    towers: [UserProjectTower!]!
+    updatedAt: Date
+    user: User!
+    userId: String!
 }
 
-"""
-ช่วงเวลา
-"""
-type homecareRangeTime {
-  id: String
-  name: String
-  label: String
+type UserProjectPaginate {
+    """
+    รายการโครงการที่ดูแล
+    """
+    items: [UserProject!]!
+
+    """
+    ลิงค์หน้า
+    """
+    links: IPaginateLinks
+
+    """
+    ข้อมูลการจัดการหน้า
+    """
+    meta: IPaginateMeta
 }
 
-# type homecareChannel {
-#   id: String
-#   name: String
-# }
-
-# type homecareSlaWork {
-#   id: String
-#   status: String
-#   overTime: Float
-# }
-
-# type homecarePerformance {
-#   id: ID
-#   homecareId: String
-#   homecareName: employee
-#   countWork: Float
-#   status: homecareCaseStatusDetail
-# }
-
-# type homecareNewPerformance {
-#   id: ID
-#   caseNumber: String
-#   resPerson: String
-#   subHcStatus: String
-# }
-
-# type dataCaseGroupByUnitProj {
-#   id: ID
-#   OpenCase: String
-#   channelReq: String
-#   projectId: String
-#   caseNumber: String
-#   projectName: String
-#   custName: String
-#   Phone: String
-#   unitNo: String
-#   hNo: String
-#   subWork: String
-#   descr: String
-#   caseStatus: String
-#   subHcStatus: String
-#   HcStatus: String
-#   slaHour: String
-#   resPerson: String
-#   feedBack: String
-#   Q1: String
-#   Q2: String
-#   Q3: String
-#   Q4: String
-#   createdAt: Date
-#   StartProcessDate: Date
-#   slaTelDate: Date
-#   dateFinish: String
-#   SLA1: String
-#   SLA2: String
-#   SLA1_S: String
-#   SLA2_S: String
-#   type: String
-#   ttype: String
-#   remark: String
-#   dCurOpen: String
-#   hCurOpen: String
-#   casePiority: piority
-#   isPiority: String
-#   total: Int
-# }
-
-# type dataSLA {
-#   id: String
-#   pjName: String
-#   empName: String
-#   cSLA1: String
-#   cSLA1_S: String
-#   perSLA1: String
-#   cSLA2: String
-#   cSLA2_S: String
-#   perSLA2: String
-#   cSLA3: String
-#   cSLA3_S: String
-#   perSLA3: String
-# }
-
-# type dataCsat {
-#   id: String
-#   pjName: String
-#   cQ1: String
-#   cQ2: String
-#   sQ1: String
-#   sQ2: String
-#   avgQ1: String
-#   avgQ2: String
-#   cCase: String
-# }
-
-# type dataNitiServiceByUnitProj {
-#   id: ID
-#   serviceNumber: String
-#   project: String
-#   unit: String
-#   fullName: String
-#   phone: String
-#   houseNumber: String
-#   status: String
-#   transferDate: Date
-#   nameThai: String
-#   tsdId: String
-#   juristicPersonNo: String
-#   detail: String
-#   responsiblePerson: String
-#   responName: String
-#   appointmentDate: Date
-#   appointmentTime: String
-#   appointmentDateRepair: String
-#   appointmentTimeRepair: String
-#   taskServiceStatus: String
-#   mainCategoryId: String
-#   mcName: String
-#   subCategoryId: String
-#   scName: String
-#   SLA: String
-#   mainStatusId: String
-#   msName: String
-#   tsdAssignDate: Date
-#   tsdInProcessDate: Date
-#   tsdFinishDate: Date
-#   SLA1: String
-#   SLA1_S: String
-#   lastestRemark: String
-#   dCurOpen: String
-#   hCurOpen: String
-#   createdAt: Date
-# }
-
-# type dataNitiServiceCentralByUnitProj {
-#   id: ID
-#   serviceNumber: String
-#   project: String
-#   areaType: String
-#   name: String
-#   seq: String
-#   building: String
-#   floor: String
-#   informerName: String
-#   status: String
-#   createdBy: String
-#   updatedBy: String
-#   createdAt: Date
-#   juristicPersonNo: String
-#   detail: String
-#   responsiblePerson: String
-#   responName: String
-#   appointmentDate: Date
-#   appointmentTime: String
-#   appointmentDateRepair: String
-#   appointmentTimeRepair: String
-#   taskCentralServiceId: String
-#   mainCategoryId: String
-#   mcName: String
-#   subCategoryId: String
-#   scName: String
-#   SLA: String
-#   mainStatusId: String
-#   msName: String
-#   assignDate: Date
-#   inProcessDate: Date
-#   reProcessDate: Date
-#   finishDate: Date
-#   closeDate: Date
-#   lastestRemark: String
-#   dCurOpen: String
-#   hCurOpen: String
-#   SLA1: String
-#   SLA1_S: String
-#   SLA2: String
-#   SLA2_S: String
-# }
-
-# type dataMainArea {
-#   id: ID
-#   name: String
-#   areaType: String
-#   seq: String
-# }
-
-# type sla3 {
-#   days: String
-#   status: String
-#   color: String
-# }
-
-# type area {
-#   id: String
-#   name: String
-#   areaType: String
-# }
-
-# type homecareNitiSubCategory {
-#   id: String
-#   name: String
-#   SLA: Int
-#   mainCategoryId: String
-#   mainCategory: homecareNitiCategory
-# }
-
-# type homecareNitiCategory {
-#   id: String
-#   name: String
-#   mainMenuId: String
-#   mainMenu: mainMenu
-# }
-
-# type mainMenu {
-#   id: String
-#   name: String
-# }
-
-# type homecareNitiStatus {
-#   id: String
-#   name: String
-#   mainMenuId: String
-#   mainMenu: mainMenu
-# }
-
-# type mainCategory {
-#   id: String
-#   name: String
-# }
-
-# type subCategory {
-#   id: String
-#   name: String
-#   SLA: Int
-# }
-
-# type homecareNiti {
-#   id: String
-#   name: String
-#   mainMenuId: String
-#   mainCategory: mainCategory
-# }
-
-# type homecareSlaCategory {
-#   id: String
-#   category: String
-# }
-
-# type homecareSla {
-#   id: ID
-#   category: String
-#   subCategory: String
-#   hours: Float
-#   days: Float
-# }
-
-# type homecareSlaSubCategory {
-#   id: ID
-#   category: String
-#   subCategory: String
-#   hours: Float
-#   days: Float
-# }
-
-"""
-หัวข้อหลักการตรวจ
-"""
-type homecareCategory {
-  id: String
-  nameThai: String
-  nameEng: String
-  subCategory: [homecareSubCategory]
-  # categoryId: String
-  seq: Int
+type UserProjectTower {
+    createdAt: Date
+    deletedAt: Date
+    floors: [String!]
+    id: ID!
+    tower: String!
+    updatedAt: Date
+    userProjectId: String!
 }
 
-"""
-หัวข้อย่อยการตรวจ
-"""
-type homecareSubCategory {
-  id: String
-  nameThai: String
-  nameEng: String
-  category: homecareCategory
-  # subList: [homecareSubList]
+type UserRole {
+    createdAt: Date
+    deletedAt: Date
+    id: ID!
+
+    """
+    ข้อมูล Role
+    """
+    role: Role
+
+    """
+    รหัส Role
+    """
+    roleId: String!
+    updatedAt: Date
+
+    """
+    รหัสผู้ใช้งาน
+    """
+    userId: String!
 }
 
-# type homecareSubList {
-#   id: String
-#   nameThai: String
-#   nameEng: String
-#   category: homecareCategory
-#   subCategory: homecareSubCategory
-# }
-
-# type mainStatus {
-#   id: String
-#   name: String
-# }
-
-# type homecareCaseDetailCount {
-#   count: Int
-#   rows: [homecareCaseDetail]
-# }
-
-# type homecareCause {
-#   id: ID
-#   nameThai: String
-#   nameEng: String
-# }
-
-# type homecareCaseDetailCsat {
-#   count: Int
-#   rows: [homecareCaseDetail]
-# }
-
-"""
-ชุดข้อมูลที่ลูกค้าทำประเมิน
-"""
-input inputHomecareCsat {
-  """
-  id ของเคสหลัก
-  """
-  mainId: ID
-  """
-  id ของเคสย่อย
-  """
-  detailId: ID
-  """
-  id ของคำถาม
-  """
-  csatQuestionId: ID
-  """
-  คะแนนที่ลูกค้าให้ 1-5
-  """
-  score: Float
-  """
-  หมายเหตุ
-  """
-  remark: String
+type UserSetting {
+    createdAt: Date
+    deletedAt: Date
+    id: ID!
+    notification: Boolean!
+    updatedAt: Date
+    userId: String!
 }
 
-# type homecareCsatDetail {
-#   id: String
-#   mainId: String
-#   main: homecareCase
-#   detailNumber: String
-#   dateFinish: String
-#   status: homecareCaseStatusAssign
-#   homecareCase: String
-#   description: String
-#   remark: String
-# }
-
-# type sadsadsadsa {
-#   id: String
-# }
-
-"""
-ข้อมูลที่ลูกค้าทำประเมิน
-"""
-type homecareCsat {
-  id: ID
-  """
-  id ของเคสหลัก
-  """
-  mainId: ID
-  """
-  id ของเคสย่อย
-  """
-  detailId: ID
-  """
-  id ของคำถาม
-  """
-  csatQuestionId: ID
-  """
-  คะแนนที่ลูกค้าให้ 1-5
-  """
-  score: String
-}
-
-"""
-คำถามที่ใช้ในการประเมิน
-"""
-type homecareCsatQuestion {
-  id: ID
-  seq: Int
-  wordThai: String
-  wordEng: String
-  wordOther: String
-  maxScore: Float
-  defaultScore: Float
-}
-
-# type hcPhoneLogData {
-#   id: String
-#   caseId: String
-#   detailCaseId: String
-#   detailCaseNumber: String
-#   caseNumber: String
-#   detailCall1: String
-#   detailCall2: String
-#   detailCall3: String
-#   dateCall1: Date
-#   dateCall2: Date
-#   dateCall3: Date
-#   createdBy: String
-#   updatedBy: String
-# }
-
-# input inputHcPhoneLog {
-#   id: String
-#   caseId: String
-#   detailCaseId: String
-#   detailCaseNumber: String
-#   caseNumber: String
-#   detailCall1: String
-#   detailCall2: String
-#   detailCall3: String
-#   dateCall1: String
-#   dateCall2: String
-#   dateCall3: String
-#   createdBy: String
-#   updatedBy: String
-# }
-
-# type listIds {
-#   id: String
-# }
-
-# type hcCaseData {
-#   id: String
-#   projectId: String
-#   projectName: String
-#   type: String
-#   ttype: String
-#   unitNo: String
-#   hNo: String
-#   custName: String
-#   Phone: String
-#   cadate: String
-#   OpenCase: String
-#   ReqCaseDate: Date
-#   channelReq: String
-#   assignDate: Date
-#   caseNumber: String
-#   subWork: String
-#   descr: String
-#   caseStatus: String
-#   subHcStatus: String
-#   HcStatus: String
-#   slaHour: String
-#   resPerson: String
-#   feedBack: String
-#   Q1: String
-#   Q2: String
-#   Q3: String
-#   Q4: String
-#   nitiRecReq: String
-#   StartProcessDate: Date
-#   SPDate: Date
-#   slaTelDate: Date
-#   dateFinish: String
-#   FDate: Date
-#   SLA1: String
-#   SLA2: String
-#   SLA1_S: String
-#   SLA2_S: String
-#   remark: String
-#   lastInsuranceDate: Date
-#   hCurOpen: String
-#   dCurOpen: String
-#   casePiority: String
-#   isPiority: String
-#   RN: String
-#   AppointDate: Date
-#   assignList: [homecareAssign]
-#   listId: listIds
-#   mainCase: homecareCase
-#   detailCase: homecareCaseDetail
-# }
-
-# type homecareLineToken {
-#   id: ID
-#   type: String
-#   status: String
-#   projectId: String
-#   token: String
-# }
-
-# type reportSLA3 {
-#   count: reportSLA3Count
-#   data: reportSLA3Data
-# }
-
-# type reportSLA3Data {
-#   imminent: [reportSLA3Details]
-#   fail: [reportSLA3Details]
-# }
-
-# type reportSLA3Details {
-#   id: String
-#   caseNumber: String
-#   projectId: String
-#   unitNumber: String
-#   houseNumber: String
-#   daysStart: Int
-#   daysWork: Int
-#   status: String
-# }
-
-# type reportSLA3Count {
-#   imminent: Int
-#   fail: Int
-# }
-
-# type HomecareCaseToContractor {
-#   id: ID!
-#   name: String!
-#   type: String!
-#   description: String
-#   status: String!
-#   createBy: employee!
-#   updateBy: employee!
-#   createdAt: String!
-#   updatedAt: String!
-# }
-
-# input InputHomecareCaseToContractor {
-#   id: ID
-#   name: String!
-#   type: String!
-#   description: String
-#   status: String!
-# }
-
-# input TaskCentralServiceDetailsToFilesInput {
-#   taskCentralServiceDetailsId: String
-#   fileId: String
-#   fileName: String
-#   fileFolder: String
-# }
-
-# type TaskCentralServiceDetailsToFiles {
-#   id: ID
-#   taskCentralServiceDetailsId: String
-#   fileId: String
-#   fileName: String
-#   fileFolder: String
-#   createdBy: employee
-#   updatedBy: employee
-#   createdAt: Date
-#   updatedAt: Date
-# }
-
-# type HomecareAssignReportLogsToFiles {
-#   id: ID
-#   homecareReportLogsId: String
-#   fileId: String
-#   fileName: String
-#   fileFolder: String
-# }
-
-# type HomecareCaseDetailPagination {
-#   totalCount: Int
-#   edges: [HomecareCaseDetailPaginationEdge]
-#   pageInfo: HomecareCaseDetailPaginationPageInfo
-# }
-
-# type HomecareCaseDetailPaginationPageInfo {
-#   hasNextPage: Boolean
-#   hasPreviousPage: Boolean
-#   startCursor: String
-#   endCursor: String
-# }
-
-# type HomecareCaseDetailPaginationEdge {
-#   node: homecareCaseDetail
-#   cursor: String
-# }
-
-type homecareTimeRange {
-  """
-  id ของช่วงเวลา
-  """
-  id: ID
-  """
-  ชื่อภาษาอังกฤษ
-  """
-  nameEn: String
-  """
-  ชื่อภาษาไทย
-  """
-  nameTh: String
-  """
-  สถานะการใช้งาน
-  """
-  disabled: Boolean
-  """
-  เวลาเริ่มต้น
-  """
-  start: Int
-  """
-  เวลาสิ้นสุด
-  """
-  end: Int
+type VwTaskRepairFeed {
+    appointmentRepairAt: Date
+    appointmentRepairRangeTime: String
+    baseTaskId: String!
+    category: String
+    code: String!
+    customerName: String!
+    customerPhone: String!
+    daysOverdue: Int!
+    finishTargetAt: Date
+    id: ID!
+    inspectionAt: Date
+    inspectionRangeTime: Option
+    isCall: Boolean!
+    isCallRed: Boolean!
+    isScheduledToday: Boolean!
+    projectId: String!
+    repairAt: Date
+    repairRangeTime: Option
+    status: TaskStatus!
+    subCategory: String
+    totalTasks: Int
+    type: String!
+    unitId: String!
+    unitNumber: String!
+    userId: String!
 }
