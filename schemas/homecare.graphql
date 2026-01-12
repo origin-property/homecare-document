@@ -2091,7 +2091,7 @@ type Mutation {
     """
     สร้างข้อมูลการยิมยอมการให้บริการ
     """
-    createPrimoPlusPrimoPlusConsent(
+    createPrimoPlusConsent(
         createPrimoPlusConsent: CreatePrimoPlusConsentInput!
     ): PrimoPlusConsent!
 
