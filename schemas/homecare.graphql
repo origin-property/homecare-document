@@ -240,6 +240,9 @@ enum CallingType {
     OTHER
 }
 
+"""
+ข้อมูลการยิมยอมการให้บริการ
+"""
 type Consent {
     """
     วันที่ให้ความยินยอม
@@ -299,7 +302,7 @@ type Consent {
     """
     แหล่งที่มาของข้อมูล
     """
-    source: String!
+    source: ConsentSource!
 
     """
     เบอร์โทรศัพท์
@@ -325,6 +328,21 @@ type Consent {
     รหัสผู้ใช้งาน
     """
     userId: String
+}
+
+"""
+แหล่งที่มายินยอมการให้บริการ
+"""
+enum ConsentSource {
+    """
+    Origin Connect
+    """
+    ORIGIN_CONNECT
+
+    """
+    Primo Plus
+    """
+    PRIMO_PLUS
 }
 
 input CreateCallingInput {
@@ -444,7 +462,7 @@ input CreateConsentInput {
     """
     แหล่งที่มาของข้อมูล
     """
-    source: String
+    source: ConsentSource
 
     """
     เบอร์โทรศัพท์
@@ -848,11 +866,6 @@ input CreateOriginConnectConsentInput {
     projectId: String
 
     """
-    แหล่งที่มาของข้อมูล
-    """
-    source: String
-
-    """
     เบอร์โทรศัพท์
     """
     telephone: String
@@ -948,6 +961,63 @@ input CreatePrimoPlusCSATInput {
     questionId: String
     repairId: String
     score: Int
+}
+
+input CreatePrimoPlusConsentInput {
+    """
+    อีเมล
+    """
+    email: String
+
+    """
+    ชื่อ
+    """
+    firstname: String
+
+    """
+    เลขบัตรประชาชน
+    """
+    idCard: String
+
+    """
+    นามสกุล
+    """
+    lastname: String
+
+    """
+    รหัสสมาชิก
+    """
+    memberId: String
+
+    """
+    เลขที่หนังสือเดินทาง
+    """
+    passport: String
+
+    """
+    รหัสโครงการ
+    """
+    projectId: String
+
+    """
+    เบอร์โทรศัพท์
+    """
+    telephone: String
+
+    """
+    รหัสยูนิต
+    """
+    unitId: String
+
+    """
+    เลขที่ยูนิต
+    """
+    unitNumber: String
+
+    """
+    รหัสผู้ใช้งาน
+    """
+    userId: String
 }
 
 """
@@ -2019,6 +2089,13 @@ type Mutation {
     ): [PrimoPlusCsat!]!
 
     """
+    สร้างข้อมูลการยิมยอมการให้บริการ
+    """
+    createPrimoPlusPrimoPlusConsent(
+        createPrimoPlusConsent: CreatePrimoPlusConsentInput!
+    ): PrimoPlusConsent!
+
+    """
     สร้างข้อมูลการแจ้งซ่อม
     """
     createPrimoPlusTask(
@@ -2165,6 +2242,9 @@ type OriginConnectCause {
     sequence: Int!
 }
 
+"""
+ข้อมูลการยิมยอมการให้บริการ
+"""
 type OriginConnectConsent {
     """
     วันที่ให้ความยินยอม
@@ -2224,7 +2304,7 @@ type OriginConnectConsent {
     """
     แหล่งที่มาของข้อมูล
     """
-    source: String!
+    source: ConsentSource!
 
     """
     เบอร์โทรศัพท์
@@ -2691,6 +2771,102 @@ type PrimoPlusCause {
 }
 
 """
+ข้อมูลการยิมยอมการให้บริการ
+"""
+type PrimoPlusConsent {
+    """
+    วันที่ให้ความยินยอม
+    """
+    consentedAt: Date!
+
+    """
+    วันที่สร้าง
+    """
+    createdAt: Date!
+
+    """
+    วันที่ลบ
+    """
+    deletedAt: Date
+
+    """
+    อีเมล
+    """
+    email: String
+
+    """
+    ชื่อ
+    """
+    firstname: String
+
+    """
+    Consent ID
+    """
+    id: String!
+
+    """
+    เลขบัตรประชาชน
+    """
+    idCard: String
+
+    """
+    นามสกุล
+    """
+    lastname: String
+
+    """
+    รหัสสมาชิก
+    """
+    memberId: String
+
+    """
+    เลขที่หนังสือเดินทาง
+    """
+    passport: String
+
+    """
+    รหัสโครงการ
+    """
+    projectId: String!
+
+    """
+    แหล่งที่มาของข้อมูล
+    """
+    source: ConsentSource!
+
+    """
+    เบอร์โทรศัพท์
+    """
+    telephone: String
+
+    """
+    รหัสยูนิต
+    """
+    unitId: String
+
+    """
+    เลขที่ยูนิต
+    """
+    unitNumber: String!
+
+    """
+    วันที่อัพเดท
+    """
+    updatedAt: Date!
+
+    """
+    รหัสผู้ใช้งาน
+    """
+    userId: String
+}
+
+type PrimoPlusConsentPurposeWithLanguage {
+    description: String!
+    language: String!
+    title: String!
+}
+
+"""
 ผลการประเมินหลังการซ่อม
 """
 type PrimoPlusCsat {
@@ -3096,6 +3272,11 @@ type Query {
     allPrimoPlusCategories: [PrimoPlusCategory!]!
 
     """
+    คำถามการยิมยอมการให้บริการ
+    """
+    allPrimoPlusConsentPurposeWithLanguages: [PrimoPlusConsentPurposeWithLanguage!]!
+
+    """
     คำถามประเมินคุณภาพหลังเข้ารับบริการทั้งหมด
     """
     allPrimoPlusCsatQuestions: [PrimoPlusCsatQuestion!]!
@@ -3152,6 +3333,56 @@ type Query {
         """
         unitNumber: String!
     ): [PrimoPlusTimeRange!]!
+
+    """
+    ข้อมูลการยิมยอมการให้บริการของห้องทำรายการในระบบ
+    """
+    existsPrimoPlusConsent(
+        """
+        อีเมล
+        """
+        email: String
+
+        """
+        ชื่อ
+        """
+        firstname: String
+
+        """
+        เลขบัตรประชาชน
+        """
+        idCard: String
+
+        """
+        นามสกุล
+        """
+        lastname: String
+
+        """
+        เลขที่หนังสือเดินทาง
+        """
+        passport: String
+
+        """
+        รหัสโครงการ
+        """
+        projectId: String!
+
+        """
+        เบอร์โทรศัพท์
+        """
+        telephone: String
+
+        """
+        รหัสยูนิต
+        """
+        unitId: String
+
+        """
+        เลขที่ยูนิต
+        """
+        unitNumber: String!
+    ): Boolean!
 
     """
     รายการแจ้งซ่อมทั้งหมด
