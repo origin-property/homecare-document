@@ -1605,12 +1605,6 @@ input CreateUserProjectTowerInput {
     tower: String
 }
 
-input CreateUserSettingInput {
-    deletedAt: Date
-    notification: Boolean = true
-    userId: String
-}
-
 type Csat {
     comment: String
     createdAt: Date
@@ -2144,7 +2138,7 @@ type OriginConnectCategory {
     sequence: Int!
 
     """
-    ตัวเลือกประเภทย่อยตามที่งานซ่อมย่อย
+    ตัวเลือกประเภทย่อยตามที่งานหลัก
     """
     subCategories: [OriginConnectSubCategory!]!
 }
@@ -2669,7 +2663,7 @@ type PrimoPlusCategory {
     sequence: Int!
 
     """
-    ตัวเลือกประเภทย่อยตามที่งานหลัก
+    ตัวเลือกประเภทย่อยตามที่งานซ่อมย่อย
     """
     subCategories: [PrimoPlusSubCategory!]!
 }
@@ -4716,6 +4710,11 @@ input UpdateUserProjectTowerInput {
 
 type User {
     """
+    ข้อมูลอุปกรณ์ทั้งหมดของผู้ใช้งาน
+    """
+    devices: [UserDevice!]
+
+    """
     ข้อมูลพนักงาน
     """
     employee: Employee
@@ -4741,14 +4740,38 @@ type User {
     roles: [Role!]
 
     """
-    ข้อมูลการตั้งค่า
-    """
-    setting: UserSetting
-
-    """
     ชื่อผู้ใช้งาน
     """
     username: String!
+}
+
+type UserDevice {
+    appBuildVersion: String
+    appVersion: String
+    brand: String
+    createdAt: Date
+    deletedAt: Date
+    deviceId: String!
+    deviceName: String
+    deviceType: Int!
+    deviceYearClass: Int
+    expoVersion: String
+    id: ID!
+    isDevice: Boolean!
+    manufacturer: String
+    modelName: String
+    notification: Boolean!
+    osName: String
+    osVersion: String
+    platformApiLevel: Int
+
+    """
+    Push tokens ของอุปกรณ์นี้
+    """
+    pushTokens: [UserPushToken!]
+    totalMemory: Float
+    updatedAt: Date
+    userId: String!
 }
 
 type UserPaginate {
@@ -4807,6 +4830,18 @@ type UserProjectTower {
     userProjectId: String!
 }
 
+type UserPushToken {
+    createdAt: Date
+    deletedAt: Date
+    id: ID!
+    lastActiveAt: Date!
+    pushToken: String!
+    signOut: Boolean!
+    updatedAt: Date
+    userDeviceId: String
+    userId: String!
+}
+
 type UserRole {
     createdAt: Date
     deletedAt: Date
@@ -4826,15 +4861,6 @@ type UserRole {
     """
     รหัสผู้ใช้งาน
     """
-    userId: String!
-}
-
-type UserSetting {
-    createdAt: Date
-    deletedAt: Date
-    id: ID!
-    notification: Boolean!
-    updatedAt: Date
     userId: String!
 }
 
